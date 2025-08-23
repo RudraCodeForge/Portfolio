@@ -1,7 +1,7 @@
 import "./App.css";
 import { ScrollProvider, useScroll } from "./store/ScrollContext";
 import { DataProvider } from "./store/DataContext";
-
+import { SendEmailProvider } from "./store/SendEmail";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import AboutMe from "./components/AboutMe";
@@ -37,9 +37,11 @@ function AppContent() {
         <Education />
 
         {/* Contact */}
-        <div className="CC" ref={contactRef}>
-          <Contact />
-        </div>
+        <SendEmailProvider>
+          <div className="CC" ref={contactRef}>
+            <Contact />
+          </div>
+        </SendEmailProvider>
 
         <Footer />
       </DataProvider>

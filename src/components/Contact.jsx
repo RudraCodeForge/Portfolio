@@ -1,14 +1,26 @@
 import { FaGithub, FaLinkedin} from "react-icons/fa";
+import {useRef} from "react";
+import { useSendEmail } from "../store/SendEmail";
 const Contact = () => {
+  const formRef = useRef();
+  const {sendEmail}= useSendEmail();
+  const SendEmailHandler = (e) =>{
+    e.preventDefault();
+    sendEmail(formRef);
+  }
   return (
     <div className="container my-5">
-      <form className="contact-form shadow p-4 bg-white rounded">
+      <form 
+        className="contact-form shadow p-4 bg-white rounded"
+        ref={formRef} onSubmit={(e)=>{SendEmailHandler(e)}}>
         <h3 className="text-center mb-4">Contact Me</h3>
+        <input type="hidden" name="to_name" value="PRINCE DAKSH"/>
 
         <div className="mb-3">
           <label htmlFor="name" className="form-label">Name</label>
           <input
             type="text"
+            name="name"
             id="name"
             className="form-control"
             placeholder="Enter your name"
@@ -21,6 +33,7 @@ const Contact = () => {
           <input
             type="email"
             id="email"
+            name="email_id"
             className="form-control"
             placeholder="Enter your email"
             required
@@ -34,6 +47,7 @@ const Contact = () => {
           <label htmlFor="message" className="form-label">Message</label>
           <textarea
             id="message"
+            name="message"
             className="form-control"
             rows="4"
             placeholder="Your message..."
