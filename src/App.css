@@ -1,2 +1,142 @@
-main {
+.TopCon{
+  background: linear-gradient(to bottom, #E0F2FF, #FFFFFF);
+  padding-bottom:20px;
+  border-bottom:2px solid #E0F2FF;
+}
+.NavCon{
+  background-color: transparent;
+}
+.mcon{
+  display: flex;
+  justify-content:center;
+}
+.img-con{
+  background-color:#f0f0f0;
+  height:200px;
+  width:200px;
+  border-radius: 50%;
+  box-shadow: 0 0 10px grey;
+  
+}
+.resume_btn{
+  display:block;
+  border:none;
+  width:100%;
+  border-radius:10px;
+}
+.SkillConn {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 20px;
+  justify-items: center;
+}
+.box {
+  width: 120px;
+  /*background-color:#f0f0f0;*/
+  text-align: center;
+  padding: 20px 10px;
+  height: 120px;
+  box-shadow: 0 0 10px grey;
+  border-radius: 10px;
+}
+.SkillImg{
+  width:50px;
+  height:50px;
+}
+.PC{
+  padding:20px 0 10px 0;
+  background-color:#edf6ff;
+}
+.ProjectConn {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  gap: 20px;
+  justify-items: center;
+}
+.Point{
+  position: absolute;
+  
+  width:50px;
+  height: 50px;
+  background-color:grey;
+}
+
+.timeline {
+  position: relative;
+  margin-left: 20px;
+  border-left: 2px solid #ddd;
+  padding-left: 20px;
+}
+
+.timeline-item {
+  position: relative;
+  margin-top:20px;
+  margin-bottom: 30px;
+}
+
+.timeline-icon {
+  position: absolute;
+  left: -42px;
+  top: 0;
+  width: 40px;
+  height: 40px;
+  background: #3b82f6; /* blue */
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.timeline-content{
+  margin-left:10px;
+}
+
+
+.contact-form {
+  max-width: 500px;
+  margin: auto;
+  border-radius: 12px;
+}
+
+/* Inputs & textarea style */
+.contact-form .form-control {
+  border-radius: 10px;
+  padding: 10px 12px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Focus effect */
+.contact-form .form-control:focus {
+  border-color: #0d6efd;
+  box-shadow: 0px 0px 6px rgba(13, 110, 253, 0.4);
+}
+
+/* Submit button */
+.contact-form button {
+  padding: 12px;
+  font-weight: 600;
+  border-radius: 10px;
+}
+
+/* ✅ Extra responsive tweaks */
+@media (max-width: 576px) {
+  .contact-form {
+    padding: 20px 15px;
+  }
+
+  .contact-form h3 {
+    font-size: 1.3rem;
+  }
+}
+.ConDet{
+  color:grey;
+}
+.CC{
+  background-color:#edf6ff;
+  padding:10px 0 10px 0;
+  border-bottom:1.5px solid #E0F2FF;
+}
+.footer{
+  margin:20px 0 20px 0;
+  color:grey;
 }
