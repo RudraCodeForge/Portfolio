@@ -7,7 +7,7 @@ const Hero = () => {
         p-1 img-con"
         >
           <img
-            src="/profile.png"
+            src="/profile.jpg"
             alt="Prince Daksh"
             className="rounded-circle"
             width="190px"
