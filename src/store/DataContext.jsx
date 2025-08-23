@@ -62,8 +62,25 @@ export const DataProvider = ({ children }) => {
     }
     
   ];
+
+  const PROJECTS = [
+    {
+      Title: "ATIHI STAY",
+      Description: "A platform for booking unique accommodations",
+      Img: "./ATITHISTAY.jpg",
+      LiveLink: "https://atithi-stay.onrender.com/",
+      GithubLink: "",
+    },
+    {
+      Title: "BANK MANAGEMENT",
+      Description: "A Java Swing & MySQL based Bank Management System that allows users to create accounts, manage deposits/withdrawals, check balance, and maintain records securely.",
+      Img: "./BANK.jpg",
+      LiveLink: "#",
+      GithubLink: "",
+    },
+  ];
   return (
-    <DataContext.Provider value={{ badges, DATA ,SKILLS}}>
+    <DataContext.Provider value={{ badges, DATA ,SKILLS,PROJECTS}}>
       {children}
     </DataContext.Provider>
   );
