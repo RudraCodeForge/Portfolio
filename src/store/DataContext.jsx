@@ -78,6 +78,13 @@ export const DataProvider = ({ children }) => {
       LiveLink: "#",
       GithubLink: "",
     },
+    {
+      Title: "REACT MINOR PROJECTS",
+      Description : "A collection of minor projects built using React.js, showcasing various features and functionalities.",
+      Img:"",
+      LiveLink:"https://rudracodeforge.github.io/LearnReact/",
+      GithubLink:"#"
+    }
   ];
   return (
     <DataContext.Provider value={{ badges, DATA ,SKILLS,PROJECTS}}>
