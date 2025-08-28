@@ -81,7 +81,7 @@ export const DataProvider = ({ children }) => {
     {
       Title: "REACT MINOR PROJECTS",
       Description : "A collection of minor projects built using React.js, showcasing various features and functionalities.",
-      Img:"",
+      Img:"./MINI_REACT.jpg",
       LiveLink:"https://rudracodeforge.github.io/LearnReact/",
       GithubLink:"#"
     }
