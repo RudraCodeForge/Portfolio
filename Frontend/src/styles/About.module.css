@@ -1,0 +1,254 @@
+.aboutSection {
+  position: relative;
+  overflow: hidden;
+  scroll-margin-top: 0;
+  padding: 60px 0 80px;
+  background:
+    radial-gradient(
+      circle at 22% 45%,
+      rgba(43, 117, 104, 0.13),
+      transparent 27%
+    ),
+    #061110;
+  color: #eef8f4;
+}
+
+.aboutSection::before {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(
+    transparent,
+    rgba(144, 237, 213, 0.1),
+    transparent
+  );
+  content: "";
+}
+
+.aboutGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1fr);
+  gap: clamp(64px, 8vw, 150px);
+  width: min(1440px, calc(100% - 112px));
+  margin: 0 auto;
+}
+
+.sectionLabel {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: #92f7d9;
+  font-family: "SFMono-Regular", Consolas, monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  margin-bottom: 50px;
+}
+
+.labelLine {
+  width: 40px;
+  height: 1px;
+  background: rgba(146, 247, 217, 0.45);
+}
+
+.heading {
+  max-width: 640px;
+  margin: 16px 0 52px;
+  font-size: clamp(3.6rem, 6.6vw, 7.8rem);
+  line-height: 0.92;
+  letter-spacing: -0.07em;
+  font-weight: 700;
+}
+
+.heading span {
+  display: block;
+  color: rgba(227, 238, 235, 0.37);
+}
+
+.profileTerminal {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 350px;
+  padding: 34px 32px 30px;
+  overflow: hidden;
+  border: 1px solid rgba(144, 237, 213, 0.13);
+  border-radius: 28px;
+  background:
+    radial-gradient(
+      circle at 75% 17%,
+      rgba(100, 189, 164, 0.28),
+      transparent 33%
+    ),
+    linear-gradient(145deg, rgba(22, 65, 59, 0.8), rgba(28, 28, 25, 0.9));
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.07);
+}
+
+.profileTerminal::before {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    180deg,
+    rgba(4, 18, 16, 0.2),
+    rgba(4, 18, 16, 0.82)
+  );
+  content: "";
+}
+
+.profileImage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 28%;
+  opacity: 0.88;
+}
+
+.profileTerminal::after {
+  position: absolute;
+  right: -14%;
+  bottom: -28%;
+  width: 68%;
+  height: 62%;
+  border-radius: 50%;
+  background: rgba(12, 19, 18, 0.3);
+  filter: blur(35px);
+  content: "";
+}
+
+.terminalPath,
+.profileTerminal p {
+  position: relative;
+  z-index: 1;
+  font-family: "SFMono-Regular", Consolas, monospace;
+}
+
+.terminalPath {
+  color: #96f6d6;
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.initials {
+  margin-top: 80px;
+  position: relative;
+  z-index: 1;
+  display: grid;
+  width: 70px;
+  height: 70px;
+  place-items: center;
+  border: 2px solid rgba(146, 247, 217, 0.58);
+  border-radius: 50%;
+  color: #96f6d6;
+  font-size: 1.8rem;
+  font-weight: 700;
+  box-shadow: 0 0 0 8px rgba(146, 247, 217, 0.06);
+}
+
+.profileTerminal p {
+  margin: 0;
+  color: rgba(222, 238, 232, 0.86);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.copyColumn {
+  padding-top: 82px;
+}
+
+.leadCopy {
+  max-width: 780px;
+  color: #eff7f5;
+  font-size: clamp(1.8rem, 2.7vw, 3.1rem);
+  line-height: 1.28;
+  letter-spacing: -0.045em;
+}
+
+.leadCopy span {
+  color: #8ef2d4;
+}
+
+.copyGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 56px;
+  margin-top: 46px;
+}
+
+.copyGrid p {
+  color: rgba(196, 216, 211, 0.72);
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+.learningNote {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 52px;
+  color: rgba(232, 241, 237, 0.85);
+  font-size: 1.02rem;
+}
+
+.learningNote span:first-child {
+  color: #8ef2d4;
+  font-size: 1.8rem;
+}
+
+.Points {
+  display: block;
+  color: #8ef2d4;
+  font-weight: 700;
+}
+
+@media (max-width: 900px) {
+  .aboutGrid {
+    grid-template-columns: 1fr;
+    width: min(100% - 48px, 680px);
+  }
+
+  .aboutSection::before {
+    display: none;
+  }
+
+  .copyColumn {
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 560px) {
+  .aboutSection {
+    padding: 92px 0 100px;
+  }
+
+  .aboutGrid {
+    width: min(100% - 32px, 680px);
+  }
+
+  .heading {
+    margin-bottom: 36px;
+    font-size: clamp(3.25rem, 17vw, 5.2rem);
+  }
+
+  .profileTerminal {
+    min-height: 360px;
+    padding: 26px 22px 24px;
+    border-radius: 22px;
+  }
+
+  .copyGrid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+    margin-top: 32px;
+  }
+
+  .learningNote {
+    align-items: flex-start;
+    margin-top: 34px;
+    font-size: 0.94rem;
+  }
+}

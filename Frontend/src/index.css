@@ -2,3 +2,14 @@
   margin: 0;
   box-sizing: border-box;
 }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 96px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
