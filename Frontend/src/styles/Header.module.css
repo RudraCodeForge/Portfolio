@@ -6,6 +6,7 @@
   color: #edf8f5;
   border-top: 1px solid rgba(148, 163, 184, 0.12);
   padding-top: 90px;
+  margin-bottom: 20px;
 }
 
 .headerInner {
@@ -357,7 +358,7 @@
 }
 
 .statValue {
-  font-size: clamp(2.4rem, 4vw, 5rem);
+  font-size: clamp(1.4rem, 2vw, 2.5rem);
   line-height: 1;
   letter-spacing: -0.06em;
   color: #f2faf8;
