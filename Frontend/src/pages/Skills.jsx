@@ -1,10 +1,18 @@
 import Styles from "../styles/Skills.module.css";
 import { SkillsData } from "../data/skills";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCode,
+  faDatabase,
+  faServer,
+  faWrench,
+} from "@fortawesome/free-solid-svg-icons";
 const Skills = () => {
   const iconByType = {
-    faCode: "</>",
-    faServer: "▤",
-    faDatabase: "▱",
+    faCode,
+    faServer,
+    faDatabase,
+    faWrench,
   };
 
   const formatLevel = (level) =>
@@ -35,7 +43,7 @@ const Skills = () => {
           {SkillsData.map((category) => (
             <article className={Styles.skillCard} key={category.Name}>
               <div className={Styles.categoryIcon} aria-hidden="true">
-                {iconByType[category.Icon] ?? "✦"}
+                <FontAwesomeIcon icon={iconByType[category.Icon] ?? faWrench} />
               </div>
               <h3>{category.Name}</h3>
 
