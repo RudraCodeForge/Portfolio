@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link, useSearchParams } from "react-router-dom";
 import ProjectCard from "../Components/ProjectCard";
 import ProjectFilter from "../Components/ProjectFilter";
 import { ProjectsData } from "../data/Projects";
@@ -8,12 +9,8 @@ const projectsPerPage = 10;
 
 const AllProjects = () => {
   const [activeFilter, setActiveFilter] = useState("ALL");
-  const [currentPage, setCurrentPage] = useState(() => {
-    const page = Number(
-      new URLSearchParams(window.location.search).get("page"),
-    );
-    return page > 0 ? page : 1;
-  });
+  const [searchParams, setSearchParams] = useSearchParams();
+  const currentPage = Math.max(Number(searchParams.get("page")) || 1, 1);
   const filteredProjects =
     activeFilter === "ALL"
       ? ProjectsData
@@ -29,22 +26,23 @@ const AllProjects = () => {
   );
 
   useEffect(() => {
-    const query = safePage === 1 ? "" : `?page=${safePage}`;
-    window.history.replaceState(null, "", `/projects${query}`);
+    setSearchParams(safePage === 1 ? {} : { page: String(safePage) }, {
+      replace: true,
+    });
     window.scrollTo({ top: 0, behavior: "smooth" });
-  }, [safePage]);
+  }, [safePage, setSearchParams]);
 
   const changeFilter = (filter) => {
     setActiveFilter(filter);
-    setCurrentPage(1);
+    setSearchParams({}, { replace: true });
   };
 
   return (
     <main className={Styles.allProjectsPage}>
       <div className={Styles.projectsInner}>
-        <a className={Styles.backLink} href="/">
+        <Link className={Styles.backLink} to="/">
           ← Back home
-        </a>
+        </Link>
         <div className={Styles.allProjectsHeading}>
           <div className={Styles.sectionLabel}>
             <span>03</span>
@@ -79,7 +77,7 @@ const AllProjects = () => {
             <nav className={Styles.pagination} aria-label="Projects pagination">
               <button
                 type="button"
-                onClick={() => setCurrentPage(safePage - 1)}
+                onClick={() => setSearchParams({ page: String(safePage - 1) })}
                 disabled={safePage === 1}
               >
                 ←
@@ -89,7 +87,7 @@ const AllProjects = () => {
                   <button
                     type="button"
                     className={page === safePage ? Styles.activePage : ""}
-                    onClick={() => setCurrentPage(page)}
+                    onClick={() => setSearchParams({ page: String(page) })}
                     key={page}
                   >
                     {page}
@@ -98,7 +96,7 @@ const AllProjects = () => {
               )}
               <button
                 type="button"
-                onClick={() => setCurrentPage(safePage + 1)}
+                onClick={() => setSearchParams({ page: String(safePage + 1) })}
                 disabled={safePage === pageCount}
               >
                 →

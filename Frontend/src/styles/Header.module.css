@@ -120,6 +120,9 @@
 }
 
 .ghostBtn {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
   background: transparent;
   color: #edf8f5;
   min-height: 64px;

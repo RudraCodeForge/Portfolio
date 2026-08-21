@@ -1,4 +1,5 @@
 import ProjectCard from "../Components/ProjectCard";
+import { Link } from "react-router-dom";
 import { ProjectsData } from "../data/Projects";
 import Styles from "../styles/Projects.module.css";
 
@@ -24,9 +25,9 @@ const Projects = () => (
           <ProjectCard key={project.Title} project={project} index={index} />
         ))}
       </div>
-      <a className={Styles.viewAllButton} href="/projects">
+      <Link className={Styles.viewAllButton} to="/projects">
         View all projects <span>↗</span>
-      </a>
+      </Link>
     </div>
   </section>
 );

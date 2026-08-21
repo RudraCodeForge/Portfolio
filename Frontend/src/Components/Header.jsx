@@ -10,7 +10,7 @@ import {
   faInstagram,
   faLinkedin,
 } from "@fortawesome/free-brands-svg-icons";
-
+import { useNavigate } from "react-router-dom";
 const stats = [
   { value: "24+", label: "Projects shipped" },
   { value: "18", label: "Technologies" },
@@ -19,6 +19,7 @@ const stats = [
 ];
 
 const Header = () => {
+  const Navigate = useNavigate();
   return (
     <header className={Styles.headerShell}>
       <div className={Styles.headerInner}>
@@ -47,15 +48,31 @@ const Header = () => {
             </p>
 
             <div className={Styles.actionRow}>
-              <button type="button" className={Styles.primaryBtn}>
+              <button
+                type="button"
+                className={Styles.primaryBtn}
+                onClick={() => {
+                  Navigate("/projects");
+                }}
+              >
                 View projects <span aria-hidden="true">↗</span>
               </button>
-              <button type="button" className={Styles.secondaryBtn}>
+              <button
+                type="button"
+                className={Styles.secondaryBtn}
+                onClick={() => {
+                  window.location.href = "mailto:jitandradaksh533@icloud.com";
+                }}
+              >
                 Contact me <span aria-hidden="true">›</span>
               </button>
-              <button type="button" className={Styles.ghostBtn}>
+              <a
+                className={Styles.ghostBtn}
+                href="https://drive.google.com/uc?export=download&id=11MbNqU0FApIOfhA_UbjbxWraBDdiSInL"
+                download="Prince-Daksh-Resume.pdf"
+              >
                 <span className={Styles.downloadIcon}>↓</span> Resume
-              </button>
+              </a>
             </div>
 
             <div className={Styles.socialRow}>

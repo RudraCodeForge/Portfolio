@@ -3,6 +3,26 @@
   box-sizing: border-box;
 }
 
+html,
+body,
+#root {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
 :root {
   --cursor-x: 50vw;
   --cursor-y: 25vh;

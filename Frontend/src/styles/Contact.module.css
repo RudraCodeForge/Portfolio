@@ -1,0 +1,191 @@
+.contactSection {
+  min-height: 680px;
+  padding: 120px 0 150px;
+  background: #020c0f;
+  color: #edf8f5;
+}
+
+.contactGrid {
+  display: grid;
+  grid-template-columns: minmax(320px, 0.85fr) minmax(0, 1.25fr);
+  gap: clamp(70px, 10vw, 160px);
+  width: min(1500px, calc(100% - 112px));
+  margin: 0 auto;
+}
+
+.sectionLabel {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: #92f7d9;
+  font:
+    0.78rem "SFMono-Regular",
+    Consolas,
+    monospace;
+  letter-spacing: 0.18em;
+}
+
+.labelLine {
+  width: 40px;
+  height: 1px;
+  background: rgba(146, 247, 217, 0.45);
+}
+
+.heading {
+  margin-top: 52px;
+  font-size: clamp(3.5rem, 6vw, 7rem);
+  line-height: 0.92;
+  letter-spacing: -0.075em;
+}
+
+.heading span {
+  display: block;
+  color: rgba(227, 238, 235, 0.37);
+}
+
+.introCopy {
+  max-width: 510px;
+  margin-top: 48px;
+  color: rgba(201, 222, 218, 0.7);
+  font-size: 1.06rem;
+  line-height: 2;
+}
+
+.emailLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 54px;
+  color: #8ef2d4;
+  font-size: 1rem;
+  text-decoration: none;
+}
+
+.emailLink:hover {
+  color: #dffef5;
+}
+
+.contactForm {
+  display: grid;
+  align-content: start;
+  gap: 28px;
+  padding-top: 4px;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 30px;
+}
+
+.contactForm label {
+  display: grid;
+  gap: 22px;
+  color: rgba(201, 222, 218, 0.6);
+  font:
+    0.75rem "SFMono-Regular",
+    Consolas,
+    monospace;
+  letter-spacing: 0.08em;
+}
+
+.contactForm input,
+.contactForm textarea {
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+  outline: 0;
+  resize: vertical;
+  background: transparent;
+  color: #edf8f5;
+  font:
+    1rem "Segoe UI",
+    sans-serif;
+  letter-spacing: 0;
+}
+
+.contactForm input {
+  height: 34px;
+}
+
+.contactForm textarea {
+  min-height: 150px;
+  padding-top: 4px;
+  line-height: 1.7;
+}
+
+.contactForm input::placeholder,
+.contactForm textarea::placeholder {
+  color: rgba(148, 163, 184, 0.48);
+}
+
+.contactForm input:focus,
+.contactForm textarea:focus {
+  border-color: #74f2d0;
+}
+
+.formFooter {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.formFooter button {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 60px;
+  padding: 0 30px;
+  border: 0;
+  border-radius: 999px;
+  background: #a8f4d9;
+  color: #061a18;
+  cursor: pointer;
+  font:
+    700 1rem "Segoe UI",
+    sans-serif;
+}
+
+.formFooter button:hover {
+  background: #d3ffed;
+  transform: translateY(-2px);
+}
+
+.successMessage {
+  color: #8ef2d4;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 900px) {
+  .contactGrid {
+    grid-template-columns: 1fr;
+    width: min(100% - 40px, 680px);
+  }
+}
+
+@media (max-width: 560px) {
+  .contactSection {
+    padding: 90px 0 100px;
+  }
+
+  .contactGrid {
+    width: min(100% - 28px, 680px);
+  }
+
+  .formRow {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .formFooter {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .formFooter button {
+    width: 100%;
+    justify-content: center;
+  }
+}

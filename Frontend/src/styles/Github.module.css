@@ -92,6 +92,8 @@
 .activityPanel {
   min-height: 480px;
   padding: 34px 36px;
+  min-width: 0;
+  overflow: hidden;
   border: 1px solid rgba(148, 163, 184, 0.2);
   border-radius: 20px;
   background: rgba(9, 21, 22, 0.72);
@@ -255,6 +257,12 @@
   }
   .githubGrid {
     width: min(100% - 28px, 680px);
+  }
+  .githubTitleRow {
+    min-width: 0;
+  }
+  .githubTitleRow > div:last-child {
+    min-width: 0;
   }
   .activityPanel {
     padding: 24px 18px;
