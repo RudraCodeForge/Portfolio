@@ -1,0 +1,110 @@
+import { useEffect, useState } from "react";
+import ProjectCard from "../Components/ProjectCard";
+import ProjectFilter from "../Components/ProjectFilter";
+import { ProjectsData } from "../data/Projects";
+import Styles from "../styles/Projects.module.css";
+
+const projectsPerPage = 10;
+
+const AllProjects = () => {
+  const [activeFilter, setActiveFilter] = useState("ALL");
+  const [currentPage, setCurrentPage] = useState(() => {
+    const page = Number(
+      new URLSearchParams(window.location.search).get("page"),
+    );
+    return page > 0 ? page : 1;
+  });
+  const filteredProjects =
+    activeFilter === "ALL"
+      ? ProjectsData
+      : ProjectsData.filter((project) => project.Catagory === activeFilter);
+  const pageCount = Math.max(
+    1,
+    Math.ceil(filteredProjects.length / projectsPerPage),
+  );
+  const safePage = Math.min(currentPage, pageCount);
+  const visibleProjects = filteredProjects.slice(
+    (safePage - 1) * projectsPerPage,
+    safePage * projectsPerPage,
+  );
+
+  useEffect(() => {
+    const query = safePage === 1 ? "" : `?page=${safePage}`;
+    window.history.replaceState(null, "", `/projects${query}`);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [safePage]);
+
+  const changeFilter = (filter) => {
+    setActiveFilter(filter);
+    setCurrentPage(1);
+  };
+
+  return (
+    <main className={Styles.allProjectsPage}>
+      <div className={Styles.projectsInner}>
+        <a className={Styles.backLink} href="/">
+          ← Back home
+        </a>
+        <div className={Styles.allProjectsHeading}>
+          <div className={Styles.sectionLabel}>
+            <span>03</span>
+            <span className={Styles.labelLine} />
+            <span>ALL PROJECTS</span>
+          </div>
+          <h1>
+            Everything I&apos;ve
+            <br />
+            <span>helped build.</span>
+          </h1>
+          <p>
+            {filteredProjects.length} projects across product, commerce, and
+            creative systems.
+          </p>
+        </div>
+        <ProjectFilter
+          activeFilter={activeFilter}
+          onFilterChange={changeFilter}
+        />
+        <div className={Styles.projectsGrid}>
+          {visibleProjects.map((project, index) => (
+            <ProjectCard
+              key={project.Title}
+              project={project}
+              index={(safePage - 1) * projectsPerPage + index}
+            />
+          ))}
+        </div>
+        <nav className={Styles.pagination} aria-label="Projects pagination">
+          <button
+            type="button"
+            onClick={() => setCurrentPage(safePage - 1)}
+            disabled={safePage === 1}
+          >
+            ←
+          </button>
+          {Array.from({ length: pageCount }, (_, index) => index + 1).map(
+            (page) => (
+              <button
+                type="button"
+                className={page === safePage ? Styles.activePage : ""}
+                onClick={() => setCurrentPage(page)}
+                key={page}
+              >
+                {page}
+              </button>
+            ),
+          )}
+          <button
+            type="button"
+            onClick={() => setCurrentPage(safePage + 1)}
+            disabled={safePage === pageCount}
+          >
+            →
+          </button>
+        </nav>
+      </div>
+    </main>
+  );
+};
+
+export default AllProjects;
