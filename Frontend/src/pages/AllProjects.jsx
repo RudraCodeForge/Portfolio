@@ -65,43 +65,59 @@ const AllProjects = () => {
           activeFilter={activeFilter}
           onFilterChange={changeFilter}
         />
-        <div className={Styles.projectsGrid}>
-          {visibleProjects.map((project, index) => (
-            <ProjectCard
-              key={project.Title}
-              project={project}
-              index={(safePage - 1) * projectsPerPage + index}
-            />
-          ))}
-        </div>
-        <nav className={Styles.pagination} aria-label="Projects pagination">
-          <button
-            type="button"
-            onClick={() => setCurrentPage(safePage - 1)}
-            disabled={safePage === 1}
-          >
-            ←
-          </button>
-          {Array.from({ length: pageCount }, (_, index) => index + 1).map(
-            (page) => (
+        {visibleProjects.length > 0 ? (
+          <>
+            <div className={Styles.projectsGrid}>
+              {visibleProjects.map((project, index) => (
+                <ProjectCard
+                  key={project.Title}
+                  project={project}
+                  index={(safePage - 1) * projectsPerPage + index}
+                />
+              ))}
+            </div>
+            <nav className={Styles.pagination} aria-label="Projects pagination">
               <button
                 type="button"
-                className={page === safePage ? Styles.activePage : ""}
-                onClick={() => setCurrentPage(page)}
-                key={page}
+                onClick={() => setCurrentPage(safePage - 1)}
+                disabled={safePage === 1}
               >
-                {page}
+                ←
               </button>
-            ),
-          )}
-          <button
-            type="button"
-            onClick={() => setCurrentPage(safePage + 1)}
-            disabled={safePage === pageCount}
-          >
-            →
-          </button>
-        </nav>
+              {Array.from({ length: pageCount }, (_, index) => index + 1).map(
+                (page) => (
+                  <button
+                    type="button"
+                    className={page === safePage ? Styles.activePage : ""}
+                    onClick={() => setCurrentPage(page)}
+                    key={page}
+                  >
+                    {page}
+                  </button>
+                ),
+              )}
+              <button
+                type="button"
+                onClick={() => setCurrentPage(safePage + 1)}
+                disabled={safePage === pageCount}
+              >
+                →
+              </button>
+            </nav>
+          </>
+        ) : (
+          <div className={Styles.emptyProjects}>
+            <div className={Styles.emptyIcon} aria-hidden="true">
+              ∅
+            </div>
+            <p className={Styles.emptyEyebrow}>NO MATCHING WORK</p>
+            <h2>No projects in this collection yet.</h2>
+            <p>Try another filter to explore the rest of the work.</p>
+            <button type="button" onClick={() => changeFilter("ALL")}>
+              Show all projects <span>↗</span>
+            </button>
+          </div>
+        )}
       </div>
     </main>
   );

@@ -1,0 +1,205 @@
+.experienceSection {
+  min-height: 100vh;
+  padding: 100px 0 10px;
+  overflow: hidden;
+  background: #020c0f;
+  color: #edf8f5;
+}
+
+.experienceGrid {
+  display: grid;
+  grid-template-columns: minmax(320px, 0.8fr) minmax(0, 1.5fr);
+  gap: clamp(70px, 10vw, 170px);
+  width: min(1500px, calc(100% - 112px));
+  margin: 0 auto;
+}
+
+.sectionLabel {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+  color: #92f7d9;
+  font:
+    0.78rem "SFMono-Regular",
+    Consolas,
+    monospace;
+  letter-spacing: 0.18em;
+}
+
+.labelLine {
+  width: 40px;
+  height: 1px;
+  background: rgba(146, 247, 217, 0.45);
+}
+
+.heading {
+  margin: 0;
+  font-size: clamp(3.5rem, 6vw, 7.5rem);
+  line-height: 0.9;
+  letter-spacing: -0.07em;
+}
+
+.heading span {
+  display: block;
+  color: rgba(227, 238, 235, 0.37);
+}
+
+.introCopy {
+  margin-top: 54px;
+  color: rgba(201, 222, 218, 0.7);
+  font-size: 1.08rem;
+  line-height: 2;
+}
+
+.shippingNote {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 58px;
+  color: rgba(201, 222, 218, 0.62);
+  font:
+    0.9rem "SFMono-Regular",
+    Consolas,
+    monospace;
+}
+
+.briefcaseIcon {
+  color: #8ef2d4;
+  font-size: 1.2rem;
+}
+
+.timeline {
+  position: relative;
+  padding-left: 50px;
+}
+
+.timeline::before {
+  position: absolute;
+  top: 8px;
+  bottom: 0;
+  left: 0;
+  width: 1px;
+  background: rgba(148, 163, 184, 0.16);
+  content: "";
+}
+
+.experienceItem {
+  position: relative;
+  padding: 4px 0 58px;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.14);
+}
+
+.experienceItem + .experienceItem {
+  padding-top: 58px;
+}
+
+.experienceItem:last-child {
+  border-bottom: 0;
+}
+
+.timelineDot {
+  position: absolute;
+  top: 6px;
+  left: -56px;
+  width: 11px;
+  height: 11px;
+  border: 2px solid #92f7d9;
+  border-radius: 50%;
+  background: #74f2d0;
+  box-shadow:
+    0 0 0 7px rgba(116, 242, 208, 0.1),
+    0 0 18px rgba(116, 242, 208, 0.8);
+}
+
+.experienceItem + .experienceItem .timelineDot {
+  top: 60px;
+}
+
+.itemHeader {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.period {
+  color: #8ef2d4;
+  font:
+    0.9rem "SFMono-Regular",
+    Consolas,
+    monospace;
+}
+
+.location {
+  color: rgba(201, 222, 218, 0.48);
+  font-size: 0.85rem;
+}
+
+.experienceItem h3 {
+  margin-top: 14px;
+  font-size: 1.45rem;
+  letter-spacing: -0.04em;
+}
+
+.company {
+  margin-top: 8px;
+  color: rgba(201, 222, 218, 0.52);
+  font-size: 1.05rem;
+}
+
+.description {
+  max-width: 760px;
+  margin-top: 30px;
+  color: rgba(201, 222, 218, 0.68);
+  font-size: 1.08rem;
+  line-height: 2;
+}
+
+.skillTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 26px;
+}
+
+.skillTags span {
+  padding: 7px 13px;
+  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.11);
+  color: rgba(201, 222, 218, 0.7);
+  font:
+    0.75rem "SFMono-Regular",
+    Consolas,
+    monospace;
+}
+
+@media (max-width: 900px) {
+  .experienceGrid {
+    grid-template-columns: 1fr;
+    width: min(100% - 40px, 680px);
+  }
+
+  .timeline {
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 560px) {
+  .experienceSection {
+    padding: 100px 0 80px;
+  }
+
+  .experienceGrid {
+    width: min(100% - 28px, 680px);
+  }
+
+  .itemHeader {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .description {
+    font-size: 1rem;
+  }
+}

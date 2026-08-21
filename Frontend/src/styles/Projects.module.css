@@ -2,8 +2,15 @@
 .allProjectsPage {
   min-height: 100vh;
   padding: 96px 0 76px;
-  background: #020c0f;
+  background:
+    radial-gradient(
+      circle at 82% 22%,
+      rgba(81, 70, 125, 0.08),
+      transparent 24%
+    ),
+    #061110;
   color: #edf8f5;
+  border-top: 1px solid rgba(148, 163, 184, 0.12);
 }
 
 .allProjectsPage {
@@ -140,6 +147,74 @@
   border-color: #74f2d0;
   color: #74f2d0;
   background: rgba(116, 242, 208, 0.1);
+}
+
+.emptyProjects {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  min-height: 360px;
+  padding: 72px 24px;
+  overflow: hidden;
+  border: 1px solid rgba(146, 247, 217, 0.18);
+  border-radius: 20px;
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(116, 242, 208, 0.12),
+      transparent 42%
+    ),
+    rgba(9, 21, 22, 0.72);
+  text-align: center;
+}
+
+.emptyIcon {
+  display: grid;
+  width: 58px;
+  height: 58px;
+  place-items: center;
+  border: 1px solid rgba(116, 242, 208, 0.5);
+  border-radius: 50%;
+  color: #74f2d0;
+  font-size: 2rem;
+  box-shadow: 0 0 30px rgba(116, 242, 208, 0.12);
+}
+
+.emptyEyebrow {
+  margin-top: 24px;
+  color: #74f2d0;
+  font:
+    0.75rem "SFMono-Regular",
+    Consolas,
+    monospace;
+  letter-spacing: 0.18em;
+}
+
+.emptyProjects h2 {
+  margin-top: 12px;
+  font-size: clamp(1.5rem, 3vw, 2.4rem);
+  letter-spacing: -0.05em;
+}
+
+.emptyProjects > p:last-of-type {
+  margin-top: 12px;
+  color: rgba(201, 222, 218, 0.67);
+}
+
+.emptyProjects button {
+  margin-top: 28px;
+  padding: 12px 18px;
+  border: 1px solid rgba(116, 242, 208, 0.4);
+  border-radius: 999px;
+  background: rgba(116, 242, 208, 0.1);
+  color: #8ef2d4;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+}
+
+.emptyProjects button span {
+  margin-left: 8px;
 }
 
 .projectCard {
