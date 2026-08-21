@@ -2,7 +2,10 @@
   min-height: 100vh;
   padding: 100px 0 10px;
   overflow: hidden;
-  background: #020c0f;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(51, 94, 88, 0.26), transparent 25%),
+    linear-gradient(90deg, rgba(2, 12, 15, 0.98), rgba(6, 25, 23, 0.96));
+  border-top: 1px solid rgba(148, 163, 184, 0.12);
   color: #edf8f5;
 }
 

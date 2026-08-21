@@ -1,0 +1,225 @@
+.githubSection {
+  padding: 100px 0 110px;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(51, 94, 88, 0.26), transparent 25%),
+    linear-gradient(90deg, rgba(2, 12, 15, 0.98), rgba(6, 25, 23, 0.96));
+  border-top: 1px solid rgba(148, 163, 184, 0.12);
+  color: #edf8f5;
+}
+
+.githubGrid {
+  display: grid;
+  grid-template-columns: minmax(320px, 0.82fr) minmax(0, 1.3fr);
+  align-items: center;
+  gap: clamp(70px, 10vw, 150px);
+  width: min(1500px, calc(100% - 112px));
+  margin: 0 auto;
+}
+
+.sectionLabel {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 42px;
+  color: #92f7d9;
+  font:
+    0.78rem "SFMono-Regular",
+    Consolas,
+    monospace;
+  letter-spacing: 0.18em;
+}
+
+.labelLine {
+  width: 40px;
+  height: 1px;
+  background: rgba(146, 247, 217, 0.45);
+}
+
+.githubTitleRow {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.githubIcon {
+  display: grid;
+  width: 70px;
+  height: 70px;
+  place-items: center;
+  border-radius: 20px;
+  background: rgba(148, 163, 184, 0.18);
+  font-size: 2rem;
+}
+
+.githubTitleRow h2 {
+  font-size: 1.8rem;
+  letter-spacing: -0.05em;
+}
+
+.githubTitleRow a {
+  display: inline-block;
+  margin-top: 10px;
+  color: rgba(201, 222, 218, 0.58);
+  text-decoration: none;
+}
+
+.introCopy {
+  max-width: 520px;
+  margin-top: 40px;
+  color: rgba(201, 222, 218, 0.68);
+  font-size: 1.05rem;
+  line-height: 2;
+}
+
+.githubButton {
+  display: inline-flex;
+  gap: 14px;
+  align-items: center;
+  margin-top: 40px;
+  padding: 17px 28px;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  border-radius: 999px;
+  color: #dff8f2;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.githubButton:hover {
+  border-color: #74f2d0;
+  color: #74f2d0;
+}
+
+.activityPanel {
+  min-height: 480px;
+  padding: 34px 36px;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 20px;
+  background: rgba(9, 21, 22, 0.72);
+}
+
+.activityHeader {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  color: rgba(201, 222, 218, 0.62);
+}
+
+.legend {
+  display: grid;
+  grid-template-columns: repeat(3, 20px);
+  align-items: center;
+  gap: 5px;
+  font-size: 0.75rem;
+}
+
+.legend span:first-child {
+  grid-column: 1 / 3;
+}
+.legend span:last-child {
+  grid-column: 1 / 3;
+}
+.legend i {
+  width: 20px;
+  height: 20px;
+  border-radius: 3px;
+}
+
+.activityGrid {
+  display: grid;
+  grid-template-columns: repeat(12, 20px);
+  grid-auto-rows: 20px;
+  grid-auto-flow: column;
+  justify-content: space-between;
+  gap: 8px;
+  margin: 70px 0 42px;
+}
+
+.activityGrid span {
+  border-radius: 3px;
+  background: rgba(116, 242, 208, 0.08);
+}
+.level0 {
+  background: rgba(116, 242, 208, 0.08) !important;
+}
+.level1,
+.level2 {
+  background: rgba(116, 242, 208, 0.28) !important;
+}
+.level3 {
+  background: rgba(116, 242, 208, 0.58) !important;
+}
+.level4 {
+  background: #a8f4d9 !important;
+}
+
+.repositoryList {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.repositoryCard {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 14px;
+  color: #8ef2d4;
+  text-decoration: none;
+}
+
+.repositoryCard b,
+.repositoryCard small {
+  display: block;
+}
+.repositoryCard b {
+  color: #edf8f5;
+}
+.repositoryCard small {
+  margin-top: 7px;
+  color: rgba(201, 222, 218, 0.48);
+}
+.updatedAt {
+  display: block;
+  margin-top: 18px;
+  color: rgba(201, 222, 218, 0.4);
+}
+.errorMessage {
+  margin: 90px 0;
+  color: rgba(201, 222, 218, 0.65);
+  line-height: 1.7;
+}
+
+@media (max-width: 900px) {
+  .githubGrid {
+    grid-template-columns: 1fr;
+    width: min(100% - 40px, 680px);
+  }
+}
+
+@media (max-width: 560px) {
+  .githubSection {
+    padding: 90px 0;
+  }
+  .githubGrid {
+    width: min(100% - 28px, 680px);
+  }
+  .activityPanel {
+    padding: 24px 18px;
+  }
+  .activityGrid {
+    grid-template-columns: repeat(12, 15px);
+    grid-auto-rows: 15px;
+    gap: 5px;
+    margin-top: 50px;
+  }
+  .activityGrid span,
+  .legend i {
+    width: 15px;
+    height: 15px;
+  }
+  .repositoryList {
+    grid-template-columns: 1fr;
+  }
+}

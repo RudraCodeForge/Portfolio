@@ -1,0 +1,115 @@
+.goodAtSection {
+  min-height: 650px;
+  padding: 120px 0 110px;
+  background: #020c0f;
+  color: #edf8f5;
+}
+
+.goodAtInner {
+  width: min(1500px, calc(100% - 112px));
+  margin: 0 auto;
+}
+
+.sectionLabel {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+  color: #92f7d9;
+  font:
+    0.78rem "SFMono-Regular",
+    Consolas,
+    monospace;
+  letter-spacing: 0.18em;
+}
+
+.labelLine {
+  width: 40px;
+  height: 1px;
+  background: rgba(146, 247, 217, 0.45);
+}
+
+.heading {
+  max-width: 620px;
+  margin: 0 0 68px;
+  font-size: clamp(3.6rem, 6.2vw, 7.8rem);
+  line-height: 0.9;
+  letter-spacing: -0.075em;
+}
+
+.heading span {
+  display: block;
+  color: rgba(227, 238, 235, 0.37);
+}
+
+.goodAtGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.goodAtCard {
+  position: relative;
+  display: flex;
+  min-height: 298px;
+  flex-direction: column;
+  padding: 32px 30px;
+  border: 1px solid rgba(148, 163, 184, 0.19);
+  border-radius: 20px;
+  background: rgba(9, 21, 22, 0.72);
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.goodAtCard:hover {
+  transform: translateY(-5px);
+  border-color: rgba(146, 247, 217, 0.42);
+}
+
+.cardIcon {
+  color: #8ef2d4;
+  font-size: 1.65rem;
+}
+
+.goodAtCard h3 {
+  margin-top: 40px;
+  font-size: 1.35rem;
+  letter-spacing: -0.04em;
+}
+
+.goodAtCard p {
+  max-width: 270px;
+  margin-top: 22px;
+  color: rgba(201, 222, 218, 0.66);
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.cardArrow {
+  position: absolute;
+  bottom: 28px;
+  left: 30px;
+  color: rgba(201, 222, 218, 0.48);
+  font-size: 1.2rem;
+}
+
+@media (max-width: 1050px) {
+  .goodAtGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .goodAtSection {
+    padding: 90px 0;
+  }
+
+  .goodAtInner {
+    width: min(100% - 28px, 680px);
+  }
+
+  .goodAtGrid {
+    grid-template-columns: 1fr;
+  }
+}

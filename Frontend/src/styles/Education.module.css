@@ -1,0 +1,143 @@
+.educationSection {
+  min-height: 620px;
+  padding: 145px 0 150px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(51, 94, 88, 0.26), transparent 25%),
+    linear-gradient(90deg, rgba(2, 12, 15, 0.98), rgba(6, 25, 23, 0.96));
+  border-top: 1px solid rgba(148, 163, 184, 0.12);
+  color: #edf8f5;
+}
+
+.educationGrid {
+  display: grid;
+  grid-template-columns: minmax(360px, 0.9fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(70px, 10vw, 170px);
+  width: min(1500px, calc(100% - 112px));
+  margin: 0 auto;
+}
+
+.sectionLabel {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 108px;
+  color: #92f7d9;
+  font:
+    0.78rem "SFMono-Regular",
+    Consolas,
+    monospace;
+  letter-spacing: 0.18em;
+}
+
+.sectionLabel span:first-child {
+  padding: 2px 3px;
+  background: #a8f4d9;
+  color: #12322c;
+}
+
+.labelLine {
+  width: 40px;
+  height: 1px;
+  background: rgba(146, 247, 217, 0.45);
+}
+
+.heading {
+  max-width: 620px;
+  margin: 0;
+  font-size: clamp(3.6rem, 6.2vw, 7.8rem);
+  line-height: 0.9;
+  letter-spacing: -0.075em;
+}
+
+.heading span {
+  display: block;
+  color: rgba(227, 238, 235, 0.37);
+}
+
+.educationList {
+  display: grid;
+  gap: 20px;
+}
+
+.educationCard {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  gap: 18px;
+  min-height: 256px;
+  padding: 40px 42px;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 20px;
+  background: rgba(9, 21, 22, 0.72);
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.025);
+  transition:
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.educationCard:hover {
+  border-color: rgba(146, 247, 217, 0.4);
+  transform: translateY(-3px);
+}
+
+.educationIcon {
+  color: #8ef2d4;
+  font-size: 1.25rem;
+  line-height: 1.2;
+}
+
+.period {
+  color: #8ef2d4;
+  font:
+    0.9rem "SFMono-Regular",
+    Consolas,
+    monospace;
+  letter-spacing: 0.02em;
+}
+
+.educationContent h3 {
+  margin-top: 14px;
+  font-size: 1.45rem;
+  letter-spacing: -0.04em;
+}
+
+.college {
+  margin-top: 10px;
+  color: rgba(201, 222, 218, 0.55);
+  font-size: 1rem;
+}
+
+.description {
+  max-width: 680px;
+  margin-top: 28px;
+  color: rgba(201, 222, 218, 0.68);
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+@media (max-width: 900px) {
+  .educationGrid {
+    grid-template-columns: 1fr;
+    width: min(100% - 40px, 680px);
+  }
+
+  .sectionLabel {
+    margin-bottom: 52px;
+  }
+}
+
+@media (max-width: 560px) {
+  .educationSection {
+    padding: 100px 0;
+  }
+
+  .educationGrid {
+    width: min(100% - 28px, 680px);
+  }
+
+  .educationCard {
+    grid-template-columns: 1fr;
+    padding: 28px 24px;
+  }
+}

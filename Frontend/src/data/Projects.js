@@ -14,7 +14,7 @@ export const ProjectsData = [
     LiveLink: "https://rudracodeforge.github.io/PRINCEDAKSH/",
     Catagory: "OTHER",
     Note: "2.4k active users",
-    Title: "My first portfolio",
+    Title: "Bank Management",
     Description:
       "A clean personal portfolio built to share work, skills, and ideas.",
     TechStack: ["HTML", "CSS", "JavaScript"],
