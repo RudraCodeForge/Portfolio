@@ -5,34 +5,33 @@ import { faCodeBranch } from "@fortawesome/free-solid-svg-icons";
 import Styles from "../styles/Github.module.css";
 
 const GITHUB_USERNAME = "RudraCodeForge";
-const EVENTS_URL = `https://api.github.com/users/${GITHUB_USERNAME}/events?per_page=100`;
+const GRAPHQL_URL = "https://api.github.com/graphql";
 const REFRESH_INTERVAL = 5 * 60 * 1000;
-
-const eventWeight = (event) => {
-  if (event.type === "PushEvent")
-    return Math.min(event.payload.commits?.length || 1, 4);
-  if (event.type === "PullRequestEvent" || event.type === "IssuesEvent")
-    return 3;
-  if (event.type === "CreateEvent" || event.type === "PullRequestReviewEvent")
-    return 2;
-  return 1;
+const contributionClass = {
+  NONE: "level0",
+  FIRST_QUARTILE: "level1",
+  SECOND_QUARTILE: "level2",
+  THIRD_QUARTILE: "level3",
+  FOURTH_QUARTILE: "level4",
 };
-
-const formatEvent = (event) => {
-  if (event.type === "PushEvent")
-    return `${event.payload.commits?.length || 1} commit(s)`;
-  if (event.type === "PullRequestEvent")
-    return `pull request ${event.payload.action}`;
-  if (event.type === "IssuesEvent") return `issue ${event.payload.action}`;
-  if (event.type === "WatchEvent") return "starred a repository";
-  if (event.type === "CreateEvent") return `created ${event.payload.ref_type}`;
-  return event.type.replace("Event", "");
-};
-
-const getDayKey = (date) => date.toISOString().slice(0, 10);
+const GRAPHQL_QUERY = `
+  query GithubActivity($login: String!) {
+    user(login: $login) {
+      contributionsCollection {
+        contributionCalendar {
+          totalContributions
+          weeks { contributionDays { date contributionCount contributionLevel } }
+        }
+      }
+      repositories(first: 2, ownerAffiliations: OWNER, orderBy: {field: UPDATED_AT, direction: DESC}) {
+        nodes { name url primaryLanguage { name } stargazerCount updatedAt }
+      }
+    }
+  }
+`;
 
 const Github = () => {
-  const [events, setEvents] = useState([]);
+  const [githubData, setGithubData] = useState(null);
   const [status, setStatus] = useState("loading");
   const [lastUpdated, setLastUpdated] = useState(null);
 
@@ -41,10 +40,26 @@ const Github = () => {
     const loadEvents = async () => {
       try {
         setStatus("loading");
-        const response = await fetch(EVENTS_URL, { signal: controller.signal });
+        const token = import.meta.env.VITE_GITHUB_TOKEN;
+        if (!token) throw new Error("Missing VITE_GITHUB_TOKEN");
+        const response = await fetch(GRAPHQL_URL, {
+          method: "POST",
+          signal: controller.signal,
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            query: GRAPHQL_QUERY,
+            variables: { login: GITHUB_USERNAME },
+          }),
+        });
         if (!response.ok)
           throw new Error(`GitHub responded with ${response.status}`);
-        setEvents(await response.json());
+        const result = await response.json();
+        if (result.errors?.length || !result.data?.user)
+          throw new Error("GitHub GraphQL request failed");
+        setGithubData(result.data.user);
         setLastUpdated(new Date());
         setStatus("ready");
       } catch (error) {
@@ -59,32 +74,18 @@ const Github = () => {
     };
   }, []);
 
-  const activityDays = useMemo(() => {
-    const today = new Date();
-    const days = Array.from({ length: 84 }, (_, index) => {
-      const date = new Date(today);
-      date.setDate(today.getDate() - (83 - index));
-      return { date, key: getDayKey(date), weight: 0 };
-    });
-    const byDay = new Map(days.map((day) => [day.key, day]));
-    events.forEach((event) => {
-      const day = byDay.get(getDayKey(new Date(event.created_at)));
-      if (day) day.weight = Math.min(day.weight + eventWeight(event), 4);
-    });
-    return days;
-  }, [events]);
-
-  const repositories = useMemo(() => {
-    const seen = new Set();
-    return events
-      .filter((event) => {
-        const repository = event.repo?.name;
-        if (!repository || seen.has(repository)) return false;
-        seen.add(repository);
-        return true;
-      })
-      .slice(0, 2);
-  }, [events]);
+  const activityDays = useMemo(
+    () =>
+      githubData?.contributionsCollection.contributionCalendar.weeks
+        .flatMap((week) => week.contributionDays)
+        .slice(-30) || [],
+    [githubData],
+  );
+  const repositories = githubData?.repositories.nodes || [];
+  const activityCount = activityDays.reduce(
+    (total, day) => total + day.contributionCount,
+    0,
+  );
 
   return (
     <section className={Styles.githubSection}>
@@ -127,7 +128,7 @@ const Github = () => {
           <div className={Styles.activityHeader}>
             <p>
               {status === "ready"
-                ? `${events.length} recent public events`
+                ? `${activityCount.toLocaleString()} contributions in the last 30 days`
                 : "Loading GitHub activity..."}
             </p>
             <div className={Styles.legend}>
@@ -147,28 +148,30 @@ const Github = () => {
             <div className={Styles.activityGrid}>
               {activityDays.map((day) => (
                 <span
-                  className={`${Styles[`level${day.weight}`]}`}
-                  title={`${day.key}: ${day.weight} activity`}
-                  key={day.key}
+                  className={Styles[contributionClass[day.contributionLevel]]}
+                  title={`${day.date}: ${day.contributionCount} contributions`}
+                  data-tooltip={`${new Date(day.date).toLocaleDateString([], { month: "short", day: "numeric" })} · ${day.contributionCount} ${day.contributionCount === 1 ? "contribution" : "contributions"}`}
+                  key={day.date}
+                  data-level={day.contributionLevel}
                 />
               ))}
             </div>
           )}
           <div className={Styles.repositoryList}>
-            {repositories.map((event) => (
+            {repositories.map((repository) => (
               <a
                 className={Styles.repositoryCard}
-                href={`https://github.com/${event.repo.name}`}
+                href={repository.url}
                 target="_blank"
                 rel="noreferrer"
-                key={event.repo.name}
+                key={repository.name}
               >
                 <FontAwesomeIcon icon={faCodeBranch} />
                 <span>
-                  <b>{event.repo.name.split("/").pop()}</b>
+                  <b>{repository.name}</b>
                   <small>
-                    {event.actor?.display_login || GITHUB_USERNAME} ·{" "}
-                    {formatEvent(event)}
+                    {repository.primaryLanguage?.name || "Open source"} ·{" "}
+                    {repository.stargazerCount} stars
                   </small>
                 </span>
               </a>
