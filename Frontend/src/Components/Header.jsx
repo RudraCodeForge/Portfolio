@@ -11,15 +11,31 @@ import {
   faLinkedin,
 } from "@fortawesome/free-brands-svg-icons";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 const stats = [
   { value: "24+", label: "Projects shipped" },
   { value: "18", label: "Technologies" },
   { value: "4+", label: "Years of craft" },
   { value: "1.2k", label: "Github contributions" },
 ];
+import { getPortfolio } from "../Services/BasicApi.service";
 
 const Header = () => {
   const Navigate = useNavigate();
+  const [headerData, setHeaderData] = useState({});
+
+  useEffect(() => {
+    const fetchHeaderData = async () => {
+      try {
+        const data = await getPortfolio();
+        setHeaderData(data.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchHeaderData();
+  }, []);
   return (
     <header className={Styles.headerShell}>
       <div className={Styles.headerInner}>
@@ -61,14 +77,14 @@ const Header = () => {
                 type="button"
                 className={Styles.secondaryBtn}
                 onClick={() => {
-                  window.location.href = "mailto:jitandradaksh533@icloud.com";
+                  window.location.href = `mailto:${headerData.Email}`;
                 }}
               >
                 Contact me <span aria-hidden="true">›</span>
               </button>
               <a
                 className={Styles.ghostBtn}
-                href="https://drive.google.com/uc?export=download&id=11MbNqU0FApIOfhA_UbjbxWraBDdiSInL"
+                href={headerData.Resume}
                 download="Prince-Daksh-Resume.pdf"
               >
                 <span className={Styles.downloadIcon}>↓</span> Resume
@@ -80,7 +96,7 @@ const Header = () => {
               <div className={Styles.iconGroup}>
                 <a
                   className={Styles.iconCircle}
-                  href="https://github.com/RudraCodeForge"
+                  href={headerData.SocialLinks?.Github}
                   target="_blank"
                   rel="noreferrer"
                   aria-label="GitHub"
@@ -90,7 +106,7 @@ const Header = () => {
                 </a>
                 <a
                   className={Styles.iconCircle}
-                  href="mailto:jitandradaksh533@icloud.com"
+                  href={`mailto:${headerData.Email}`}
                   aria-label="Email"
                   title="Email"
                 >
@@ -98,7 +114,7 @@ const Header = () => {
                 </a>
                 <a
                   className={Styles.iconCircle}
-                  href="https://www.linkedin.com/in/prince-jaiveer-8285a43a1/"
+                  href={headerData.SocialLinks?.LinkedIn}
                   target="_blank"
                   rel="noreferrer"
                   aria-label="LinkedIn"
@@ -108,7 +124,7 @@ const Header = () => {
                 </a>
                 <a
                   className={Styles.iconCircle}
-                  href="https://www.instagram.com/princedaksh52?igsi=MTI5c240NDE3azRocg%3D%3D&utm_source=qr"
+                  href={headerData.SocialLinks?.Instagram}
                   target="_blank"
                   rel="noreferrer"
                   aria-label="Instagram"
