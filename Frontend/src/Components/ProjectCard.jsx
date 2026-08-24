@@ -6,7 +6,7 @@ const ProjectCard = ({ project, index }) => (
       className={`${Styles.projectVisual} ${Styles[`tone${(index % 5) + 1}`]}`}
     >
       <span className={Styles.projectNumber}>
-        {String(index + 1).padStart(2, "0")} / {project.Catagory}
+        {String(index + 1).padStart(2, "0")} / {project.Category}
       </span>
       <a
         href={project.LiveLink}
