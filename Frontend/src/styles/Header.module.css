@@ -374,7 +374,18 @@
   letter-spacing: 0.22em;
   text-transform: uppercase;
 }
+.robot_Container {
+  position: fixed;
+  right: 0;
+  bottom: 0;
 
+  width: 150px;
+  height: 150px;
+
+  z-index: 9999;
+
+  cursor: pointer;
+}
 @media (max-width: 1080px) {
   .heroGrid {
     grid-template-columns: 1fr;
@@ -392,7 +403,12 @@
     width: min(100% - 26px, 1440px);
     padding-top: 22px;
   }
-
+  .robot_Container {
+    width: 75px;
+    height: 75px;
+    right: 16px;
+    bottom: 16px;
+  }
   .statusRow {
     letter-spacing: 0.12em;
     font-size: 0.68rem;

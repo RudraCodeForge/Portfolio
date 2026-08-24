@@ -19,6 +19,7 @@ const stats = [
   { value: "1.2k", label: "Github contributions" },
 ];
 import { getPortfolio } from "../Services/BasicApi.service";
+import RobotScene from "./Robot/RobotScene";
 
 const Header = () => {
   const Navigate = useNavigate();
@@ -241,6 +242,9 @@ const Header = () => {
             </div>
           ))}
         </div>
+      </div>
+      <div className={Styles.robot_Container}>
+        <RobotScene />
       </div>
     </header>
   );

@@ -12,7 +12,7 @@ import Projects from "../src/pages/Projects";
 import AllProjects from "../src/pages/AllProjects";
 import Footer from "../src/Components/Footer";
 import { Route, Routes } from "react-router-dom";
-
+import RobotAssistant from "./Components/Robot/RobotAssistant";
 function App() {
   return (
     <>
@@ -46,6 +46,7 @@ function App() {
           }
         />
       </Routes>
+      <RobotAssistant />
     </>
   );
 }
