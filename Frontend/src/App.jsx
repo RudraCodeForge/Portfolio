@@ -20,7 +20,7 @@ import RobotAssistant from "./Components/Robot/RobotAssistant";
 import { setHeaderData } from "./redux/slices/HeaderSlice";
 import { setGithubData } from "./redux/slices/GithubSlice";
 import { setstatsData } from "./redux/slices/StatsSlice";
-
+import { setSkillData } from "./redux/slices/SkillSlice";
 import { getPortfolio } from "./Services/BasicApi.service";
 
 const App = () => {
@@ -33,6 +33,7 @@ const App = () => {
         dispatch(setHeaderData(response.Header));
         dispatch(setGithubData(response.Github));
         dispatch(setstatsData(response.stats));
+        dispatch(setSkillData(response.Skills));
       } catch (error) {
         console.error("❌ Portfolio API Error:", error);
       }

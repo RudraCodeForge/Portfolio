@@ -1,22 +1,27 @@
 import Styles from "../styles/Skills.module.css";
-import { SkillsData } from "../data/skills";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import {
   faCode,
   faDatabase,
   faServer,
   faWrench,
+  faLaptopCode,
 } from "@fortawesome/free-solid-svg-icons";
+
+import { useSelector } from "react-redux";
+
 const Skills = () => {
+  const skillData = useSelector((state) => state.SkillData.data);
+
   const iconByType = {
     faCode,
     faServer,
     faDatabase,
     faWrench,
+    faLaptopCode,
   };
-
-  const formatLevel = (level) =>
-    level.replace("Advance", "Advanced").replace("Intermedate", "Intermediate");
 
   return (
     <section id="skills" className={Styles.skillsSection}>
@@ -28,11 +33,13 @@ const Skills = () => {
               <span className={Styles.labelLine} />
               <span>CAPABILITIES</span>
             </div>
+
             <h2 className={Styles.heading}>
               A stack built for
               <span>real-world impact.</span>
             </h2>
           </div>
+
           <p className={Styles.headerCopy}>
             Tools are just tools. It&apos;s how they&apos;re combined that makes
             the difference.
@@ -40,23 +47,27 @@ const Skills = () => {
         </div>
 
         <div className={Styles.skillsGrid}>
-          {SkillsData.map((category) => (
+          {skillData.map((category) => (
             <article className={Styles.skillCard} key={category.Name}>
               <div className={Styles.categoryIcon} aria-hidden="true">
                 <FontAwesomeIcon icon={iconByType[category.Icon] ?? faWrench} />
               </div>
+
               <h3>{category.Name}</h3>
 
               <div className={Styles.skillList}>
-                {category.FrontendData.map((skill) => (
+                {category.Skills.map((skill) => (
                   <div className={Styles.skillItem} key={skill.SkillName}>
                     <div className={Styles.skillMeta}>
                       <span>{skill.SkillName}</span>
-                      <span>{formatLevel(skill.Level)}</span>
+                      <span>{skill.Level}</span>
                     </div>
+
                     <div className={Styles.skillTrack}>
                       <span
-                        style={{ "--skill-level": `${skill.Percentage}%` }}
+                        style={{
+                          "--skill-level": `${skill.Percentage}%`,
+                        }}
                       />
                     </div>
                   </div>
