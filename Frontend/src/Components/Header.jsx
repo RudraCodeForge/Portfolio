@@ -29,6 +29,7 @@ const Header = () => {
       try {
         const data = await getPortfolio();
         setHeaderData(data.data);
+        console.log(data);
       } catch (error) {
         console.log(error);
       }
