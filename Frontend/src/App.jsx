@@ -28,11 +28,7 @@ const App = () => {
     const loadPortfolioData = async () => {
       try {
         const response = await getPortfolio();
-
-        console.log("🔥 PORTFOLIO RESPONSE:", response.data);
-        console.log("🔥 GITHUB RESPONSE:", response.Github);
-
-        dispatch(setHeaderData(response.data));
+        dispatch(setHeaderData(response.Header));
         dispatch(setGithubData(response.Github));
       } catch (error) {
         console.error("❌ Portfolio API Error:", error);

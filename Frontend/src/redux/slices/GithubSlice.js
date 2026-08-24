@@ -11,7 +11,6 @@ const GithubSlice = createSlice({
   reducers: {
     setGithubData: (state, action) => {
       state.data = action.payload;
-      console.log("ya data state ya a rha hai", state.data);
     },
 
     clearGithubData: (state) => {

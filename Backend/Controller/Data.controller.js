@@ -14,13 +14,12 @@ exports.GET_DATA = async (req, res) => {
     }
 
     const Data = await fetchGithubData();
-
     const GithubData = formatGithubData(Data);
 
     res.status(200).json({
       success: true,
       message: "Header data fetched successfully",
-      data: headerData,
+      Header: headerData,
       Github: GithubData,
     });
   } catch (error) {
