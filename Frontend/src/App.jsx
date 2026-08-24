@@ -23,6 +23,8 @@ import { setstatsData } from "./redux/slices/StatsSlice";
 import { setSkillData } from "./redux/slices/SkillSlice";
 import { setProjectData } from "./redux/slices/ProjectSlice";
 import { setExperienceData } from "./redux/slices/ExperienceSlice";
+import { setEducationData } from "./redux/slices/EducationSlice";
+
 import { getPortfolio } from "./Services/BasicApi.service";
 
 const App = () => {
@@ -32,6 +34,7 @@ const App = () => {
     const loadPortfolioData = async () => {
       try {
         const response = await getPortfolio();
+        dispatch(setEducationData(response.Education));
         dispatch(setHeaderData(response.Header));
         dispatch(setGithubData(response.Github));
         dispatch(setstatsData(response.stats));
