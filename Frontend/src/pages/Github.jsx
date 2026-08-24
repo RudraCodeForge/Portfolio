@@ -16,18 +16,11 @@ const contributionClass = {
 };
 
 const Github = () => {
-  // Redux se backend ka GitHub data
   const githubData = useSelector((state) => state.GithubData?.data);
-
-  // Last 30 days contribution data
   const activityDays = useMemo(() => {
     return githubData?.last30Days?.days ?? [];
   }, [githubData]);
-
-  // Latest repositories
   const repositories = githubData?.repositories ?? [];
-
-  // Last 30 days total contributions
   const activityCount = githubData?.last30Days?.totalContributions ?? 0;
 
   return (

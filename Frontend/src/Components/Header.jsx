@@ -17,19 +17,12 @@ import { useSelector } from "react-redux";
 
 import RobotScene from "./Robot/RobotScene";
 
-const stats = [
-  { value: "24+", label: "Projects shipped" },
-  { value: "18", label: "Technologies" },
-  { value: "4+", label: "Years of craft" },
-  { value: "1.2k", label: "Github contributions" },
-];
-
 const Header = () => {
   const Navigate = useNavigate();
 
   // Header data Redux se
   const headerData = useSelector((state) => state.HeaderData?.data);
-
+  const stats = useSelector((state) => state.StatsData.data);
   return (
     <header className={Styles.headerShell}>
       <div className={Styles.headerInner}>
@@ -251,7 +244,6 @@ const Header = () => {
           {stats.map((stat) => (
             <div key={stat.label} className={Styles.statBox}>
               <div className={Styles.statValue}>{stat.value}</div>
-
               <div className={Styles.statLabel}>{stat.label}</div>
             </div>
           ))}

@@ -2,6 +2,13 @@ const Header = require("../Models/Header");
 const { fetchGithubData } = require("../services/github.service");
 const { formatGithubData } = require("../Filters/github.filter");
 
+const stats = [
+  { value: "24+", label: "Projects shipped" },
+  { value: "18", label: "Technologies" },
+  { value: "4+", label: "Years of craft" },
+  { value: "1.2k", label: "Github contributions" },
+];
+
 exports.GET_DATA = async (req, res) => {
   try {
     const headerData = await Header.findOne();
@@ -21,6 +28,7 @@ exports.GET_DATA = async (req, res) => {
       message: "Header data fetched successfully",
       Header: headerData,
       Github: GithubData,
+      stats,
     });
   } catch (error) {
     console.error("GET_DATA ERROR:", error);
