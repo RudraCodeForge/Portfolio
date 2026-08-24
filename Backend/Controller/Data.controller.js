@@ -3,6 +3,7 @@ const { fetchGithubData } = require("../services/github.service");
 const { formatGithubData } = require("../Filters/github.filter");
 const Skill = require("../Models/Skills");
 const Project = require("../Models/Project");
+const Experience = require("../Models/Experience");
 
 const stats = [
   { value: "24+", label: "Projects shipped" },
@@ -35,6 +36,7 @@ exports.GET_DATA = async (req, res) => {
     const headerData = await Header.findOne();
     const SkillData = await Skill.find();
     const ProjectData = await Project.find();
+    const ExperienceData = await Experience.find();
     if (!headerData) {
       return res.status(404).json({
         success: false,
@@ -60,6 +62,7 @@ exports.GET_DATA = async (req, res) => {
       Github: GithubData,
       Skills: FormattedSkillData,
       Projects: ProjectData,
+      Experience: ExperienceData,
       stats,
     });
   } catch (error) {

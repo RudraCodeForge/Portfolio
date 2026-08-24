@@ -4,6 +4,7 @@ import GithubReducer from "./slices/GithubSlice.js";
 import statsReducer from "./slices/StatsSlice.js";
 import SkillReducer from "./slices/SkillSlice.js";
 import ProjectReducer from "./slices/ProjectSlice.js";
+import ExperienceReducer from "./slices/ExperienceSlice.js";
 export const store = configureStore({
   reducer: {
     HeaderData: HeaderReducer,
@@ -11,5 +12,6 @@ export const store = configureStore({
     StatsData: statsReducer,
     SkillData: SkillReducer,
     ProjectData: ProjectReducer,
+    ExperienceData: ExperienceReducer,
   },
 });
