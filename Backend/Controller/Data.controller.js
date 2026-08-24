@@ -5,25 +5,71 @@ const Skill = require("../Models/Skills");
 const Project = require("../Models/Project");
 const Experience = require("../Models/Experience");
 const Education = require("../Models/Education");
-const stats = [
-  { value: "24+", label: "Projects shipped" },
-  { value: "18", label: "Technologies" },
-  { value: "4+", label: "Years of craft" },
-  { value: "1.2k", label: "Github contributions" },
-];
+
+const calculateStats = ({ projects, skills, experience, github }) => {
+  const projectCount = projects.length;
+
+  const technologies = new Set();
+
+  skills.forEach((category) => {
+    category.Skills?.forEach((skill) => {
+      if (skill.SkillName) {
+        technologies.add(skill.SkillName);
+      }
+    });
+  });
+
+  const startYears = experience
+    .map((item) => {
+      const match = item.Period?.match(/\d{4}/);
+      return match ? Number(match[0]) : null;
+    })
+    .filter(Boolean);
+
+  const currentYear = new Date().getFullYear();
+
+  const earliestYear =
+    startYears.length > 0 ? Math.min(...startYears) : currentYear;
+
+  const yearsOfCraft = Math.max(1, currentYear - earliestYear);
+
+  const githubContributions = github?.totalContributions ?? 0;
+
+  const formattedContributions =
+    githubContributions >= 1000
+      ? `${(githubContributions / 1000).toFixed(1)}k`
+      : `${githubContributions}`;
+
+  return [
+    {
+      value: `${projectCount}+`,
+      label: "Projects shipped",
+    },
+    {
+      value: `${technologies.size}`,
+      label: "Technologies",
+    },
+    {
+      value: `${yearsOfCraft}+`,
+      label: "Years of craft",
+    },
+    {
+      value: formattedContributions,
+      label: "Github contributions",
+    },
+  ];
+};
 
 const getSkillLevel = (percentage) => {
   if (percentage >= 90) return "Expert";
   if (percentage >= 70) return "Advanced";
   if (percentage >= 40) return "Intermediate";
-
   return "Beginner";
 };
 
 const formatSkillData = (skills) => {
   return skills.map((category) => ({
     ...category.toObject(),
-
     Skills: category.Skills.map((skill) => ({
       ...skill.toObject(),
       Level: getSkillLevel(skill.Percentage),
@@ -57,7 +103,14 @@ exports.GET_DATA = async (req, res) => {
     const GithubData = formatGithubData(Data);
     const FormattedSkillData = formatSkillData(SkillData);
 
-    res.status(200).json({
+    const stats = calculateStats({
+      projects: ProjectData,
+      skills: SkillData,
+      experience: ExperienceData,
+      github: GithubData,
+    });
+
+    return res.status(200).json({
       success: true,
       message: "Portfolio data fetched successfully",
       Header: headerData,
@@ -71,7 +124,7 @@ exports.GET_DATA = async (req, res) => {
   } catch (error) {
     console.error("GET_DATA ERROR:", error);
 
-    res.status(500).json({
+    return res.status(500).json({
       success: false,
       message: "Failed to fetch portfolio data",
     });
