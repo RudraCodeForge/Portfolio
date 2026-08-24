@@ -8,6 +8,7 @@ const path = require("path");
 const app = express();
 const PORT = process.env.PORT || 5000;
 const DataRouter = require("./Routes/DataRoute.route");
+const ContactRouter = require("./Routes/Contact.route");
 app.use(cookieParser());
 
 app.use(
@@ -38,7 +39,9 @@ app.get("/", (req, res) => {
   res.send("Backend Working");
 });
 
-app.use("/header", DataRouter);
+app.use("/PortfolioData", DataRouter);
+
+app.use("/Contact", ContactRouter);
 
 // ------------------ SERVER START ------------------ //
 app.listen(PORT, () => {

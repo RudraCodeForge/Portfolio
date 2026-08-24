@@ -158,6 +158,26 @@
   font-size: 0.85rem;
 }
 
+.loader {
+  width: 17px;
+  height: 17px;
+  border: 2px solid rgba(6, 26, 24, 0.25);
+  border-top-color: #061a18;
+  border-radius: 50%;
+  animation: contactSpin 0.7s linear infinite;
+}
+
+@keyframes contactSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.formFooter button:disabled {
+  opacity: 0.75;
+  cursor: not-allowed;
+  transform: none;
+}
 @media (max-width: 900px) {
   .contactGrid {
     grid-template-columns: 1fr;

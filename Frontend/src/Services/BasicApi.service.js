@@ -2,7 +2,7 @@ import api from "./api.service";
 
 export const getPortfolio = async () => {
   try {
-    const response = await api.get("/header");
+    const response = await api.get("/PortfolioData");
     return response.data;
   } catch (error) {
     throw (
