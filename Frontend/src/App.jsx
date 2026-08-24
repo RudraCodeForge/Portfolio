@@ -1,22 +1,51 @@
-import Navbar from "../src/Components/Navbar";
-import Header from "../src/Components/Header";
-import About from "../src/pages/About";
-import Skills from "../src/pages/Skills";
-import Experience from "../src/pages/Experience";
-import Education from "../src/pages/Education";
-import GoodAt from "../src/pages/GoodAt";
-import Github from "../src/pages/Github";
-import Contact from "../src/pages/Contact";
-import CursorGlow from "../src/Components/CursorGlow";
-import Projects from "../src/pages/Projects";
-import AllProjects from "../src/pages/AllProjects";
-import Footer from "../src/Components/Footer";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { Route, Routes } from "react-router-dom";
+
+import Navbar from "./Components/Navbar";
+import Header from "./Components/Header";
+import About from "./pages/About";
+import Skills from "./pages/Skills";
+import Experience from "./pages/Experience";
+import Education from "./pages/Education";
+import GoodAt from "./pages/GoodAt";
+import Github from "./pages/Github";
+import Contact from "./pages/Contact";
+import CursorGlow from "./Components/CursorGlow";
+import Projects from "./pages/Projects";
+import AllProjects from "./pages/AllProjects";
+import Footer from "./Components/Footer";
 import RobotAssistant from "./Components/Robot/RobotAssistant";
-function App() {
+
+import { setHeaderData } from "./redux/slices/HeaderSlice";
+import { setGithubData } from "./redux/slices/GithubSlice";
+import { getPortfolio } from "./Services/BasicApi.service";
+
+const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const loadPortfolioData = async () => {
+      try {
+        const response = await getPortfolio();
+
+        console.log("🔥 PORTFOLIO RESPONSE:", response.data);
+        console.log("🔥 GITHUB RESPONSE:", response.Github);
+
+        dispatch(setHeaderData(response.data));
+        dispatch(setGithubData(response.Github));
+      } catch (error) {
+        console.error("❌ Portfolio API Error:", error);
+      }
+    };
+
+    loadPortfolioData();
+  }, [dispatch]);
+
   return (
     <>
       <CursorGlow />
+
       <Routes>
         <Route
           path="/projects"
@@ -27,6 +56,7 @@ function App() {
             </>
           }
         />
+
         <Route
           path="*"
           element={
@@ -46,9 +76,10 @@ function App() {
           }
         />
       </Routes>
+
       <RobotAssistant />
     </>
   );
-}
+};
 
 export default App;

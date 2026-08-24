@@ -1,4 +1,5 @@
 import Styles from "../styles/Header.module.css";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faMdb,
@@ -10,41 +11,35 @@ import {
   faInstagram,
   faLinkedin,
 } from "@fortawesome/free-brands-svg-icons";
+
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+
+import RobotScene from "./Robot/RobotScene";
+
 const stats = [
   { value: "24+", label: "Projects shipped" },
   { value: "18", label: "Technologies" },
   { value: "4+", label: "Years of craft" },
   { value: "1.2k", label: "Github contributions" },
 ];
-import { getPortfolio } from "../Services/BasicApi.service";
-import RobotScene from "./Robot/RobotScene";
 
 const Header = () => {
   const Navigate = useNavigate();
-  const [headerData, setHeaderData] = useState({});
 
-  useEffect(() => {
-    const fetchHeaderData = async () => {
-      try {
-        const data = await getPortfolio();
-        setHeaderData(data.data);
-        console.log(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
+  // Header data Redux se
+  const headerData = useSelector((state) => state.HeaderData?.data);
 
-    fetchHeaderData();
-  }, []);
   return (
     <header className={Styles.headerShell}>
       <div className={Styles.headerInner}>
         <div className={Styles.statusRow}>
           <span className={Styles.statusDot} />
+
           <span>AVAILABLE FOR SELECT PROJECTS</span>
+
           <span className={Styles.statusSlash}>/</span>
+
           <span>{new Date().getFullYear()}</span>
         </div>
 
@@ -55,7 +50,8 @@ const Header = () => {
               <br />
               products
               <br />
-              <span className={Styles.lineBreak}>with </span> <br />
+              <span className={Styles.lineBreak}>with </span>
+              <br />
               <span className={Styles.gradientText}>purpose.</span>
             </h1>
 
@@ -75,30 +71,36 @@ const Header = () => {
               >
                 View projects <span aria-hidden="true">↗</span>
               </button>
+
               <button
                 type="button"
                 className={Styles.secondaryBtn}
                 onClick={() => {
-                  window.location.href = `mailto:${headerData.Email}`;
+                  if (headerData?.Email) {
+                    window.location.href = `mailto:${headerData.Email}`;
+                  }
                 }}
               >
                 Contact me <span aria-hidden="true">›</span>
               </button>
+
               <a
                 className={Styles.ghostBtn}
-                href={headerData.Resume}
+                href={headerData?.Resume || "#"}
                 download="Prince-Daksh-Resume.pdf"
               >
-                <span className={Styles.downloadIcon}>↓</span> Resume
+                <span className={Styles.downloadIcon}>↓</span>
+                Resume
               </a>
             </div>
 
             <div className={Styles.socialRow}>
               <span>FIND ME ON</span>
+
               <div className={Styles.iconGroup}>
                 <a
                   className={Styles.iconCircle}
-                  href={headerData.SocialLinks?.Github}
+                  href={headerData?.SocialLinks?.Github || "#"}
                   target="_blank"
                   rel="noreferrer"
                   aria-label="GitHub"
@@ -106,17 +108,19 @@ const Header = () => {
                 >
                   <FontAwesomeIcon icon={faGithub} />
                 </a>
+
                 <a
                   className={Styles.iconCircle}
-                  href={`mailto:${headerData.Email}`}
+                  href={headerData?.Email ? `mailto:${headerData.Email}` : "#"}
                   aria-label="Email"
                   title="Email"
                 >
                   ✉
                 </a>
+
                 <a
                   className={Styles.iconCircle}
-                  href={headerData.SocialLinks?.LinkedIn}
+                  href={headerData?.SocialLinks?.LinkedIn || "#"}
                   target="_blank"
                   rel="noreferrer"
                   aria-label="LinkedIn"
@@ -124,9 +128,10 @@ const Header = () => {
                 >
                   <FontAwesomeIcon icon={faLinkedin} />
                 </a>
+
                 <a
                   className={Styles.iconCircle}
-                  href={headerData.SocialLinks?.Instagram}
+                  href={headerData?.SocialLinks?.Instagram || "#"}
                   target="_blank"
                   rel="noreferrer"
                   aria-label="Instagram"
@@ -145,6 +150,7 @@ const Header = () => {
                 <span className={Styles.yellowDot} />
                 <span className={Styles.greenDot} />
               </div>
+
               <span className={Styles.fileName}>developer.tsx</span>
             </div>
 
@@ -165,7 +171,7 @@ const Header = () => {
 
                 <span className={Styles.lineNumber}>4</span>
                 <span className={Styles.lineText}>
-                  {"   "} focus: {"["}"
+                  {"   "} focus: {"["}
                 </span>
 
                 <span className={Styles.lineNumber}>5</span>
@@ -215,17 +221,24 @@ const Header = () => {
                   <span className={Styles.footerBadge}>●</span>
                   <span>STACK CONFIDENCE</span>
                 </div>
+
                 <div className={Styles.ConfidanceIcon}>
                   <FontAwesomeIcon icon={faNodeJs} title="Node.js" />
+
                   <FontAwesomeIcon icon={faReact} title="React" />
+
                   <FontAwesomeIcon icon={faNode} title="Node" />
+
                   <FontAwesomeIcon icon={faTypescript} title="TypeScript" />
+
                   <FontAwesomeIcon icon={faMdb} title="MongoDB" />
+
                   <span className={Styles.expressIcon} title="Express">
                     ex
                   </span>
                 </div>
               </div>
+
               <div className={Styles.footerPill}>
                 <span className={Styles.pillDot} />
                 <span>open to work</span>
@@ -238,11 +251,13 @@ const Header = () => {
           {stats.map((stat) => (
             <div key={stat.label} className={Styles.statBox}>
               <div className={Styles.statValue}>{stat.value}</div>
+
               <div className={Styles.statLabel}>{stat.label}</div>
             </div>
           ))}
         </div>
       </div>
+
       <div className={Styles.robot_Container}>
         <RobotScene />
       </div>

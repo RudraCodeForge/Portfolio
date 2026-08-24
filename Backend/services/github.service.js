@@ -5,25 +5,22 @@ const fetchGithubData = async () => {
     query {
       viewer {
         login
-        name
         avatarUrl
-        bio
         url
 
         repositories(
-          first: 100
+          first: 2
           ownerAffiliations: OWNER
+          orderBy: {
+            field: UPDATED_AT
+            direction: DESC
+          }
         ) {
-          totalCount
-
           nodes {
             name
             url
-            description
             updatedAt
-            pushedAt
             stargazerCount
-            forkCount
 
             primaryLanguage {
               name
@@ -41,6 +38,7 @@ const fetchGithubData = async () => {
               contributionDays {
                 date
                 contributionCount
+                contributionLevel
               }
             }
           }
@@ -65,15 +63,13 @@ const fetchGithubData = async () => {
 
     const result = await response.json();
 
-    // HTTP error
     if (!response.ok) {
       console.error("GitHub API Error:", result);
 
       throw new Error(result.message || "GitHub API request failed");
     }
 
-    // GraphQL error
-    if (result.errors) {
+    if (result.errors?.length) {
       console.error("GitHub GraphQL Error:", result.errors);
 
       throw new Error(
