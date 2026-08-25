@@ -1,12 +1,9 @@
 import { hasAny, normalizeText } from "../../utils/robotAssistant/portfolio";
 
-export const detectIntent = (question) => {
+export const detectIntent = (question = "") => {
   const text = normalizeText(question);
 
-  /* =====================================================
-     GREETING
-  ===================================================== */
-
+  // Greeting
   if (
     hasAny(text, [
       "hello",
@@ -21,26 +18,17 @@ export const detectIntent = (question) => {
     return "greeting";
   }
 
-  /* =====================================================
-     THANKS
-  ===================================================== */
-
+  // Thanks
   if (hasAny(text, ["thank", "thanks", "thank you", "thx", "appreciate it"])) {
     return "thanks";
   }
 
-  /* =====================================================
-     GOODBYE
-  ===================================================== */
-
+  // Goodbye
   if (hasAny(text, ["bye", "goodbye", "see you", "see ya", "talk later"])) {
     return "goodbye";
   }
 
-  /* =====================================================
-     HELP
-  ===================================================== */
-
+  // Help
   if (
     hasAny(text, [
       "help",
@@ -53,11 +41,7 @@ export const detectIntent = (question) => {
     return "help";
   }
 
-  /* =====================================================
-     GITHUB
-     Specific GitHub questions BEFORE stats
-  ===================================================== */
-
+  // GitHub
   if (
     hasAny(text, [
       "github",
@@ -79,10 +63,7 @@ export const detectIntent = (question) => {
     return "github";
   }
 
-  /* =====================================================
-     RESUME
-  ===================================================== */
-
+  // Resume
   if (
     hasAny(text, [
       "resume",
@@ -97,11 +78,7 @@ export const detectIntent = (question) => {
     return "resume";
   }
 
-  /* =====================================================
-     CONTACT
-     Specific contact questions BEFORE general work questions
-  ===================================================== */
-
+  // Contact
   if (
     hasAny(text, [
       "contact daksh",
@@ -123,10 +100,7 @@ export const detectIntent = (question) => {
     return "contact";
   }
 
-  /* =====================================================
-     EDUCATION
-  ===================================================== */
-
+  // Education
   if (
     hasAny(text, [
       "where did daksh study",
@@ -156,11 +130,7 @@ export const detectIntent = (question) => {
     return "education";
   }
 
-  /* =====================================================
-     EXPERIENCE
-     Specific work/career questions
-  ===================================================== */
-
+  // Experience
   if (
     hasAny(text, [
       "what is daksh current role",
@@ -186,16 +156,21 @@ export const detectIntent = (question) => {
       "years of experience",
       "years building software",
       "how long has daksh been coding",
+      "what is daksh currently working on",
+      "what is he currently working on",
+      "what kind of work has he done",
+      "what kind of work has daksh done",
+      "what work has he done",
+      "what work has daksh done",
+      "what kind of work",
+      "tell me about daksh's experience",
+      "tell me about daksh experience",
     ])
   ) {
     return "experience";
   }
 
-  /* =====================================================
-     ABOUT
-     Specific identity/profile questions
-  ===================================================== */
-
+  // About
   if (
     hasAny(text, [
       "who is daksh",
@@ -216,17 +191,12 @@ export const detectIntent = (question) => {
       "what is he currently focused on",
       "what is daksh focused on",
       "what is his current focus",
-      "what is daksh working on",
     ])
   ) {
     return "about";
   }
 
-  /* =====================================================
-     PROJECT COUNT / PORTFOLIO STATS
-     Specific statistical questions BEFORE projects
-  ===================================================== */
-
+  // Stats
   if (
     hasAny(text, [
       "how many projects",
@@ -248,15 +218,13 @@ export const detectIntent = (question) => {
       "portfolio stats",
       "portfolio statistics",
       "show me daksh's portfolio stats",
+      "show me portfolio stats",
     ])
   ) {
     return "stats";
   }
 
-  /* =====================================================
-     PROJECTS
-     ===================================================== */
-
+  // Projects
   if (
     hasAny(text, [
       "dromstays",
@@ -283,6 +251,9 @@ export const detectIntent = (question) => {
       "show me daksh's projects",
       "show me his work",
       "show me daksh's work",
+      "what technologies are used in his projects",
+      "technologies used in his projects",
+      "tech used in projects",
       "project",
       "projects",
       "application",
@@ -297,10 +268,7 @@ export const detectIntent = (question) => {
     return "projects";
   }
 
-  /* =====================================================
-     SKILLS
-     ===================================================== */
-
+  // Skills
   if (
     hasAny(text, [
       "what technologies does daksh know",
@@ -343,17 +311,10 @@ export const detectIntent = (question) => {
     return "skills";
   }
 
-  /* =====================================================
-     GENERAL STATS
-  ===================================================== */
-
+  // General stats
   if (hasAny(text, ["stats", "statistics", "numbers", "portfolio numbers"])) {
     return "stats";
   }
-
-  /* =====================================================
-     FALLBACK
-  ===================================================== */
 
   return null;
 };

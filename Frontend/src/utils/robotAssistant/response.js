@@ -13,29 +13,16 @@ import {
   normalizeText,
 } from "./portfolio";
 
+const STARTING_YEAR = 2020;
+
 const includes = (text, words = []) => hasAny(text, words);
 
-const getStatsValue = (stats, words = []) => {
-  if (!Array.isArray(stats)) return null;
-
-  const item = stats.find((stat) =>
-    words.some((word) =>
-      String(stat?.label || "")
-        .toLowerCase()
-        .includes(word.toLowerCase()),
-    ),
-  );
-
-  return item?.value ?? null;
-};
-
-const getProjectByName = (projects, name) => {
-  return projects.find((project) =>
+const getProjectByName = (projects, name) =>
+  projects.find((project) =>
     String(getProjectName(project) || "")
       .toLowerCase()
       .includes(name.toLowerCase()),
   );
-};
 
 const formatProject = (project) => {
   if (!project) return null;
@@ -48,11 +35,16 @@ const formatProject = (project) => {
   return description ? `${name}: ${description}` : name;
 };
 
-/* -------------------------------------------------------
-   Main response engine
-------------------------------------------------------- */
+const getExperienceYears = () =>
+  Math.max(0, new Date().getFullYear() - STARTING_YEAR);
 
-export const getPortfolioResponse = (question, portfolio = {}) => {
+const getContributions = (github = {}) =>
+  github.totalContributions ??
+  github.TotalContributions ??
+  github.contributions ??
+  0;
+
+export const getPortfolioResponse = (question = "", portfolio = {}) => {
   const text = normalizeText(question);
 
   const {
@@ -81,63 +73,53 @@ export const getPortfolioResponse = (question, portfolio = {}) => {
     return "See you around! 👋 Feel free to explore the rest of Daksh's portfolio.";
   }
 
+  if (intent === "help") {
+    return "I can answer specific questions about Daksh's projects, skills, MERN stack, experience, education, GitHub activity, portfolio statistics, resume, and contact information. 🤖";
+  }
+
   if (intent === "about") {
-    // Currently focused
+    // Current focus
     if (
       includes(text, [
         "currently focused",
         "current focus",
         "focus right now",
         "focused on",
-        "working on right now",
-        "currently working",
-        "what is daksh working on",
+        "what is daksh focused on",
+        "what is he currently focused on",
       ])
     ) {
-      if (latestExperience) {
-        return `Daksh is currently working as ${latestExperience.Role} at ${latestExperience.Company}. ${latestExperience.Description || ""}`;
-      }
-
-      return "Daksh is currently focused on full-stack development, backend systems, and building real-world digital products.";
+      return latestExperience
+        ? `Daksh is currently focused on his work as ${latestExperience.Role} at ${latestExperience.Company}. ${
+            latestExperience.Description || ""
+          }`
+        : "Daksh is currently focused on full-stack development, backend systems, and building real-world digital products.";
     }
 
     // Type of developer
     if (
       includes(text, [
         "what kind of developer",
-        "type of developer",
-        "what type developer",
-        "which type developer",
+        "what type of developer",
+        "which type of developer",
       ])
     ) {
       return "Daksh is a full-stack software developer with a strong focus on the MERN ecosystem, backend development, APIs, databases, and building real-world applications.";
     }
 
-    // What does he do
+    // What does Daksh do
     if (
       includes(text, [
         "what does daksh do",
         "what does he do",
         "what does prince do",
-        "what is daksh doing",
       ])
     ) {
       return "Daksh works as a software developer, mainly building full-stack web applications, backend systems, APIs, and real-world digital products.";
     }
 
-    // Who is Daksh
-    if (
-      includes(text, [
-        "who is daksh",
-        "who is prince daksh",
-        "tell me about daksh",
-        "about daksh",
-      ])
-    ) {
-      return "Prince Daksh is a software developer focused on full-stack development, backend engineering, and building practical digital products. His primary development stack is the MERN ecosystem.";
-    }
-
-    return "Prince Daksh is a software developer focused on full-stack applications, backend systems, and real-world digital products.";
+    // Default about
+    return "Prince Daksh is a software developer focused on full-stack development, backend engineering, and building practical digital products. His primary development stack is the MERN ecosystem.";
   }
 
   if (intent === "skills") {
@@ -146,18 +128,15 @@ export const getPortfolioResponse = (question, portfolio = {}) => {
       includes(text, [
         "frontend",
         "front end",
-        "frontend technologies",
-        "front end technologies",
         "ui technologies",
         "client side",
-        "client-side",
       ])
     ) {
       const skills = getCategorySkills(Skills, ["frontend", "front end", "ui"]);
 
       return skills.length
         ? `For frontend development, Daksh works with ${skills.join(", ")}.`
-        : "Daksh's frontend stack includes technologies from the React ecosystem and other tools used for building modern web interfaces.";
+        : "Daksh's frontend stack includes technologies from the React ecosystem and other tools used for modern web interfaces.";
     }
 
     // Backend
@@ -165,7 +144,6 @@ export const getPortfolioResponse = (question, portfolio = {}) => {
       includes(text, [
         "backend",
         "back end",
-        "backend technologies",
         "server side",
         "server-side",
         "api",
@@ -210,13 +188,12 @@ export const getPortfolioResponse = (question, portfolio = {}) => {
       includes(text, [
         "mern",
         "mern developer",
-        "is daksh a mern developer",
         "main tech stack",
         "primary tech stack",
         "tech stack",
       ])
     ) {
-      return "Yes. Daksh primarily works with the MERN stack — MongoDB, Express.js, React, and Node.js — along with supporting tools and technologies used across his projects.";
+      return "Yes. Daksh primarily works with the MERN stack — MongoDB, Express.js, React, and Node.js — along with supporting tools used across his projects.";
     }
 
     // Strongest skills
@@ -229,20 +206,21 @@ export const getPortfolioResponse = (question, portfolio = {}) => {
         "core skills",
       ])
     ) {
-      const skills = technologies.slice(0, 8);
-
-      return skills.length
-        ? `Daksh's core technical skills include ${skills.join(", ")}. His strongest area is full-stack development, particularly around the MERN ecosystem.`
+      return technologies.length
+        ? `Daksh's core technical skills include ${technologies
+            .slice(0, 8)
+            .join(
+              ", ",
+            )}. His strongest area is full-stack development, particularly around the MERN ecosystem.`
         : "Daksh's strongest area is full-stack development, particularly around the MERN ecosystem.";
     }
 
-    // How many technologies
+    // Technology count
     if (
       includes(text, [
         "how many technologies",
         "number of technologies",
         "technology count",
-        "technologies does daksh know",
       ])
     ) {
       return `Daksh currently has ${technologies.length} technologies listed in his portfolio.`;
@@ -259,42 +237,40 @@ export const getPortfolioResponse = (question, portfolio = {}) => {
       return "The project data isn't available in the portfolio state right now.";
     }
 
-    // Project count
+    // Technologies used in projects
     if (
       includes(text, [
-        "how many projects",
-        "number of projects",
-        "project count",
-        "how many project",
-        "projects has daksh built",
+        "what technologies are used in his projects",
+        "technologies used in his projects",
+        "tech used in projects",
+        "technology used in projects",
       ])
     ) {
-      return `Daksh currently has ${Projects.length} project${Projects.length === 1 ? "" : "s"} in his portfolio. 🚀`;
+      return technologies.length
+        ? `Across his projects, Daksh uses technologies such as ${technologies.join(", ")}.`
+        : "The technology information for his projects isn't available right now.";
     }
 
     // DromStays
     if (includes(text, ["dromstays", "drom stays", "drom"])) {
       const project = getProjectByName(Projects, "drom");
 
-      if (project) {
-        return (
-          getProjectDescription(project) ||
-          `${getProjectName(project)} is one of Daksh's portfolio projects.`
-        );
-      }
-
-      return "DromStays is a full-stack rental and local services platform connecting tenants, property owners, and service partners.";
+      return project
+        ? getProjectDescription(project) ||
+            `${getProjectName(project)} is one of Daksh's portfolio projects.`
+        : "DromStays is a full-stack rental and local services platform connecting tenants, property owners, and service partners.";
     }
 
-    // Current project
+    // Current / latest project
     if (
       includes(text, [
+        "which project is he currently",
+        "which project is daksh currently",
+        "what project is daksh working on",
+        "what project is he working on",
         "current project",
-        "currently working on",
-        "project currently",
         "latest project",
         "recent project",
-        "which project is he currently",
       ])
     ) {
       const currentProject =
@@ -312,22 +288,7 @@ export const getPortfolioResponse = (question, portfolio = {}) => {
 
       return formatted
         ? `Daksh's current/recent project is ${formatted}`
-        : "Daksh is currently working on projects listed in the Projects section of his portfolio.";
-    }
-
-    // Technologies used in projects
-    if (
-      includes(text, [
-        "technologies used in his projects",
-        "technologies used",
-        "tech used in projects",
-        "what technology does he use",
-        "technology used in projects",
-      ])
-    ) {
-      return technologies.length
-        ? `Across his projects, Daksh uses technologies such as ${technologies.join(", ")}.`
-        : "The technology information for his projects isn't available right now.";
+        : "Daksh's current project information isn't available right now.";
     }
 
     // Can I see projects
@@ -340,10 +301,25 @@ export const getPortfolioResponse = (question, portfolio = {}) => {
         "portfolio projects",
       ])
     ) {
-      return `Yes! 🚀 Daksh has ${Projects.length} project${Projects.length === 1 ? "" : "s"} available in the Projects section of the portfolio.`;
+      return `Yes! 🚀 Daksh has ${Projects.length} project${
+        Projects.length === 1 ? "" : "s"
+      } available in the Projects section of the portfolio.`;
     }
 
-    // List projects
+    // Project count
+    if (
+      includes(text, [
+        "how many projects",
+        "number of projects",
+        "project count",
+      ])
+    ) {
+      return `Daksh currently has ${Projects.length} project${
+        Projects.length === 1 ? "" : "s"
+      } in his portfolio. 🚀`;
+    }
+
+    // Project list
     const projectDetails = Projects.slice(0, 8)
       .map(formatProject)
       .filter(Boolean);
@@ -365,23 +341,23 @@ export const getPortfolioResponse = (question, portfolio = {}) => {
         "current job",
         "current position",
         "what is his current role",
-        "what does he currently do",
+        "what is daksh current role",
       ])
     ) {
-      if (!latestExperience) {
-        return "Daksh's current role information isn't available right now.";
-      }
-
-      return `Daksh is currently ${latestExperience.Role} at ${latestExperience.Company}.`;
+      return latestExperience
+        ? `Daksh is currently ${latestExperience.Role} at ${latestExperience.Company}.`
+        : "Daksh's current role information isn't available right now.";
     }
 
-    // Where does he work
+    // Company
     if (
       includes(text, [
         "where does daksh work",
         "where does he work",
         "where is daksh working",
-        "company does he work",
+        "where is he working",
+        "who does daksh work for",
+        "current company",
       ])
     ) {
       return latestExperience
@@ -392,31 +368,30 @@ export const getPortfolioResponse = (question, portfolio = {}) => {
     // Current work
     if (
       includes(text, [
+        "what is daksh currently working on",
+        "what is he currently working on",
         "currently working",
         "working currently",
-        "what is daksh currently working",
-        "what is he currently working",
       ])
     ) {
       return latestExperience
-        ? `Daksh is currently working as ${latestExperience.Role} at ${latestExperience.Company}. ${latestExperience.Description || ""}`
+        ? `Daksh is currently working as ${latestExperience.Role} at ${latestExperience.Company}. ${
+            latestExperience.Description || ""
+          }`
         : "Daksh's current work information isn't available right now.";
     }
 
-    // Years of experience
+    // Years
     if (
       includes(text, [
         "how many years",
         "years of experience",
         "years building software",
         "how long has daksh",
+        "how long has he",
       ])
     ) {
-      const years = getStatsValue(stats, ["years", "experience", "coding"]);
-
-      return years
-        ? `Daksh has ${years} of experience according to the portfolio statistics.`
-        : "The portfolio doesn't currently provide a specific number of years of software development experience.";
+      return `Daksh has around ${getExperienceYears()} years of software development experience, based on a starting year of ${STARTING_YEAR}.`;
     }
 
     // Previous experience
@@ -426,17 +401,39 @@ export const getPortfolioResponse = (question, portfolio = {}) => {
         "past experience",
         "previous work",
         "worked before",
+        "work history",
       ])
     ) {
       const previous = Experience.slice(1);
 
-      if (!previous.length) {
-        return "The portfolio doesn't currently list previous experience separately.";
-      }
+      return previous.length
+        ? `Daksh's previous experience includes:\n\n${previous
+            .map(
+              (item) =>
+                `${item.Role} — ${item.Company} (${item.Period})${
+                  item.Description ? `\n${item.Description}` : ""
+                }`,
+            )
+            .join("\n\n")}`
+        : "The portfolio doesn't currently list previous experience separately.";
+    }
 
-      return `Daksh's previous experience includes:\n\n${previous
-        .map((item) => `${item.Role} — ${item.Company} (${item.Period})`)
-        .join("\n")}`;
+    // Kind of work
+    if (
+      includes(text, [
+        "what kind of work has he done",
+        "what kind of work has daksh done",
+        "what work has he done",
+        "what work has daksh done",
+        "what kind of work",
+      ])
+    ) {
+      return Experience.map(
+        (item) =>
+          `${item.Role} — ${item.Company} (${item.Period})${
+            item.Description ? `\n${item.Description}` : ""
+          }`,
+      ).join("\n\n");
     }
 
     // Full experience
@@ -486,13 +483,12 @@ export const getPortfolioResponse = (question, portfolio = {}) => {
         : "Daksh's college information isn't available right now.";
     }
 
-    // Course
+    // Course / What did he study
     if (
       includes(text, [
         "what did daksh study",
         "what did he study",
         "course did he study",
-        "course",
       ])
     ) {
       return Education.map(
@@ -500,11 +496,13 @@ export const getPortfolioResponse = (question, portfolio = {}) => {
       ).join("\n\n");
     }
 
-    // Completion
+    // Graduation / Completion
     if (
       includes(text, [
         "when did he complete",
         "when did daksh complete",
+        "when did he graduate",
+        "when did daksh graduate",
         "graduated",
         "graduation",
         "completed degree",
@@ -515,6 +513,7 @@ export const getPortfolioResponse = (question, portfolio = {}) => {
       );
     }
 
+    // Full education
     return Education.map(
       (item) =>
         `${item.Course} at ${item.College} (${item.Period}). ${
@@ -526,12 +525,7 @@ export const getPortfolioResponse = (question, portfolio = {}) => {
   if (intent === "github") {
     const username = getGithubUsername(Github);
     const url = getGithubUrl(Github);
-
-    const contributions =
-      Github.totalContributions ??
-      Github.TotalContributions ??
-      Github.contributions ??
-      0;
+    const contributions = getContributions(Github);
 
     // Username
     if (
@@ -574,7 +568,7 @@ export const getPortfolioResponse = (question, portfolio = {}) => {
       )} contributions currently recorded in the portfolio data.`;
     }
 
-    // Profile
+    // Profile / Visit
     if (
       includes(text, [
         "visit github",
@@ -588,7 +582,7 @@ export const getPortfolioResponse = (question, portfolio = {}) => {
         : "Daksh's GitHub profile is available through the GitHub section of the portfolio.";
     }
 
-    // What is on GitHub
+    // What can I find
     if (
       includes(text, [
         "what can i find on github",
@@ -599,6 +593,7 @@ export const getPortfolioResponse = (question, portfolio = {}) => {
       return "You can explore Daksh's repositories, development work, and contribution activity on his GitHub profile.";
     }
 
+    // General GitHub
     return username
       ? `Daksh's GitHub username is ${username}, with ${formatContributions(
           contributions,
@@ -609,7 +604,7 @@ export const getPortfolioResponse = (question, portfolio = {}) => {
   }
 
   if (intent === "stats") {
-    // Project stats
+    // Projects shipped
     if (
       includes(text, [
         "how many projects shipped",
@@ -622,8 +617,14 @@ export const getPortfolioResponse = (question, portfolio = {}) => {
       } according to the current portfolio data. 🚀`;
     }
 
-    // Technology stats
-    if (includes(text, ["how many technologies", "technology count"])) {
+    // Technologies count
+    if (
+      includes(text, [
+        "how many technologies",
+        "technology count",
+        "number of technologies",
+      ])
+    ) {
       return `Daksh currently has ${technologies.length} technologies listed in his portfolio.`;
     }
 
@@ -632,37 +633,20 @@ export const getPortfolioResponse = (question, portfolio = {}) => {
       includes(text, [
         "how many years coding",
         "years coding",
-        "years of coding",
+        "how many years has daksh been coding",
       ])
     ) {
-      const years = getStatsValue(stats, ["years", "coding", "experience"]);
-
-      return years
-        ? `Daksh has ${years} of coding experience according to the portfolio data.`
-        : "The portfolio doesn't currently specify an exact number of coding years.";
+      return `Daksh has around ${getExperienceYears()} years of coding/software development experience, based on a starting year of ${STARTING_YEAR}.`;
     }
 
-    // GitHub contribution
-    if (
-      includes(text, ["how many github contributions", "github contributions"])
-    ) {
-      const contributions =
-        Github.totalContributions ??
-        Github.TotalContributions ??
-        Github.contributions ??
-        0;
-
-      return `Daksh currently has ${formatContributions(
-        contributions,
-      )} GitHub contributions.`;
-    }
-
+    // General portfolio stats
     return stats.length
       ? stats.map((item) => `${item.value} ${item.label}`).join(" • ")
       : `Daksh currently has ${Projects.length} projects and works with ${technologies.length} technologies.`;
   }
 
   if (intent === "resume") {
+    // Download
     if (
       includes(text, [
         "download",
@@ -675,6 +659,7 @@ export const getPortfolioResponse = (question, portfolio = {}) => {
       return "Yes. You can access Daksh's resume from the Resume section of the portfolio.";
     }
 
+    // View
     if (includes(text, ["see resume", "view resume", "resume", "cv"])) {
       return "You can view Daksh's resume through the Resume section of the portfolio.";
     }
@@ -692,7 +677,7 @@ export const getPortfolioResponse = (question, portfolio = {}) => {
         : `Daksh's contact email is ${email}.`;
     }
 
-    // Hire
+    // Hiring / Collaboration
     if (
       includes(text, [
         "hire daksh",
@@ -709,11 +694,6 @@ export const getPortfolioResponse = (question, portfolio = {}) => {
     return "You can contact Daksh through the Contact section of the portfolio.";
   }
 
-  if (intent === "help") {
-    return "I can answer specific questions about Daksh's projects, skills, MERN stack, experience, education, GitHub activity, portfolio statistics, resume, and contact information. 🤖";
-  }
-
-  // Build-related questions
   if (
     includes(text, [
       "can you build",
@@ -731,7 +711,6 @@ export const getPortfolioResponse = (question, portfolio = {}) => {
       : "Based on the portfolio, Daksh focuses on full-stack application development.";
   }
 
-  // Freelancing / availability
   if (
     includes(text, [
       "freelance",
@@ -744,7 +723,6 @@ export const getPortfolioResponse = (question, portfolio = {}) => {
     return "The portfolio doesn't currently specify Daksh's detailed availability. You can use the Contact section to reach him about a project or collaboration.";
   }
 
-  // Specific DromStays question may not be detected as projects
   if (includes(text, ["dromstays", "drom stays"])) {
     const project = getProjectByName(Projects, "drom");
 
@@ -753,6 +731,5 @@ export const getPortfolioResponse = (question, portfolio = {}) => {
           `${getProjectName(project)} is one of Daksh's portfolio projects.`
       : "DromStays is a full-stack rental and local services platform connecting tenants, property owners, and service partners.";
   }
-
   return "I couldn't find a specific portfolio detail for that question yet. 🤖 Try asking about a particular project, technology, role, education detail, GitHub statistic, or something Daksh is currently working on.";
 };

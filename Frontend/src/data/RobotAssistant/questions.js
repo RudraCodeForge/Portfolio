@@ -71,7 +71,6 @@ export const CATEGORY_QUESTIONS = {
     "How many projects has Daksh shipped?",
     "How many technologies does he know?",
     "How many years has he been coding?",
-    "How many GitHub contributions does he have?",
     "Show me Daksh's portfolio stats.",
   ],
 
