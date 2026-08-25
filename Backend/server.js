@@ -83,6 +83,13 @@ app.get("/", (req, res) => {
   res.status(200).send("Backend Working");
 });
 
+app.get("/health", (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: "Backend is healthy",
+  });
+});
+
 app.use("/PortfolioData", apiLimiter, DataRouter);
 
 app.use("/Contact", contactLimiter, ContactRouter);
