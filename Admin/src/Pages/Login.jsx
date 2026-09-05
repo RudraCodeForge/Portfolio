@@ -1,19 +1,26 @@
 import Styles from "../Styles/Login.module.css";
 import { useState } from "react";
+import { login } from "../Services/Login.service";
 const Login = () => {
-  const [credentials, setCredentials] = useState({});
-
-  const handleSubmit = (event) => {
+  const [showPassword, setShowPassword] = useState(false);
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
-    const email = formData.get("email");
-    const password = formData.get("password");
-    setCredentials({ email, password });
+    const credentials = {
+      email: formData.get("email"),
+      password: formData.get("password"),
+    };
     console.log("Admin login submitted", {
-      email: credentials.email,
-      password: credentials.password,
+      credentials,
       status: "pending",
     });
+
+    try {
+      const loginData = await login(credentials);
+      console.log("Admin login successful", loginData);
+    } catch (error) {
+      console.error("Admin login failed", error);
+    }
   };
 
   return (
@@ -26,6 +33,22 @@ const Login = () => {
           <p>
             Keep your projects, experience, and stories moving from one calm,
             focused workspace.
+          </p>
+        </div>
+        <div
+          className={Styles.visualMeta}
+          aria-label="Portfolio workspace status"
+        >
+          <div>
+            <strong>12</strong>
+            <span>Projects</span>
+          </div>
+          <div>
+            <strong>04</strong>
+            <span>Sections</span>
+          </div>
+          <p>
+            <span /> Workspace online
           </p>
         </div>
         <div className={Styles.signal} aria-hidden="true">
@@ -61,14 +84,34 @@ const Login = () => {
                 Forgot password?
               </button>
             </div>
-            <input
-              id="password"
-              name="password"
-              type="password"
-              placeholder="Enter your password"
-              autoComplete="current-password"
-              required
-            />
+            <div className={Styles.passwordInputWrap}>
+              <input
+                id="password"
+                name="password"
+                type={showPassword ? "text" : "password"}
+                placeholder="Enter your password"
+                autoComplete="current-password"
+                required
+              />
+              <button
+                type="button"
+                className={Styles.passwordToggle}
+                onClick={() => setShowPassword((isVisible) => !isVisible)}
+                aria-label={showPassword ? "Hide password" : "Show password"}
+                aria-pressed={showPassword}
+                title={showPassword ? "Hide password" : "Show password"}
+              >
+                <span
+                  key={showPassword ? "hide" : "show"}
+                  className={Styles.toggleText}
+                >
+                  {showPassword ? "Hide" : "Show"}
+                </span>
+                <span className={Styles.toggleIcon} aria-hidden="true">
+                  {showPassword ? "◉" : "◌"}
+                </span>
+              </button>
+            </div>
 
             <label className={Styles.remember}>
               <input type="checkbox" name="remember" />

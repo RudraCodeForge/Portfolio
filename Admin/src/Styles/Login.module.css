@@ -82,6 +82,53 @@
   line-height: 1.7;
 }
 
+.visualMeta {
+  z-index: 1;
+  display: flex;
+  align-items: flex-end;
+  gap: 2rem;
+  margin-top: auto;
+  padding-top: 2rem;
+  animation: riseIn 700ms ease both;
+}
+
+.visualMeta > div {
+  display: grid;
+  gap: 0.2rem;
+  min-width: 4.5rem;
+}
+
+.visualMeta strong {
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.visualMeta span,
+.visualMeta p {
+  color: var(--text-muted);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.visualMeta p {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-left: auto;
+  color: var(--text-secondary);
+}
+
+.visualMeta p span {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 0 rgba(146, 247, 217, 0.5);
+  animation: pulse 2s infinite;
+}
+
 .signal {
   z-index: 1;
   display: flex;
@@ -170,6 +217,56 @@
   justify-content: space-between;
 }
 
+.passwordInputWrap {
+  position: relative;
+}
+
+.passwordInputWrap input {
+  padding-right: 4.5rem !important;
+}
+
+.passwordToggle {
+  position: absolute;
+  top: 50%;
+  right: 0.85rem;
+  transform: translateY(-50%);
+  border: 0;
+  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--bg-primary);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 700;
+  transition:
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+.passwordToggle:hover {
+  color: var(--accent-hover);
+  transform: translateY(-50%) scale(1.04);
+}
+
+.toggleText {
+  animation: toggleIn 180ms ease both;
+}
+
+.toggleIcon {
+  display: inline-block;
+  font-size: 0.95rem;
+  line-height: 1;
+}
+
+.passwordToggle:focus-visible,
+.textButton:focus-visible,
+.submitButton:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
 .textButton {
   border: 0;
   background: transparent;
@@ -231,6 +328,38 @@
   color: var(--accent);
 }
 
+@keyframes toggleIn {
+  from {
+    opacity: 0;
+    transform: translateY(0.2rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes riseIn {
+  from {
+    opacity: 0;
+    transform: translateY(0.8rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(146, 247, 217, 0.45);
+  }
+  50% {
+    box-shadow: 0 0 0 0.35rem rgba(146, 247, 217, 0);
+  }
+}
+
 @media (max-width: 800px) {
   .login {
     display: block;
@@ -242,6 +371,9 @@
   .visualCopy {
     margin-top: 6rem;
     margin-bottom: 2rem;
+  }
+  .visualMeta {
+    gap: 1.5rem;
   }
   .visualCopy h1 {
     font-size: clamp(2.6rem, 12vw, 4rem);
@@ -266,6 +398,13 @@
   }
   .visualCopy > p:last-child {
     font-size: 0.9rem;
+  }
+  .visualMeta {
+    gap: 1rem;
+    padding-top: 1.25rem;
+  }
+  .visualMeta p {
+    display: none;
   }
   .formPanel {
     padding: 3rem 1.25rem;
