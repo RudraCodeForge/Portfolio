@@ -1,0 +1,277 @@
+.login {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(420px, 0.95fr);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.visualPanel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+  overflow: hidden;
+  padding: clamp(2rem, 6vw, 5.5rem);
+  background:
+    radial-gradient(
+      circle at 20% 18%,
+      rgba(146, 247, 217, 0.14),
+      transparent 32%
+    ),
+    linear-gradient(145deg, #0b2b27 0%, var(--bg-primary) 68%);
+}
+
+.visualPanel::after {
+  content: "";
+  position: absolute;
+  width: min(42vw, 520px);
+  aspect-ratio: 1;
+  right: -18%;
+  bottom: -27%;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 42px rgba(146, 247, 217, 0.025),
+    0 0 0 84px rgba(146, 247, 217, 0.02);
+}
+
+.brandMark {
+  z-index: 1;
+  display: grid;
+  width: 3rem;
+  height: 3rem;
+  place-items: center;
+  border: 1px solid var(--border-hover);
+  border-radius: var(--radius-sm);
+  color: var(--accent);
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+
+.visualCopy {
+  z-index: 1;
+  max-width: 35rem;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.eyebrow,
+.kicker,
+.mobileBrand {
+  color: var(--accent);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.visualCopy h1 {
+  max-width: 11ch;
+  margin: 1rem 0 1.5rem;
+  font-size: clamp(2.8rem, 5vw, 5.3rem);
+  line-height: 0.98;
+  letter-spacing: -0.05em;
+}
+
+.visualCopy > p:last-child {
+  max-width: 27rem;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.signal {
+  z-index: 1;
+  display: flex;
+  gap: 0.45rem;
+}
+
+.signal span {
+  display: block;
+  width: 2.8rem;
+  height: 0.25rem;
+  background: var(--accent);
+}
+
+.signal span:nth-child(2) {
+  opacity: 0.55;
+}
+.signal span:nth-child(3) {
+  opacity: 0.2;
+}
+
+.formPanel {
+  display: grid;
+  place-items: center;
+  padding: 3rem clamp(1.5rem, 7vw, 7rem);
+  background: var(--bg-secondary);
+}
+
+.formWrap {
+  width: min(100%, 27rem);
+}
+.mobileBrand {
+  display: none;
+}
+
+.formWrap h2 {
+  margin: 0.7rem 0 0.75rem;
+  font-size: clamp(2rem, 3vw, 2.7rem);
+  letter-spacing: -0.04em;
+}
+
+.intro {
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.form {
+  display: grid;
+  gap: 0.65rem;
+  margin-top: 2.5rem;
+}
+
+.form label,
+.passwordLabel label {
+  color: var(--text-primary);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.form input:not([type="checkbox"]) {
+  width: 100%;
+  min-height: 3.25rem;
+  margin: 0.15rem 0 0.7rem;
+  padding: 0 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  outline: none;
+  background: var(--bg-card);
+  color: var(--text-primary);
+  font: inherit;
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.form input:not([type="checkbox"])::placeholder {
+  color: var(--text-muted);
+}
+.form input:not([type="checkbox"]):focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(146, 247, 217, 0.12);
+}
+
+.passwordLabel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.textButton {
+  border: 0;
+  background: transparent;
+  color: var(--accent);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.78rem;
+}
+
+.remember {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  margin: 0.15rem 0 1rem;
+  color: var(--text-secondary) !important;
+  font-size: 0.8rem !important;
+  font-weight: 400 !important;
+}
+
+.remember input {
+  accent-color: var(--accent);
+}
+
+.submitButton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 3.35rem;
+  padding: 0 1.1rem 0 1.25rem;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: var(--accent);
+  color: #06201b;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 800;
+  transition:
+    background 160ms ease,
+    transform 160ms ease;
+}
+
+.submitButton:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+}
+.submitButton span {
+  font-size: 1.25rem;
+}
+
+.footerNote {
+  margin-top: 2.5rem;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  text-align: center;
+}
+
+.footerNote span {
+  margin: 0 0.3rem;
+  color: var(--accent);
+}
+
+@media (max-width: 800px) {
+  .login {
+    display: block;
+  }
+  .visualPanel {
+    min-height: 30rem;
+    padding: 1.5rem;
+  }
+  .visualCopy {
+    margin-top: 6rem;
+    margin-bottom: 2rem;
+  }
+  .visualCopy h1 {
+    font-size: clamp(2.6rem, 12vw, 4rem);
+  }
+  .visualPanel::after {
+    width: 20rem;
+    right: -25%;
+    bottom: -30%;
+  }
+  .formPanel {
+    min-height: 34rem;
+    padding: 4rem 1.5rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .visualPanel {
+    min-height: 25rem;
+  }
+  .visualCopy {
+    margin-top: 4rem;
+  }
+  .visualCopy > p:last-child {
+    font-size: 0.9rem;
+  }
+  .formPanel {
+    padding: 3rem 1.25rem;
+  }
+  .mobileBrand {
+    display: block;
+    margin-bottom: 2.5rem;
+  }
+}
