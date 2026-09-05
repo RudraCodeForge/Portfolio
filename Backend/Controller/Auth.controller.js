@@ -65,6 +65,7 @@ exports.login = async (req, res) => {
       success: true,
       message: "OTP sent successfully",
       otpSessionId: otpRecord._id,
+      email: admin.email,
     });
   } catch (error) {
     console.error("Login error:", error);

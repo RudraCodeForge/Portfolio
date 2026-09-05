@@ -1,25 +1,29 @@
 import Styles from "../Styles/Login.module.css";
 import { useState } from "react";
 import { login } from "../Services/Login.service";
+import OtpModel from "../Components/OtpModel";
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [otpData, setOtpData] = useState(null);
+  const [loginError, setLoginError] = useState("");
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setLoginError("");
     const formData = new FormData(event.target);
     const credentials = {
       email: formData.get("email"),
       password: formData.get("password"),
     };
-    console.log("Admin login submitted", {
-      credentials,
-      status: "pending",
-    });
-
     try {
       const loginData = await login(credentials);
-      console.log("Admin login successful", loginData);
+      if (loginData.success) {
+        setOtpData({
+          email: loginData.email || credentials.email,
+          otpSessionId: loginData.otpSessionId,
+        });
+      }
     } catch (error) {
-      console.error("Admin login failed", error);
+      setLoginError(error.message || "Email or password is incorrect.");
     }
   };
 
@@ -66,6 +70,13 @@ const Login = () => {
           <p className={Styles.intro}>
             Use your admin account to manage your portfolio.
           </p>
+
+          {loginError && (
+            <p className={Styles.loginError} role="alert">
+              <span aria-hidden="true">!</span>
+              {loginError}
+            </p>
+          )}
 
           <form className={Styles.form} onSubmit={handleSubmit}>
             <label htmlFor="email">Email address</label>
@@ -130,6 +141,7 @@ const Login = () => {
           </p>
         </div>
       </section>
+      {otpData && <OtpModel {...otpData} onClose={() => setOtpData(null)} />}
     </main>
   );
 };
