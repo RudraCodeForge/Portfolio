@@ -1,5 +1,24 @@
 export const themes = [
   {
+    id: "original",
+    name: "Original",
+    description: "The original portfolio visual system",
+    colors: ["#020c0f", "#061917", "#74f2d0"],
+    variables: {
+      "--bg-primary": "#020c0f",
+      "--bg-secondary": "#061917",
+      "--bg-card": "#0a2421",
+      "--bg-hover": "#0d2b27",
+      "--text-primary": "#edf8f5",
+      "--text-secondary": "#8fa9a4",
+      "--text-muted": "#607a75",
+      "--accent": "#74f2d0",
+      "--accent-hover": "#a8f4d9",
+      "--border": "rgba(148, 163, 184, 0.2)",
+      "--border-hover": "rgba(116, 242, 208, 0.45)",
+    },
+  },
+  {
     id: "mint",
     name: "Mint Studio",
     description: "The current calm portfolio look",

@@ -3,15 +3,15 @@
   overflow: hidden;
   scroll-margin-top: 0;
   padding: 50px 0 150px;
-  border-top: 1px solid rgba(148, 163, 184, 0.12);
+  border-top: 1px solid var(--border);
   background:
     radial-gradient(
       circle at 82% 22%,
-      rgba(81, 70, 125, 0.08),
+      color-mix(in srgb, var(--theme-overlay) 8%, transparent),
       transparent 24%
     ),
-    #061110;
-  color: #eff8f5;
+    var(--bg-primary);
+  color: var(--text-primary);
 }
 
 .skillsInner {
@@ -31,7 +31,7 @@
   display: flex;
   align-items: center;
   gap: 16px;
-  color: #92f7d9;
+  color: var(--accent);
   font-family: "SFMono-Regular", Consolas, monospace;
   font-size: 0.78rem;
   letter-spacing: 0.18em;
@@ -40,7 +40,7 @@
 .labelLine {
   width: 40px;
   height: 1px;
-  background: rgba(146, 247, 217, 0.45);
+  background: color-mix(in srgb, var(--theme-overlay) 45%, transparent);
 }
 
 .heading {
@@ -53,13 +53,13 @@
 
 .heading span {
   display: block;
-  color: rgba(227, 238, 235, 0.37);
+  color: var(--text-muted);
 }
 
 .headerCopy {
   max-width: 370px;
   margin-bottom: 6px;
-  color: rgba(196, 216, 211, 0.68);
+  color: color-mix(in srgb, var(--theme-overlay) 68%, transparent);
   font-size: 1.05rem;
   line-height: 1.65;
 }
@@ -73,9 +73,9 @@
 .skillCard {
   min-height: 296px;
   padding: 30px;
-  border: 1px solid rgba(148, 163, 184, 0.15);
+  border: 1px solid var(--border);
   border-radius: 20px;
-  background: rgba(10, 24, 23, 0.72);
+  background: color-mix(in srgb, var(--theme-overlay) 72%, transparent);
   transition:
     border-color 0.25s ease,
     transform 0.25s ease,
@@ -84,8 +84,8 @@
 
 .skillCard:hover {
   transform: translateY(-4px);
-  border-color: rgba(146, 247, 217, 0.34);
-  background: rgba(14, 33, 31, 0.84);
+  border-color: color-mix(in srgb, var(--theme-overlay) 34%, transparent);
+  background: color-mix(in srgb, var(--theme-overlay) 84%, transparent);
 }
 
 .categoryIcon {
@@ -95,26 +95,26 @@
   place-items: center;
   margin-bottom: 28px;
   border-radius: 13px;
-  background: rgba(93, 231, 196, 0.12);
-  color: #8ef2d4;
+  background: color-mix(in srgb, var(--theme-overlay) 12%, transparent);
+  color: var(--accent);
   font-family: "SFMono-Regular", Consolas, monospace;
   font-size: 1.1rem;
   font-weight: 700;
 }
 
 .skillCard:nth-child(2) .categoryIcon {
-  background: rgba(174, 147, 235, 0.12);
-  color: #c3a9f2;
+  background: color-mix(in srgb, var(--theme-overlay) 12%, transparent);
+  color: var(--accent);
 }
 
 .skillCard:nth-child(3) .categoryIcon {
-  background: rgba(239, 185, 100, 0.12);
-  color: #f2c476;
+  background: color-mix(in srgb, var(--theme-overlay) 12%, transparent);
+  color: var(--accent);
 }
 
 .skillCard:nth-child(4) .categoryIcon {
-  background: rgba(111, 180, 231, 0.12);
-  color: #8bc5ee;
+  background: color-mix(in srgb, var(--theme-overlay) 12%, transparent);
+  color: var(--accent);
 }
 
 .skillCard h3 {
@@ -134,12 +134,12 @@
   justify-content: space-between;
   gap: 12px;
   margin-bottom: 10px;
-  color: #d5e9e4;
+  color: var(--text-secondary);
   font-size: 0.92rem;
 }
 
 .skillMeta span:last-child {
-  color: rgba(196, 216, 211, 0.45);
+  color: color-mix(in srgb, var(--theme-overlay) 45%, transparent);
   font-size: 0.82rem;
 }
 
@@ -147,7 +147,7 @@
   height: 5px;
   overflow: hidden;
   border-radius: 999px;
-  background: rgba(148, 163, 184, 0.13);
+  background: color-mix(in srgb, var(--theme-overlay) 13%, transparent);
 }
 
 .skillTrack span {
@@ -155,19 +155,19 @@
   width: var(--skill-level);
   height: 100%;
   border-radius: inherit;
-  background: #8ef2d4;
+  background: var(--accent);
 }
 
 .skillCard:nth-child(2) .skillTrack span {
-  background: #c3a9f2;
+  background: var(--accent);
 }
 
 .skillCard:nth-child(3) .skillTrack span {
-  background: #f2c476;
+  background: var(--accent);
 }
 
 .skillCard:nth-child(4) .skillTrack span {
-  background: #8bc5ee;
+  background: var(--accent);
 }
 
 @media (max-width: 900px) {
@@ -208,3 +208,4 @@
     padding: 24px;
   }
 }
+
