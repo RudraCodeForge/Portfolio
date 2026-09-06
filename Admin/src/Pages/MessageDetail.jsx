@@ -1,15 +1,22 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import DashboardIcon from "../Components/DashboardIcon";
 import { deleteMessage, markMessageAsRead } from "../Store/messageSlice";
 import Styles from "../Styles/MessageDetail.module.css";
 import { formatMessageDate } from "../utils/formatMessageDate";
+import {
+  DeleteMessage,
+  GetAdminMessage,
+  MarkMessageAsRead,
+} from "../Services/message.service";
+import { setMessages } from "../Store/messageSlice";
 
 const MessageDetail = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(true);
   const message = useSelector((state) =>
     state.messages.find((item) => item.id === id),
   );
@@ -17,6 +24,34 @@ const MessageDetail = () => {
   useEffect(() => {
     localStorage.setItem("activeDashboardSection", "Messages");
   }, []);
+
+  useEffect(() => {
+    if (message) {
+      setIsLoading(false);
+      return;
+    }
+
+    const loadMessage = async () => {
+      try {
+        const response = await GetAdminMessage(id);
+        dispatch(setMessages([response.data]));
+      } catch (error) {
+        console.error("Message load failed:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadMessage();
+  }, [dispatch, id, message]);
+
+  if (isLoading) {
+    return (
+      <main className={Styles.empty}>
+        <h1>Loading message...</h1>
+      </main>
+    );
+  }
 
   if (!message) {
     return (
@@ -29,10 +64,23 @@ const MessageDetail = () => {
     );
   }
 
-  const handleMarkRead = () => dispatch(markMessageAsRead(message.id));
-  const handleDelete = () => {
-    dispatch(deleteMessage(message.id));
-    navigate("/dashboard");
+  const handleMarkRead = async () => {
+    try {
+      await MarkMessageAsRead(message.id);
+      dispatch(markMessageAsRead(message.id));
+    } catch (error) {
+      console.error("Mark message as read failed:", error);
+    }
+  };
+
+  const handleDelete = async () => {
+    try {
+      await DeleteMessage(message.id);
+      dispatch(deleteMessage(message.id));
+      navigate("/dashboard");
+    } catch (error) {
+      console.error("Delete message failed:", error);
+    }
   };
 
   return (

@@ -39,7 +39,7 @@ const AppRoutes = () => {
         }
       />
       <Route
-        path="/meggage/:id"
+        path="/message/:id"
         element={
           <ProtectedRoute>
             <MessageDetail />

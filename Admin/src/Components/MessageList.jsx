@@ -9,10 +9,32 @@ import {
   setMessages,
 } from "../Store/messageSlice";
 import { useEffect } from "react";
-import { GetAdminMessages } from "../Services/message.service";
+import {
+  DeleteAllMessages,
+  GetAdminMessages,
+  MarkAllMessagesAsRead,
+} from "../Services/message.service";
 const MessageList = ({ messages }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const handleMarkAllAsRead = async () => {
+    try {
+      await MarkAllMessagesAsRead();
+      dispatch(markAllMessagesAsRead());
+    } catch (error) {
+      console.error("Mark all messages as read failed:", error);
+    }
+  };
+
+  const handleDeleteAll = async () => {
+    try {
+      await DeleteAllMessages();
+      dispatch(deleteAllMessages());
+    } catch (error) {
+      console.error("Delete all messages failed:", error);
+    }
+  };
   useEffect(() => {
     const fetchMessages = async () => {
       try {
@@ -42,14 +64,14 @@ const MessageList = ({ messages }) => {
               <button
                 type="button"
                 className={Styles.actionButton}
-                onClick={() => dispatch(markAllMessagesAsRead())}
+                onClick={handleMarkAllAsRead}
               >
                 Mark all as read
               </button>
               <button
                 type="button"
                 className={`${Styles.actionButton} ${Styles.deleteButton}`}
-                onClick={() => dispatch(deleteAllMessages())}
+                onClick={handleDeleteAll}
               >
                 Delete all
               </button>
@@ -72,7 +94,7 @@ const MessageList = ({ messages }) => {
               type="button"
               className={`${Styles.message} ${message.isRead ? Styles.read : ""}`}
               key={message.id}
-              onClick={() => navigate(`/meggage/${message.id}`)}
+              onClick={() => navigate(`/message/${message.id}`)}
             >
               <div className={Styles.icon}>
                 <DashboardIcon name="mail" />
