@@ -339,6 +339,23 @@
   background: var(--accent-hover);
   transform: translateY(-1px);
 }
+
+.submitButton:disabled {
+  background: color-mix(in srgb, var(--accent) 65%, var(--bg-card));
+  cursor: wait;
+  opacity: 0.8;
+  transform: none;
+}
+
+.loadingSpinner {
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid rgba(6, 32, 27, 0.3);
+  border-top-color: #06201b;
+  border-radius: 50%;
+  animation: spin 700ms linear infinite;
+}
+
 .submitButton span {
   font-size: 1.25rem;
 }
@@ -395,6 +412,12 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
   }
 }
 

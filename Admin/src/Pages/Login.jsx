@@ -3,12 +3,14 @@ import { useState } from "react";
 import { login } from "../Services/Login.service";
 import OtpModel from "../Components/OtpModel";
 const Login = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [otpData, setOtpData] = useState(null);
   const [loginError, setLoginError] = useState("");
   const handleSubmit = async (event) => {
     event.preventDefault();
     setLoginError("");
+    setIsLoading(true);
     const formData = new FormData(event.target);
     const credentials = {
       email: formData.get("email"),
@@ -24,6 +26,8 @@ const Login = () => {
       }
     } catch (error) {
       setLoginError(error.message || "Email or password is incorrect.");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -129,9 +133,21 @@ const Login = () => {
               <span>Remember me on this device</span>
             </label>
 
-            <button type="submit" className={Styles.submitButton}>
-              Sign in
-              <span aria-hidden="true">-&gt;</span>
+            <button
+              type="submit"
+              className={`${Styles.submitButton} ${
+                isLoading ? Styles.loading : ""
+              }`}
+              disabled={isLoading}
+              aria-busy={isLoading}
+            >
+              {isLoading ? "Signing in..." : "Sign in"}
+              <span
+                className={isLoading ? Styles.loadingSpinner : undefined}
+                aria-hidden="true"
+              >
+                {isLoading ? "" : "->"}
+              </span>
             </button>
           </form>
 

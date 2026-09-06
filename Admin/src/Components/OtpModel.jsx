@@ -1,16 +1,34 @@
 import Styles from "../Styles/OtpModel.module.css";
-
+import { verifyOtp } from "../Services/Login.service";
+import toast from "react-hot-toast";
+import { useState } from "react";
 const OtpModel = ({ email, otpSessionId, onClose }) => {
-  const handleSubmit = (event) => {
+  const [isVerifying, setIsVerifying] = useState(false);
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    setIsVerifying(true);
     const otp = new FormData(event.currentTarget).get("otp");
 
-    console.log("OTP submitted", {
+    const otpData = {
       email,
       otpSessionId,
       otp,
-      status: "pending-verification",
-    });
+    };
+    try {
+      const response = await verifyOtp(otpData);
+      if (response.success) {
+        toast.success("OTP verified successfully!");
+        onClose();
+      } else {
+        toast.error(response.message || "OTP verification failed.");
+      }
+    } catch (error) {
+      console.error("OTP verification error:", error);
+      toast.error("An error occurred while verifying the OTP.");
+    } finally {
+      setIsVerifying(false);
+    }
   };
 
   return (
@@ -52,6 +70,7 @@ const OtpModel = ({ email, otpSessionId, onClose }) => {
             maxLength={6}
             placeholder="000000"
             autoComplete="one-time-code"
+            disabled={isVerifying}
             onChange={(event) => {
               event.target.value = event.target.value
                 .replace(/\D/g, "")
@@ -59,9 +78,21 @@ const OtpModel = ({ email, otpSessionId, onClose }) => {
             }}
             required
           />
-          <button type="submit" className={Styles.submitButton}>
-            Verify code
-            <span aria-hidden="true">-&gt;</span>
+          <button
+            type="submit"
+            className={`${Styles.submitButton} ${
+              isVerifying ? Styles.loading : ""
+            }`}
+            disabled={isVerifying}
+            aria-busy={isVerifying}
+          >
+            {isVerifying ? "Verifying..." : "Verify code"}
+            <span
+              className={isVerifying ? Styles.loadingSpinner : undefined}
+              aria-hidden="true"
+            >
+              {isVerifying ? "" : "->"}
+            </span>
           </button>
         </form>
 

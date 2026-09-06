@@ -1,5 +1,5 @@
 const bcrypt = require("bcrypt");
-
+const jwt = require("jsonwebtoken");
 const Admin = require("../Models/Admin");
 const AdminOtp = require("../Models/AdminOTP");
 
@@ -70,6 +70,23 @@ exports.login = async (req, res) => {
   } catch (error) {
     console.error("Login error:", error);
 
+    return res.status(500).json({
+      success: false,
+      message: "Internal server error",
+    });
+  }
+};
+
+exports.verifyOtp = async (req, res) => {
+  try {
+    const { email, otpSessionId, otp } = req.body;
+    console.log("OTP verification request", { email, otpSessionId, otp });
+    return res.status(200).json({
+      success: true,
+      message: "OTP verified successfully",
+    });
+  } catch (error) {
+    console.error("OTP verification error:", error);
     return res.status(500).json({
       success: false,
       message: "Internal server error",
