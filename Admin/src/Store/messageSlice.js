@@ -1,10 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { messageData } from "../data/messageData";
-
 const messageSlice = createSlice({
   name: "messages",
-  initialState: messageData,
+  initialState: [],
   reducers: {
+    setMessages: (_, action) => action.payload,
     markMessageAsRead: (state, action) => {
       const message = state.find((item) => item.id === action.payload);
       if (message) message.isRead = true;
@@ -21,6 +20,7 @@ const messageSlice = createSlice({
 });
 
 export const {
+  setMessages,
   markMessageAsRead,
   deleteMessage,
   deleteAllMessages,

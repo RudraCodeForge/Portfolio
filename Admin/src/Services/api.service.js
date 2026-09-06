@@ -21,7 +21,17 @@ api.interceptors.request.use(
 );
 
 api.interceptors.response.use(
-  (response) => response,
+  (response) => {
+    const refreshedAccessToken = response.headers["x-access-token"];
+
+    if (refreshedAccessToken) {
+      localStorage.setItem("accessToken", refreshedAccessToken);
+      localStorage.setItem("isVerified", "true");
+      store.dispatch(setVerified({ accessToken: refreshedAccessToken }));
+    }
+
+    return response;
+  },
   async (error) => {
     const originalRequest = error.config;
     const requestUrl = originalRequest?.url || "";

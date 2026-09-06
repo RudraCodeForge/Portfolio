@@ -15,6 +15,7 @@ const DataRouter = require("./Routes/DataRoute.route");
 const ContactRouter = require("./Routes/Contact.route");
 const AuthRouter = require("./Routes/Auth.route");
 const ThemeRouter = require("./Routes/Theme.route");
+const AdminMessageRouter = require("./Routes/admin/message.route");
 
 app.set("trust proxy", 1);
 
@@ -41,6 +42,7 @@ app.use(
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
+    exposedHeaders: ["X-Access-Token"],
   }),
 );
 
@@ -99,6 +101,8 @@ app.use("/Contact", contactLimiter, ContactRouter);
 app.use("/auth", apiLimiter, AuthRouter);
 
 app.use("/theme", apiLimiter, ThemeRouter);
+
+app.use("/admin", apiLimiter, AdminMessageRouter);
 
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server is running on port ${PORT}`);
