@@ -1,8 +1,16 @@
 .githubSection {
   padding: 100px 0 110px;
   background:
-    radial-gradient(circle at 20% 20%, color-mix(in srgb, var(--theme-overlay) 26%, transparent), transparent 25%),
-    linear-gradient(90deg, color-mix(in srgb, var(--theme-overlay) 98%, transparent), color-mix(in srgb, var(--theme-overlay) 96%, transparent));
+    radial-gradient(
+      circle at 20% 20%,
+      color-mix(in srgb, var(--theme-overlay) 26%, transparent),
+      transparent 25%
+    ),
+    linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--theme-overlay) 98%, transparent),
+      color-mix(in srgb, var(--theme-overlay) 96%, transparent)
+    );
   border-top: 1px solid var(--border);
   color: var(--text-primary);
 }
@@ -131,7 +139,7 @@
 .activityGrid span {
   position: relative;
   border-radius: 3px;
-  background: color-mix(in srgb, var(--theme-overlay) 8%, transparent);
+  background: color-mix(in srgb, var(--theme-accent-overlay) 10%, transparent);
 }
 
 .activityGrid span::after {
@@ -142,10 +150,12 @@
   width: max-content;
   max-width: 180px;
   padding: 8px 10px;
-  border: 1px solid color-mix(in srgb, var(--theme-accent-overlay) 35%, transparent);
+  border: 1px solid
+    color-mix(in srgb, var(--theme-accent-overlay) 35%, transparent);
   border-radius: 7px;
   background: var(--bg-secondary);
-  box-shadow: 0 8px 20px color-mix(in srgb, var(--theme-accent-overlay) 28%, transparent);
+  box-shadow: 0 8px 20px
+    color-mix(in srgb, var(--theme-accent-overlay) 28%, transparent);
   color: var(--text-primary);
   content: attr(data-tooltip);
   font:
@@ -167,38 +177,67 @@
   transform: translate(-50%, 0);
 }
 .level0 {
-  background: color-mix(in srgb, var(--theme-overlay) 8%, transparent) !important;
+  background: color-mix(
+    in srgb,
+    var(--theme-accent-overlay) 10%,
+    transparent
+  ) !important;
 }
 .level1,
 .level2 {
-  background: color-mix(in srgb, var(--theme-overlay) 28%, transparent) !important;
+  background: color-mix(
+    in srgb,
+    var(--theme-accent-overlay) 32%,
+    transparent
+  ) !important;
 }
 .level3 {
-  background: color-mix(in srgb, var(--theme-overlay) 58%, transparent) !important;
+  background: color-mix(
+    in srgb,
+    var(--theme-accent-overlay) 62%,
+    transparent
+  ) !important;
 }
 .level4 {
   background: var(--accent-hover) !important;
 }
 
 .activityGrid span[data-level="NONE"] {
-  background: color-mix(in srgb, var(--theme-overlay) 8%, transparent) !important;
+  background: color-mix(
+    in srgb,
+    var(--theme-accent-overlay) 10%,
+    transparent
+  ) !important;
 }
 
 .activityGrid span[data-level="FIRST_QUARTILE"] {
-  background: color-mix(in srgb, var(--theme-overlay) 25%, transparent) !important;
+  background: color-mix(
+    in srgb,
+    var(--theme-accent-overlay) 30%,
+    transparent
+  ) !important;
 }
 
 .activityGrid span[data-level="SECOND_QUARTILE"] {
-  background: color-mix(in srgb, var(--theme-overlay) 45%, transparent) !important;
+  background: color-mix(
+    in srgb,
+    var(--theme-accent-overlay) 48%,
+    transparent
+  ) !important;
 }
 
 .activityGrid span[data-level="THIRD_QUARTILE"] {
-  background: color-mix(in srgb, var(--theme-overlay) 70%, transparent) !important;
+  background: color-mix(
+    in srgb,
+    var(--theme-accent-overlay) 70%,
+    transparent
+  ) !important;
 }
 
 .activityGrid span[data-level="FOURTH_QUARTILE"] {
   background: var(--accent-hover) !important;
-  box-shadow: 0 0 10px color-mix(in srgb, var(--theme-accent-overlay) 22%, transparent);
+  box-shadow: 0 0 10px
+    color-mix(in srgb, var(--theme-accent-overlay) 22%, transparent);
 }
 
 .repositoryList {
@@ -212,7 +251,8 @@
   align-items: center;
   gap: 16px;
   padding: 18px;
-  border: 1px solid color-mix(in srgb, var(--theme-accent-overlay) 16%, transparent);
+  border: 1px solid
+    color-mix(in srgb, var(--theme-accent-overlay) 16%, transparent);
   border-radius: 14px;
   color: var(--accent);
   text-decoration: none;
@@ -297,4 +337,3 @@
     grid-template-columns: 1fr;
   }
 }
-
