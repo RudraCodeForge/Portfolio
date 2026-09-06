@@ -1,10 +1,18 @@
 .headerShell {
   width: 100%;
   background:
-    radial-gradient(circle at 20% 20%, rgba(51, 94, 88, 0.26), transparent 25%),
-    linear-gradient(90deg, rgba(2, 12, 15, 0.98), rgba(6, 25, 23, 0.96));
-  color: #edf8f5;
-  border-top: 1px solid rgba(148, 163, 184, 0.12);
+    radial-gradient(
+      circle at 20% 20%,
+      color-mix(in srgb, var(--theme-overlay) 26%, transparent),
+      transparent 25%
+    ),
+    linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--theme-overlay) 98%, transparent),
+      color-mix(in srgb, var(--theme-overlay) 96%, transparent)
+    );
+  color: var(--text-primary);
+  border-top: 1px solid var(--border);
   padding-top: 90px;
 }
 
@@ -21,7 +29,7 @@
   font-size: 0.82rem;
   letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: rgba(209, 232, 229, 0.76);
+  color: var(--text-secondary);
   margin-bottom: 26px;
   padding: 0 40px;
 }
@@ -30,8 +38,8 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: #74f2d0;
-  box-shadow: 0 0 18px rgba(116, 242, 208, 0.75);
+  background: var(--accent);
+  box-shadow: 0 0 18px color-mix(in srgb, var(--theme-overlay) 75%, transparent);
 }
 
 .statusSlash {
@@ -55,7 +63,7 @@
   line-height: 0.86;
   letter-spacing: -0.08em;
   font-weight: 800;
-  color: #f4f9f7;
+  color: var(--text-primary);
 }
 
 .lineBreak {
@@ -65,7 +73,12 @@
 
 .gradientText {
   display: inline-block;
-  background: linear-gradient(90deg, #a9f3d8, #7ad9e8, #d9bff9);
+  background: linear-gradient(
+    90deg,
+    var(--accent),
+    var(--accent-hover),
+    var(--accent)
+  );
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -76,7 +89,7 @@
   margin-top: 28px;
   font-size: clamp(1.08rem, 1.6vw, 1.42rem);
   line-height: 1.45;
-  color: rgba(221, 239, 236, 0.8);
+  color: var(--text-secondary);
   letter-spacing: -0.02em;
 }
 
@@ -91,7 +104,7 @@
 .primaryBtn,
 .secondaryBtn,
 .ghostBtn {
-  border: 1px solid rgba(148, 163, 184, 0.22);
+  border: 1px solid var(--border-hover);
   border-radius: 999px;
   cursor: pointer;
   font: inherit;
@@ -103,17 +116,18 @@
 }
 
 .primaryBtn {
-  background: linear-gradient(135deg, #bae9d6, #7ce9d9);
-  color: #061a18;
+  background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+  color: var(--theme-on-accent);
   min-height: 64px;
   padding: 0 27px;
   font-size: clamp(1rem, 1vw, 1rem);
-  box-shadow: 0 18px 38px rgba(116, 242, 208, 0.15);
+  box-shadow: 0 18px 38px
+    color-mix(in srgb, var(--theme-overlay) 15%, transparent);
 }
 
 .secondaryBtn {
-  background: rgba(15, 23, 42, 0.18);
-  color: #edf8f5;
+  background: color-mix(in srgb, var(--theme-overlay) 18%, transparent);
+  color: var(--text-primary);
   min-height: 64px;
   padding: 0 27px;
   font-size: clamp(1rem, 1vw, 1rem);
@@ -124,7 +138,7 @@
   align-items: center;
   text-decoration: none;
   background: transparent;
-  color: #edf8f5;
+  color: var(--text-primary);
   min-height: 64px;
   padding: 0 22px;
   font-size: clamp(1rem, 1vw, 1rem);
@@ -134,7 +148,7 @@
 .secondaryBtn:hover,
 .ghostBtn:hover {
   transform: translateY(-2px);
-  border-color: #dffef5;
+  border-color: var(--text-primary);
 }
 
 .downloadIcon {
@@ -148,7 +162,7 @@
   align-items: center;
   gap: 18px;
   margin-top: 40px;
-  color: rgba(220, 232, 235, 0.7);
+  color: color-mix(in srgb, var(--theme-overlay) 70%, transparent);
   letter-spacing: 0.22em;
   text-transform: uppercase;
   font-size: 0.78rem;
@@ -168,8 +182,8 @@
   align-items: center;
   justify-content: center;
   font-size: 0.72rem;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  color: rgba(233, 244, 241, 0.72);
+  border: 1px solid var(--border-hover);
+  color: var(--text-secondary);
   text-decoration: none;
   transition:
     color 0.2s ease,
@@ -178,19 +192,20 @@
 }
 
 .iconCircle:hover {
-  color: #76e7d0;
-  border-color: #76e7d0;
+  color: var(--accent);
+  border-color: var(--accent);
   transform: translateY(-2px);
 }
 
 .previewCard {
   position: relative;
-  background: rgba(11, 32, 30, 0.72);
-  border: 1px solid rgba(148, 163, 184, 0.2);
+  background: color-mix(in srgb, var(--theme-overlay) 72%, transparent);
+  border: 1px solid var(--border-hover);
   border-radius: 20px;
   overflow: hidden;
   min-height: 480px;
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+  box-shadow: inset 0 0 0 1px
+    color-mix(in srgb, var(--theme-overlay) 2%, transparent);
 }
 
 .previewTopbar {
@@ -198,8 +213,8 @@
   align-items: center;
   justify-content: space-between;
   padding: 16px 18px 12px;
-  border-bottom: 1px solid rgba(148, 163, 184, 0.12);
-  background: rgba(9, 23, 21, 0.52);
+  border-bottom: 1px solid var(--border);
+  background: color-mix(in srgb, var(--theme-overlay) 52%, transparent);
 }
 
 .windowDots {
@@ -218,24 +233,24 @@
 }
 
 .redDot {
-  background: #ff5f57;
+  background: var(--theme-terminal-red);
 }
 .yellowDot {
-  background: #ffbd2e;
+  background: var(--theme-terminal-yellow);
 }
 .greenDot {
-  background: #28c840;
+  background: var(--theme-terminal-green);
 }
 
 .fileName {
-  color: rgba(226, 240, 232, 0.68);
+  color: var(--text-secondary);
   font-size: 0.75rem;
   letter-spacing: 0.02em;
 }
 
 .codeArea {
   padding: 16px 20px 10px;
-  background: rgba(6, 18, 19, 0.35);
+  background: color-mix(in srgb, var(--theme-overlay) 35%, transparent);
   font-family: "SFMono-Regular", Consolas, monospace;
   font-size: 0.96rem;
   line-height: 1.2;
@@ -249,17 +264,17 @@
 }
 
 .lineNumber {
-  color: rgba(148, 163, 184, 0.72);
+  color: color-mix(in srgb, var(--theme-overlay) 72%, transparent);
   text-align: right;
 }
 
 .lineText {
-  color: #d9f7ef;
+  color: var(--theme-code-text);
   white-space: pre-wrap;
 }
 
 .lineText:nth-child(1) {
-  color: #76e7d0;
+  color: var(--accent);
 }
 
 .previewFooter {
@@ -268,8 +283,8 @@
   justify-content: space-between;
   gap: 18px;
   padding: 16px 18px 18px;
-  border-top: 1px solid rgba(148, 163, 184, 0.12);
-  background: rgba(8, 24, 22, 0.7);
+  border-top: 1px solid var(--border);
+  background: color-mix(in srgb, var(--theme-overlay) 70%, transparent);
 }
 
 .footerTag {
@@ -277,7 +292,7 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 8px;
-  color: #f2fbf7;
+  color: var(--text-primary);
   font-size: 0.74rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -295,7 +310,7 @@
   flex-wrap: wrap;
   gap: 12px;
   padding: 0;
-  color: #76e7d0;
+  color: var(--accent);
   font-size: 1.15rem;
 }
 
@@ -318,7 +333,7 @@
 }
 
 .footerBadge {
-  color: #76e7d0;
+  color: var(--accent);
 }
 
 .footerPill {
@@ -327,9 +342,9 @@
   gap: 8px;
   padding: 10px 16px;
   border-radius: 999px;
-  background: rgba(118, 231, 208, 0.12);
-  border: 1px solid rgba(118, 231, 208, 0.3);
-  color: #dffef5;
+  background: color-mix(in srgb, var(--theme-overlay) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--theme-overlay) 30%, transparent);
+  color: var(--text-primary);
   font-size: 0.9rem;
 }
 
@@ -338,21 +353,21 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: #7ef2cf;
-  box-shadow: 0 0 12px rgba(126, 242, 207, 0.7);
+  background: var(--accent);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--theme-overlay) 70%, transparent);
 }
 
 .statsRow {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  border-top: 1px solid rgba(148, 163, 184, 0.12);
+  border-top: 1px solid var(--border);
   margin-top: 54px;
-  background: rgba(8, 21, 23, 0.18);
+  background: color-mix(in srgb, var(--theme-overlay) 18%, transparent);
 }
 
 .statBox {
   padding: 34px 28px 40px;
-  border-right: 1px solid rgba(148, 163, 184, 0.12);
+  border-right: 1px solid var(--border);
 }
 
 .statBox:last-child {
@@ -363,13 +378,13 @@
   font-size: clamp(1.4rem, 2vw, 2.5rem);
   line-height: 1;
   letter-spacing: -0.06em;
-  color: #f2faf8;
+  color: var(--text-primary);
   font-weight: 700;
 }
 
 .statLabel {
   margin-top: 12px;
-  color: rgba(208, 224, 220, 0.68);
+  color: color-mix(in srgb, var(--theme-overlay) 68%, transparent);
   font-size: 0.72rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
@@ -478,7 +493,7 @@
 
   .statBox {
     border-right: none;
-    border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+    border-bottom: 1px solid var(--border);
   }
 
   .statBox:last-child {
@@ -486,7 +501,7 @@
   }
 }
 .commentText {
-  color: #fcb07d;
+  color: var(--accent-hover);
   opacity: 0.9;
 }
 .BarBlink {
