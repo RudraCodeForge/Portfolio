@@ -381,9 +381,116 @@ export const themes = [
   },
 ];
 
+const defaultEffects = {
+  surface: "solid",
+  blur: "0px",
+  shadow: "0 18px 50px rgba(0, 0, 0, 0.18)",
+  radius: "16px",
+  gradient: "none",
+};
+
+export const effectPresets = {
+  aqua: {
+    surface: "glass",
+    blur: "18px",
+    shadow: "0 18px 50px rgba(0, 0, 0, 0.28)",
+    radius: "20px",
+    gradient:
+      "linear-gradient(135deg, rgba(103,232,249,.12), rgba(11,38,56,.72))",
+  },
+  violet: {
+    surface: "glass",
+    blur: "14px",
+    shadow: "0 18px 50px rgba(0, 0, 0, 0.3)",
+    radius: "18px",
+    gradient:
+      "linear-gradient(135deg, rgba(196,181,253,.1), rgba(33,25,55,.78))",
+  },
+  mint: {
+    surface: "soft",
+    blur: "6px",
+    shadow: "0 14px 36px rgba(0, 0, 0, 0.16)",
+    radius: "16px",
+    gradient:
+      "linear-gradient(135deg, rgba(146,247,217,.06), rgba(10,36,33,.7))",
+  },
+};
+
+export const workspaceEffects = [
+  {
+    id: "solid",
+    name: "Solid Surface",
+    description: "Crisp and distraction-free",
+    values: {
+      surface: "solid",
+      blur: "0px",
+      shadow: "0 18px 50px rgba(0,0,0,.18)",
+      radius: "16px",
+      gradient: "none",
+    },
+  },
+  {
+    id: "soft",
+    name: "Soft Depth",
+    description: "Gentle shadows and glow",
+    values: {
+      surface: "soft",
+      blur: "6px",
+      shadow: "0 14px 36px rgba(0,0,0,.16)",
+      radius: "16px",
+      gradient:
+        "linear-gradient(135deg, rgba(255,255,255,.05), rgba(0,0,0,.12))",
+    },
+  },
+  {
+    id: "glass",
+    name: "Glassmorphism",
+    description: "Blurred translucent surfaces",
+    values: {
+      surface: "glass",
+      blur: "18px",
+      shadow: "0 18px 50px rgba(0,0,0,.28)",
+      radius: "20px",
+      gradient:
+        "linear-gradient(135deg, rgba(255,255,255,.12), rgba(255,255,255,.03))",
+    },
+  },
+  {
+    id: "aurora",
+    name: "Aurora Glow",
+    description: "Layered luminous gradient",
+    values: {
+      surface: "aurora",
+      blur: "12px",
+      shadow: "0 20px 60px rgba(0,0,0,.28)",
+      radius: "24px",
+      gradient:
+        "linear-gradient(135deg, rgba(56,189,248,.16), rgba(167,139,250,.12), rgba(45,212,191,.08))",
+    },
+  },
+];
+
+themes.forEach((theme) => {
+  theme.effects = { ...defaultEffects, ...(effectPresets[theme.id] || {}) };
+});
+
 export const applyTheme = (theme) => {
   Object.entries(theme.variables).forEach(([property, value]) => {
     document.documentElement.style.setProperty(property, value);
   });
+  const effects = { ...defaultEffects, ...(theme.effects || {}) };
+  document.documentElement.style.setProperty(
+    "--surface-bg",
+    effects.gradient === "none" ? "var(--bg-card)" : effects.gradient,
+  );
+  document.documentElement.style.setProperty("--surface-blur", effects.blur);
+  document.documentElement.style.setProperty(
+    "--surface-shadow",
+    effects.shadow,
+  );
+  document.documentElement.style.setProperty(
+    "--surface-radius",
+    effects.radius,
+  );
   document.documentElement.dataset.theme = theme.id;
 };

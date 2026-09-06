@@ -36,6 +36,23 @@ const App = () => {
     Object.entries(theme.variables).forEach(([property, value]) => {
       document.documentElement.style.setProperty(property, value);
     });
+    const effects = theme.effects || {};
+    document.documentElement.style.setProperty(
+      "--surface-bg",
+      effects.gradient || "var(--bg-card)",
+    );
+    document.documentElement.style.setProperty(
+      "--surface-blur",
+      effects.blur || "0px",
+    );
+    document.documentElement.style.setProperty(
+      "--surface-shadow",
+      effects.shadow || "none",
+    );
+    document.documentElement.style.setProperty(
+      "--surface-radius",
+      effects.radius || "16px",
+    );
     document.documentElement.dataset.theme = theme.themeId;
   };
 

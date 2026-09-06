@@ -7,7 +7,7 @@ exports.getTheme = async (req, res) => {
 
 exports.updateTheme = async (req, res) => {
   try {
-    const { themeId, name, variables } = req.body;
+    const { themeId, name, variables, effects } = req.body;
 
     if (!themeId || !name || !variables || typeof variables !== "object") {
       return res
@@ -17,7 +17,7 @@ exports.updateTheme = async (req, res) => {
 
     const theme = await Theme.findOneAndUpdate(
       {},
-      { themeId, name, variables },
+      { themeId, name, variables, effects: effects || {} },
       {
         new: true,
         upsert: true,

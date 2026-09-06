@@ -2,8 +2,10 @@
   min-width: 0;
   padding: 1.65rem;
   border: 1px solid var(--border-hover);
-  border-radius: 1.15rem;
-  background: var(--bg-card);
+  border-radius: var(--surface-radius);
+  background: var(--surface-bg);
+  box-shadow: var(--surface-shadow);
+  backdrop-filter: blur(var(--surface-blur));
 }
 .panelHeader h2 {
   font-size: 1.08rem;

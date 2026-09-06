@@ -127,6 +127,7 @@ exports.GET_DATA = async (req, res) => {
             themeId: themeData.themeId,
             name: themeData.name,
             variables: themeData.variables,
+            effects: themeData.effects,
           }
         : null,
     });

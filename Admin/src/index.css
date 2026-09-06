@@ -28,6 +28,10 @@
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 16px;
+  --surface-bg: var(--bg-card);
+  --surface-blur: 0px;
+  --surface-shadow: 0 18px 50px rgba(0, 0, 0, 0.18);
+  --surface-radius: 16px;
 }
 * {
   padding: 0;

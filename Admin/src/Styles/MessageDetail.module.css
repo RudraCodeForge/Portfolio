@@ -44,8 +44,10 @@
   margin: 0 auto;
   padding: clamp(1.4rem, 5vw, 3rem);
   border: 1px solid var(--border-hover);
-  border-radius: 1.15rem;
-  background: var(--bg-card);
+  border-radius: var(--surface-radius);
+  background: var(--surface-bg);
+  box-shadow: var(--surface-shadow);
+  backdrop-filter: blur(var(--surface-blur));
 }
 .icon {
   display: grid;

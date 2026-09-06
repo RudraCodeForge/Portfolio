@@ -3,8 +3,10 @@
   max-width: 68rem;
   padding: clamp(1.25rem, 3vw, 2rem);
   border: 1px solid var(--border-hover);
-  border-radius: var(--radius-lg);
-  background: var(--bg-card);
+  border-radius: var(--surface-radius);
+  background: var(--surface-bg);
+  box-shadow: var(--surface-shadow);
+  backdrop-filter: blur(var(--surface-blur));
 }
 .header {
   display: flex;
@@ -65,6 +67,72 @@
 .themeGrid::-webkit-scrollbar-thumb {
   border-radius: 1rem;
   background: var(--border-hover);
+}
+.effectsHeader {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+.effectLabel {
+  color: var(--accent);
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+.effectGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+.effectCard {
+  display: grid;
+  gap: 0.75rem;
+  padding: 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+}
+.effectCard:hover {
+  border-color: var(--border-hover);
+}
+.effectCard.selected {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+.effectPreview {
+  display: block;
+  height: 3rem;
+  border: 1px solid var(--border-hover);
+  border-radius: 0.7rem;
+  background: var(--bg-card);
+}
+.effectPreview.soft {
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+}
+.effectPreview.glass {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.18),
+    rgba(255, 255, 255, 0.03)
+  );
+  backdrop-filter: blur(14px);
+}
+.effectPreview.aurora {
+  background: linear-gradient(
+    135deg,
+    rgba(56, 189, 248, 0.45),
+    rgba(167, 139, 250, 0.35),
+    rgba(45, 212, 191, 0.3)
+  );
 }
 .themeCard {
   display: grid;
@@ -152,5 +220,8 @@
   }
   .themeCard {
     padding: 0.85rem;
+  }
+  .effectGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }

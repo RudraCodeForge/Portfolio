@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import DashboardIcon from "./DashboardIcon";
-import { applyTheme, themes } from "../data/themeData";
+import { applyTheme, themes, workspaceEffects } from "../data/themeData";
 import api from "../Services/api.service";
 import Styles from "../Styles/ThemeSettings.module.css";
 
@@ -10,6 +10,9 @@ const getInitialTheme = () =>
 
 const ThemeSettings = () => {
   const [selectedTheme, setSelectedTheme] = useState(getInitialTheme);
+  const [selectedEffect, setSelectedEffect] = useState(
+    () => getInitialTheme().effects?.surface || "solid",
+  );
   const [isLoaded, setIsLoaded] = useState(false);
   const [saveState, setSaveState] = useState("saved");
 
@@ -20,7 +23,19 @@ const ThemeSettings = () => {
         const remoteTheme = themes.find(
           (theme) => theme.id === response.data.theme?.themeId,
         );
-        if (remoteTheme) setSelectedTheme(remoteTheme);
+        if (remoteTheme) {
+          setSelectedTheme({
+            ...remoteTheme,
+            effects: {
+              ...remoteTheme.effects,
+              ...(response.data.theme?.effects || {}),
+            },
+          });
+          setSelectedEffect(
+            response.data.theme?.effects?.surface ||
+              remoteTheme.effects.surface,
+          );
+        }
       } catch (error) {
         console.error("Theme load failed:", error);
       } finally {
@@ -43,6 +58,7 @@ const ThemeSettings = () => {
           themeId: selectedTheme.id,
           name: selectedTheme.name,
           variables: selectedTheme.variables,
+          effects: selectedTheme.effects,
         });
         setSaveState("saved");
       } catch (error) {
@@ -53,6 +69,11 @@ const ThemeSettings = () => {
 
     saveTheme();
   }, [isLoaded, selectedTheme]);
+
+  const handleEffectChange = (effect) => {
+    setSelectedEffect(effect.id);
+    setSelectedTheme((theme) => ({ ...theme, effects: effect.values }));
+  };
 
   return (
     <section className={Styles.panel}>
@@ -99,6 +120,33 @@ const ThemeSettings = () => {
             </span>
             <span className={Styles.check}>
               {selectedTheme.id === theme.id && <DashboardIcon name="shield" />}
+            </span>
+          </button>
+        ))}
+      </div>
+
+      <div className={Styles.effectsHeader}>
+        <div>
+          <p className={Styles.eyebrow}>Workspace effect</p>
+          <p className={Styles.description}>
+            Change the surface feel without changing your selected colors.
+          </p>
+        </div>
+        <span className={Styles.effectLabel}>{selectedEffect}</span>
+      </div>
+      <div className={Styles.effectGrid}>
+        {workspaceEffects.map((effect) => (
+          <button
+            type="button"
+            key={effect.id}
+            className={`${Styles.effectCard} ${selectedEffect === effect.id ? Styles.selected : ""}`}
+            onClick={() => handleEffectChange(effect)}
+            aria-pressed={selectedEffect === effect.id}
+          >
+            <span className={`${Styles.effectPreview} ${Styles[effect.id]}`} />
+            <span className={Styles.themeCopy}>
+              <strong>{effect.name}</strong>
+              <small>{effect.description}</small>
             </span>
           </button>
         ))}
