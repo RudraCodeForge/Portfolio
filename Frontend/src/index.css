@@ -37,79 +37,11 @@ textarea {
   --accent-hover: #6fe8c5;
   --border: rgba(146, 247, 217, 0.15);
   --border-hover: rgba(146, 247, 217, 0.3);
-  --surface-bg: var(--bg-card);
-  --surface-blur: 0px;
-  --surface-shadow: none;
-  --surface-radius: 16px;
-  --theme-overlay: var(--accent);
-  --theme-overlay-strong: var(--accent);
-  --theme-on-accent: var(--bg-primary);
-  --theme-terminal-red: #ff5f57;
-  --theme-terminal-yellow: #ffbd2e;
-  --theme-terminal-green: #28c840;
-  --theme-code-text: var(--text-primary);
 }
 
 body {
   background: var(--bg-primary);
   color: var(--text-primary);
-}
-
-/* Keep page-level surfaces on the same theme contract as the remote theme. */
-:where(
-  .headerShell,
-  .aboutSection,
-  .skillsSection,
-  .projectsSection,
-  .allProjectsPage,
-  .experienceSection,
-  .educationSection,
-  .goodAtSection,
-  .githubSection,
-  .contactSection,
-  .footer
-) {
-  background: var(--bg-primary);
-  color: var(--text-primary);
-  border-color: var(--border);
-}
-
-:where(
-  .sectionLabel,
-  .footerKicker,
-  .brand span,
-  .viewAllLink,
-  .backLink,
-  .emailLink,
-  .githubButton,
-  .emptyEyebrow
-) {
-  color: var(--accent);
-}
-
-:where(
-  .heading,
-  .projectsHeading,
-  .allProjectsHeading,
-  .githubTitleRow,
-  .textBlock h1,
-  .footer,
-  .contactForm label
-) {
-  color: var(--text-primary);
-}
-
-:where(
-  .introCopy,
-  .headerCopy,
-  .textBlock p,
-  .allProjectsHeading p,
-  .footerCopy,
-  .githubTitleRow a,
-  .navLink,
-  .brandText
-) {
-  color: var(--text-secondary);
 }
 
 .cursorGlow {

@@ -1,8 +1,8 @@
 .goodAtSection {
   min-height: 650px;
   padding: 120px 0 110px;
-  background: var(--bg-primary);
-  color: var(--text-primary);
+  background: #020c0f;
+  color: #edf8f5;
 }
 
 .goodAtInner {
@@ -15,7 +15,7 @@
   align-items: center;
   gap: 16px;
   margin-bottom: 16px;
-  color: var(--accent);
+  color: #92f7d9;
   font:
     0.78rem "SFMono-Regular",
     Consolas,
@@ -26,7 +26,7 @@
 .labelLine {
   width: 40px;
   height: 1px;
-  background: color-mix(in srgb, var(--theme-overlay) 45%, transparent);
+  background: rgba(146, 247, 217, 0.45);
 }
 
 .heading {
@@ -39,7 +39,7 @@
 
 .heading span {
   display: block;
-  color: var(--text-muted);
+  color: rgba(227, 238, 235, 0.37);
 }
 
 .goodAtGrid {
@@ -54,9 +54,9 @@
   min-height: 298px;
   flex-direction: column;
   padding: 32px 30px;
-  border: 1px solid var(--border-hover);
+  border: 1px solid rgba(148, 163, 184, 0.19);
   border-radius: 20px;
-  background: color-mix(in srgb, var(--theme-overlay) 72%, transparent);
+  background: rgba(9, 21, 22, 0.72);
   transition:
     transform 0.25s ease,
     border-color 0.25s ease;
@@ -64,11 +64,11 @@
 
 .goodAtCard:hover {
   transform: translateY(-5px);
-  border-color: color-mix(in srgb, var(--theme-overlay) 42%, transparent);
+  border-color: rgba(146, 247, 217, 0.42);
 }
 
 .cardIcon {
-  color: var(--accent);
+  color: #8ef2d4;
   font-size: 1.65rem;
 }
 
@@ -81,7 +81,7 @@
 .goodAtCard p {
   max-width: 270px;
   margin-top: 22px;
-  color: color-mix(in srgb, var(--theme-overlay) 66%, transparent);
+  color: rgba(201, 222, 218, 0.66);
   font-size: 1rem;
   line-height: 1.8;
 }
@@ -90,7 +90,7 @@
   position: absolute;
   bottom: 28px;
   left: 30px;
-  color: color-mix(in srgb, var(--theme-overlay) 48%, transparent);
+  color: rgba(201, 222, 218, 0.48);
   font-size: 1.2rem;
 }
 
@@ -113,7 +113,3 @@
     grid-template-columns: 1fr;
   }
 }
-
-
-
-

@@ -1,18 +1,10 @@
 .headerShell {
   width: 100%;
   background:
-    radial-gradient(
-      circle at 20% 20%,
-      color-mix(in srgb, var(--theme-overlay) 26%, transparent),
-      transparent 25%
-    ),
-    linear-gradient(
-      90deg,
-      color-mix(in srgb, var(--theme-overlay) 98%, transparent),
-      color-mix(in srgb, var(--theme-overlay) 96%, transparent)
-    );
-  color: var(--text-primary);
-  border-top: 1px solid var(--border);
+    radial-gradient(circle at 20% 20%, rgba(51, 94, 88, 0.26), transparent 25%),
+    linear-gradient(90deg, rgba(2, 12, 15, 0.98), rgba(6, 25, 23, 0.96));
+  color: #edf8f5;
+  border-top: 1px solid rgba(148, 163, 184, 0.12);
   padding-top: 90px;
 }
 
@@ -29,7 +21,7 @@
   font-size: 0.82rem;
   letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: var(--text-secondary);
+  color: rgba(209, 232, 229, 0.76);
   margin-bottom: 26px;
   padding: 0 40px;
 }
@@ -38,8 +30,8 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 18px color-mix(in srgb, var(--theme-overlay) 75%, transparent);
+  background: #74f2d0;
+  box-shadow: 0 0 18px rgba(116, 242, 208, 0.75);
 }
 
 .statusSlash {
@@ -63,7 +55,7 @@
   line-height: 0.86;
   letter-spacing: -0.08em;
   font-weight: 800;
-  color: var(--text-primary);
+  color: #f4f9f7;
 }
 
 .lineBreak {
@@ -73,12 +65,7 @@
 
 .gradientText {
   display: inline-block;
-  background: linear-gradient(
-    90deg,
-    var(--accent),
-    var(--accent-hover),
-    var(--accent)
-  );
+  background: linear-gradient(90deg, #a9f3d8, #7ad9e8, #d9bff9);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -89,7 +76,7 @@
   margin-top: 28px;
   font-size: clamp(1.08rem, 1.6vw, 1.42rem);
   line-height: 1.45;
-  color: var(--text-secondary);
+  color: rgba(221, 239, 236, 0.8);
   letter-spacing: -0.02em;
 }
 
@@ -104,7 +91,7 @@
 .primaryBtn,
 .secondaryBtn,
 .ghostBtn {
-  border: 1px solid var(--border-hover);
+  border: 1px solid rgba(148, 163, 184, 0.22);
   border-radius: 999px;
   cursor: pointer;
   font: inherit;
@@ -116,18 +103,17 @@
 }
 
 .primaryBtn {
-  background: linear-gradient(135deg, var(--accent), var(--accent-hover));
-  color: var(--theme-on-accent);
+  background: linear-gradient(135deg, #bae9d6, #7ce9d9);
+  color: #061a18;
   min-height: 64px;
   padding: 0 27px;
   font-size: clamp(1rem, 1vw, 1rem);
-  box-shadow: 0 18px 38px
-    color-mix(in srgb, var(--theme-overlay) 15%, transparent);
+  box-shadow: 0 18px 38px rgba(116, 242, 208, 0.15);
 }
 
 .secondaryBtn {
-  background: color-mix(in srgb, var(--theme-overlay) 18%, transparent);
-  color: var(--text-primary);
+  background: rgba(15, 23, 42, 0.18);
+  color: #edf8f5;
   min-height: 64px;
   padding: 0 27px;
   font-size: clamp(1rem, 1vw, 1rem);
@@ -138,7 +124,7 @@
   align-items: center;
   text-decoration: none;
   background: transparent;
-  color: var(--text-primary);
+  color: #edf8f5;
   min-height: 64px;
   padding: 0 22px;
   font-size: clamp(1rem, 1vw, 1rem);
@@ -148,7 +134,7 @@
 .secondaryBtn:hover,
 .ghostBtn:hover {
   transform: translateY(-2px);
-  border-color: var(--text-primary);
+  border-color: #dffef5;
 }
 
 .downloadIcon {
@@ -162,7 +148,7 @@
   align-items: center;
   gap: 18px;
   margin-top: 40px;
-  color: color-mix(in srgb, var(--theme-overlay) 70%, transparent);
+  color: rgba(220, 232, 235, 0.7);
   letter-spacing: 0.22em;
   text-transform: uppercase;
   font-size: 0.78rem;
@@ -182,8 +168,8 @@
   align-items: center;
   justify-content: center;
   font-size: 0.72rem;
-  border: 1px solid var(--border-hover);
-  color: var(--text-secondary);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: rgba(233, 244, 241, 0.72);
   text-decoration: none;
   transition:
     color 0.2s ease,
@@ -192,20 +178,19 @@
 }
 
 .iconCircle:hover {
-  color: var(--accent);
-  border-color: var(--accent);
+  color: #76e7d0;
+  border-color: #76e7d0;
   transform: translateY(-2px);
 }
 
 .previewCard {
   position: relative;
-  background: color-mix(in srgb, var(--theme-overlay) 72%, transparent);
-  border: 1px solid var(--border-hover);
+  background: rgba(11, 32, 30, 0.72);
+  border: 1px solid rgba(148, 163, 184, 0.2);
   border-radius: 20px;
   overflow: hidden;
   min-height: 480px;
-  box-shadow: inset 0 0 0 1px
-    color-mix(in srgb, var(--theme-overlay) 2%, transparent);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
 }
 
 .previewTopbar {
@@ -213,8 +198,8 @@
   align-items: center;
   justify-content: space-between;
   padding: 16px 18px 12px;
-  border-bottom: 1px solid var(--border);
-  background: color-mix(in srgb, var(--theme-overlay) 52%, transparent);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+  background: rgba(9, 23, 21, 0.52);
 }
 
 .windowDots {
@@ -233,24 +218,24 @@
 }
 
 .redDot {
-  background: var(--theme-terminal-red);
+  background: #ff5f57;
 }
 .yellowDot {
-  background: var(--theme-terminal-yellow);
+  background: #ffbd2e;
 }
 .greenDot {
-  background: var(--theme-terminal-green);
+  background: #28c840;
 }
 
 .fileName {
-  color: var(--text-secondary);
+  color: rgba(226, 240, 232, 0.68);
   font-size: 0.75rem;
   letter-spacing: 0.02em;
 }
 
 .codeArea {
   padding: 16px 20px 10px;
-  background: color-mix(in srgb, var(--theme-overlay) 35%, transparent);
+  background: rgba(6, 18, 19, 0.35);
   font-family: "SFMono-Regular", Consolas, monospace;
   font-size: 0.96rem;
   line-height: 1.2;
@@ -264,17 +249,17 @@
 }
 
 .lineNumber {
-  color: color-mix(in srgb, var(--theme-overlay) 72%, transparent);
+  color: rgba(148, 163, 184, 0.72);
   text-align: right;
 }
 
 .lineText {
-  color: var(--theme-code-text);
+  color: #d9f7ef;
   white-space: pre-wrap;
 }
 
 .lineText:nth-child(1) {
-  color: var(--accent);
+  color: #76e7d0;
 }
 
 .previewFooter {
@@ -283,8 +268,8 @@
   justify-content: space-between;
   gap: 18px;
   padding: 16px 18px 18px;
-  border-top: 1px solid var(--border);
-  background: color-mix(in srgb, var(--theme-overlay) 70%, transparent);
+  border-top: 1px solid rgba(148, 163, 184, 0.12);
+  background: rgba(8, 24, 22, 0.7);
 }
 
 .footerTag {
@@ -292,7 +277,7 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 8px;
-  color: var(--text-primary);
+  color: #f2fbf7;
   font-size: 0.74rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -310,7 +295,7 @@
   flex-wrap: wrap;
   gap: 12px;
   padding: 0;
-  color: var(--accent);
+  color: #76e7d0;
   font-size: 1.15rem;
 }
 
@@ -333,7 +318,7 @@
 }
 
 .footerBadge {
-  color: var(--accent);
+  color: #76e7d0;
 }
 
 .footerPill {
@@ -342,9 +327,9 @@
   gap: 8px;
   padding: 10px 16px;
   border-radius: 999px;
-  background: color-mix(in srgb, var(--theme-overlay) 12%, transparent);
-  border: 1px solid color-mix(in srgb, var(--theme-overlay) 30%, transparent);
-  color: var(--text-primary);
+  background: rgba(118, 231, 208, 0.12);
+  border: 1px solid rgba(118, 231, 208, 0.3);
+  color: #dffef5;
   font-size: 0.9rem;
 }
 
@@ -353,21 +338,21 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 12px color-mix(in srgb, var(--theme-overlay) 70%, transparent);
+  background: #7ef2cf;
+  box-shadow: 0 0 12px rgba(126, 242, 207, 0.7);
 }
 
 .statsRow {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  border-top: 1px solid var(--border);
+  border-top: 1px solid rgba(148, 163, 184, 0.12);
   margin-top: 54px;
-  background: color-mix(in srgb, var(--theme-overlay) 18%, transparent);
+  background: rgba(8, 21, 23, 0.18);
 }
 
 .statBox {
   padding: 34px 28px 40px;
-  border-right: 1px solid var(--border);
+  border-right: 1px solid rgba(148, 163, 184, 0.12);
 }
 
 .statBox:last-child {
@@ -378,13 +363,13 @@
   font-size: clamp(1.4rem, 2vw, 2.5rem);
   line-height: 1;
   letter-spacing: -0.06em;
-  color: var(--text-primary);
+  color: #f2faf8;
   font-weight: 700;
 }
 
 .statLabel {
   margin-top: 12px;
-  color: color-mix(in srgb, var(--theme-overlay) 68%, transparent);
+  color: rgba(208, 224, 220, 0.68);
   font-size: 0.72rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
@@ -493,7 +478,7 @@
 
   .statBox {
     border-right: none;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid rgba(148, 163, 184, 0.12);
   }
 
   .statBox:last-child {
@@ -501,7 +486,7 @@
   }
 }
 .commentText {
-  color: var(--accent-hover);
+  color: #fcb07d;
   opacity: 0.9;
 }
 .BarBlink {

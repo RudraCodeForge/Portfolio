@@ -5,12 +5,12 @@
   background:
     radial-gradient(
       circle at 82% 22%,
-      color-mix(in srgb, var(--theme-overlay) 8%, transparent),
+      rgba(81, 70, 125, 0.08),
       transparent 24%
     ),
-    var(--bg-primary);
-  color: var(--text-primary);
-  border-top: 1px solid var(--border);
+    #061110;
+  color: #edf8f5;
+  border-top: 1px solid rgba(148, 163, 184, 0.12);
 }
 
 .allProjectsPage {
@@ -41,7 +41,7 @@
   align-items: center;
   gap: 16px;
   margin-bottom: 16px;
-  color: var(--accent);
+  color: #92f7d9;
   font:
     0.78rem "SFMono-Regular",
     Consolas,
@@ -52,7 +52,7 @@
 .labelLine {
   width: 40px;
   height: 1px;
-  background: color-mix(in srgb, var(--theme-overlay) 45%, transparent);
+  background: rgba(146, 247, 217, 0.45);
 }
 
 .projectsHeading h2,
@@ -65,20 +65,20 @@
 
 .projectsHeading h2 span,
 .allProjectsHeading h1 span {
-  color: var(--text-muted);
+  color: rgba(227, 238, 235, 0.37);
 }
 
 .allProjectsHeading p {
   max-width: 560px;
   margin-top: 26px;
-  color: color-mix(in srgb, var(--theme-overlay) 68%, transparent);
+  color: rgba(221, 239, 236, 0.68);
   font-size: 1.05rem;
 }
 
 .viewAllLink,
 .backLink,
 .viewAllButton {
-  color: var(--accent);
+  color: #8ef2d4;
   font-weight: 700;
   text-decoration: none;
 }
@@ -98,9 +98,9 @@
   width: fit-content;
   margin: 44px auto 0;
   padding: 14px 22px;
-  border: 1px solid color-mix(in srgb, var(--theme-overlay) 38%, transparent);
+  border: 1px solid rgba(116, 242, 208, 0.38);
   border-radius: 999px;
-  background: color-mix(in srgb, var(--theme-overlay) 8%, transparent);
+  background: rgba(116, 242, 208, 0.08);
 }
 
 .viewAllButton span {
@@ -109,7 +109,7 @@
 }
 
 .viewAllButton:hover {
-  background: color-mix(in srgb, var(--theme-overlay) 16%, transparent);
+  background: rgba(116, 242, 208, 0.16);
 }
 
 .backLink {
@@ -135,18 +135,18 @@
 
 .projectFilters button {
   padding: 10px 18px;
-  border: 1px solid var(--border-hover);
+  border: 1px solid rgba(148, 163, 184, 0.2);
   border-radius: 999px;
   background: transparent;
-  color: var(--text-secondary);
+  color: rgba(220, 247, 243, 0.7);
   cursor: pointer;
 }
 
 .projectFilters button:hover,
 .projectFilters .activeFilter {
-  border-color: var(--accent);
-  color: var(--accent);
-  background: color-mix(in srgb, var(--theme-overlay) 10%, transparent);
+  border-color: #74f2d0;
+  color: #74f2d0;
+  background: rgba(116, 242, 208, 0.1);
 }
 
 .emptyProjects {
@@ -156,15 +156,15 @@
   min-height: 360px;
   padding: 72px 24px;
   overflow: hidden;
-  border: 1px solid color-mix(in srgb, var(--theme-overlay) 18%, transparent);
+  border: 1px solid rgba(146, 247, 217, 0.18);
   border-radius: 20px;
   background:
     radial-gradient(
       circle at 50% 0%,
-      color-mix(in srgb, var(--theme-overlay) 12%, transparent),
+      rgba(116, 242, 208, 0.12),
       transparent 42%
     ),
-    color-mix(in srgb, var(--theme-overlay) 72%, transparent);
+    rgba(9, 21, 22, 0.72);
   text-align: center;
 }
 
@@ -173,16 +173,16 @@
   width: 58px;
   height: 58px;
   place-items: center;
-  border: 1px solid color-mix(in srgb, var(--theme-overlay) 50%, transparent);
+  border: 1px solid rgba(116, 242, 208, 0.5);
   border-radius: 50%;
-  color: var(--accent);
+  color: #74f2d0;
   font-size: 2rem;
-  box-shadow: 0 0 30px color-mix(in srgb, var(--theme-overlay) 12%, transparent);
+  box-shadow: 0 0 30px rgba(116, 242, 208, 0.12);
 }
 
 .emptyEyebrow {
   margin-top: 24px;
-  color: var(--accent);
+  color: #74f2d0;
   font:
     0.75rem "SFMono-Regular",
     Consolas,
@@ -198,16 +198,16 @@
 
 .emptyProjects > p:last-of-type {
   margin-top: 12px;
-  color: var(--text-secondary);
+  color: rgba(201, 222, 218, 0.67);
 }
 
 .emptyProjects button {
   margin-top: 28px;
   padding: 12px 18px;
-  border: 1px solid color-mix(in srgb, var(--theme-overlay) 40%, transparent);
+  border: 1px solid rgba(116, 242, 208, 0.4);
   border-radius: 999px;
-  background: color-mix(in srgb, var(--theme-overlay) 10%, transparent);
-  color: var(--accent);
+  background: rgba(116, 242, 208, 0.1);
+  color: #8ef2d4;
   cursor: pointer;
   font: inherit;
   font-weight: 700;
@@ -219,9 +219,9 @@
 
 .projectCard {
   overflow: hidden;
-  border: 1px solid var(--border);
+  border: 1px solid rgba(148, 163, 184, 0.17);
   border-radius: 20px;
-  background: var(--bg-card);
+  background: #091516;
   transition:
     transform 0.25s ease,
     border-color 0.25s ease;
@@ -229,7 +229,7 @@
 
 .projectCard:hover {
   transform: translateY(-5px);
-  border-color: color-mix(in srgb, var(--theme-overlay) 45%, transparent);
+  border-color: rgba(146, 247, 217, 0.45);
 }
 
 .projectVisual {
@@ -240,27 +240,27 @@
 }
 
 .tone1 {
-  background: linear-gradient(135deg, var(--bg-hover), var(--bg-card));
+  background: linear-gradient(135deg, #124f4d, #18303c);
 }
 .tone2 {
-  background: linear-gradient(135deg, var(--bg-card), var(--bg-secondary));
+  background: linear-gradient(135deg, #332b5d, #20243d);
 }
 .tone3 {
-  background: linear-gradient(135deg, var(--bg-hover), var(--bg-secondary));
+  background: linear-gradient(135deg, #684632, #302735);
 }
 .tone4 {
-  background: linear-gradient(135deg, var(--bg-hover), var(--bg-card));
+  background: linear-gradient(135deg, #24564d, #27383c);
 }
 .tone5 {
-  background: linear-gradient(135deg, var(--bg-secondary), var(--bg-card));
+  background: linear-gradient(135deg, #3c4d6c, #252c46);
 }
 
 .projectNumber {
   display: inline-block;
   padding: 8px 14px;
-  border: 1px solid color-mix(in srgb, var(--theme-overlay) 25%, transparent);
+  border: 1px solid rgba(225, 255, 247, 0.25);
   border-radius: 999px;
-  color: color-mix(in srgb, var(--theme-overlay) 88%, transparent);
+  color: rgba(239, 255, 249, 0.88);
   font:
     0.76rem "SFMono-Regular",
     Consolas,
@@ -272,7 +272,7 @@
   position: absolute;
   top: 30px;
   right: 30px;
-  color: color-mix(in srgb, var(--theme-overlay) 78%, transparent);
+  color: rgba(239, 255, 249, 0.78);
   font-size: 1.5rem;
   text-decoration: none;
 }
@@ -284,11 +284,10 @@
   width: 74%;
   padding: 24px 20px;
   border-radius: 14px;
-  background: var(--bg-secondary);
-  box-shadow: 0 18px 24px
-    color-mix(in srgb, var(--theme-overlay) 20%, transparent);
+  background: #071316;
+  box-shadow: 0 18px 24px rgba(0, 0, 0, 0.2);
   transform: rotate(-3deg);
-  color: var(--text-secondary);
+  color: #88a9aa;
   font:
     0.75rem/1.8 "SFMono-Regular",
     Consolas,
@@ -299,7 +298,7 @@
   position: absolute;
   top: 8px;
   left: 14px;
-  color: var(--text-muted);
+  color: #657074;
   letter-spacing: 3px;
 }
 
@@ -308,7 +307,7 @@
   margin-top: 12px;
 }
 .codeWindow b {
-  color: var(--accent-hover);
+  color: #f5b871;
   font-weight: 500;
 }
 
@@ -319,7 +318,7 @@
 
 .projectNote {
   margin-bottom: 18px;
-  color: var(--accent);
+  color: #8ef2d4;
   font-size: 0.92rem;
 }
 
@@ -331,7 +330,7 @@
 
 .projectDescription {
   min-height: 72px;
-  color: var(--text-secondary);
+  color: rgba(201, 222, 218, 0.67);
   font-size: 1rem;
   line-height: 1.65;
 }
@@ -346,8 +345,8 @@
 .techStack span {
   padding: 7px 12px;
   border-radius: 999px;
-  background: color-mix(in srgb, var(--theme-overlay) 11%, transparent);
-  color: var(--text-secondary);
+  background: rgba(148, 163, 184, 0.11);
+  color: rgba(201, 222, 218, 0.7);
   font:
     0.75rem "SFMono-Regular",
     Consolas,
@@ -364,18 +363,18 @@
 .pagination button {
   min-width: 42px;
   height: 42px;
-  border: 1px solid var(--border-hover);
+  border: 1px solid rgba(148, 163, 184, 0.2);
   border-radius: 50%;
   background: transparent;
-  color: var(--text-primary);
+  color: #dff8f2;
   cursor: pointer;
 }
 
 .pagination button:hover:not(:disabled),
 .pagination .activePage {
-  border-color: var(--accent);
-  background: color-mix(in srgb, var(--theme-overlay) 14%, transparent);
-  color: var(--accent);
+  border-color: #74f2d0;
+  background: rgba(116, 242, 208, 0.14);
+  color: #74f2d0;
 }
 
 .pagination button:disabled {

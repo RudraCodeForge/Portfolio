@@ -1,10 +1,10 @@
 .githubSection {
   padding: 100px 0 110px;
   background:
-    radial-gradient(circle at 20% 20%, color-mix(in srgb, var(--theme-overlay) 26%, transparent), transparent 25%),
-    linear-gradient(90deg, color-mix(in srgb, var(--theme-overlay) 98%, transparent), color-mix(in srgb, var(--theme-overlay) 96%, transparent));
-  border-top: 1px solid var(--border);
-  color: var(--text-primary);
+    radial-gradient(circle at 20% 20%, rgba(51, 94, 88, 0.26), transparent 25%),
+    linear-gradient(90deg, rgba(2, 12, 15, 0.98), rgba(6, 25, 23, 0.96));
+  border-top: 1px solid rgba(148, 163, 184, 0.12);
+  color: #edf8f5;
 }
 
 .githubGrid {
@@ -21,7 +21,7 @@
   align-items: center;
   gap: 16px;
   margin-bottom: 42px;
-  color: var(--accent);
+  color: #92f7d9;
   font:
     0.78rem "SFMono-Regular",
     Consolas,
@@ -32,7 +32,7 @@
 .labelLine {
   width: 40px;
   height: 1px;
-  background: color-mix(in srgb, var(--theme-overlay) 45%, transparent);
+  background: rgba(146, 247, 217, 0.45);
 }
 
 .githubTitleRow {
@@ -47,7 +47,7 @@
   height: 70px;
   place-items: center;
   border-radius: 20px;
-  background: var(--border-hover);
+  background: rgba(148, 163, 184, 0.18);
   font-size: 2rem;
 }
 
@@ -59,14 +59,14 @@
 .githubTitleRow a {
   display: inline-block;
   margin-top: 10px;
-  color: var(--text-muted);
+  color: rgba(201, 222, 218, 0.58);
   text-decoration: none;
 }
 
 .introCopy {
   max-width: 520px;
   margin-top: 40px;
-  color: var(--text-secondary);
+  color: rgba(201, 222, 218, 0.68);
   font-size: 1.05rem;
   line-height: 2;
 }
@@ -77,16 +77,16 @@
   align-items: center;
   margin-top: 40px;
   padding: 17px 28px;
-  border: 1px solid var(--border-hover);
+  border: 1px solid rgba(148, 163, 184, 0.25);
   border-radius: 999px;
-  color: var(--text-primary);
+  color: #dff8f2;
   text-decoration: none;
   font-weight: 700;
 }
 
 .githubButton:hover {
-  border-color: var(--accent);
-  color: var(--accent);
+  border-color: #74f2d0;
+  color: #74f2d0;
 }
 
 .activityPanel {
@@ -94,16 +94,16 @@
   padding: 34px 36px;
   min-width: 0;
   overflow: hidden;
-  border: 1px solid var(--border-hover);
+  border: 1px solid rgba(148, 163, 184, 0.2);
   border-radius: 20px;
-  background: color-mix(in srgb, var(--theme-overlay) 72%, transparent);
+  background: rgba(9, 21, 22, 0.72);
 }
 
 .activityHeader {
   display: flex;
   justify-content: space-between;
   gap: 20px;
-  color: var(--text-muted);
+  color: rgba(201, 222, 218, 0.62);
 }
 
 .legend {
@@ -131,7 +131,7 @@
 .activityGrid span {
   position: relative;
   border-radius: 3px;
-  background: color-mix(in srgb, var(--theme-overlay) 8%, transparent);
+  background: rgba(116, 242, 208, 0.08);
 }
 
 .activityGrid span::after {
@@ -142,11 +142,11 @@
   width: max-content;
   max-width: 180px;
   padding: 8px 10px;
-  border: 1px solid color-mix(in srgb, var(--theme-overlay) 35%, transparent);
+  border: 1px solid rgba(116, 242, 208, 0.35);
   border-radius: 7px;
-  background: var(--bg-secondary);
-  box-shadow: 0 8px 20px color-mix(in srgb, var(--theme-overlay) 28%, transparent);
-  color: var(--text-primary);
+  background: #071316;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.28);
+  color: #dff8f2;
   content: attr(data-tooltip);
   font:
     0.72rem "SFMono-Regular",
@@ -167,38 +167,38 @@
   transform: translate(-50%, 0);
 }
 .level0 {
-  background: color-mix(in srgb, var(--theme-overlay) 8%, transparent) !important;
+  background: rgba(116, 242, 208, 0.08) !important;
 }
 .level1,
 .level2 {
-  background: color-mix(in srgb, var(--theme-overlay) 28%, transparent) !important;
+  background: rgba(116, 242, 208, 0.28) !important;
 }
 .level3 {
-  background: color-mix(in srgb, var(--theme-overlay) 58%, transparent) !important;
+  background: rgba(116, 242, 208, 0.58) !important;
 }
 .level4 {
-  background: var(--accent-hover) !important;
+  background: #a8f4d9 !important;
 }
 
 .activityGrid span[data-level="NONE"] {
-  background: color-mix(in srgb, var(--theme-overlay) 8%, transparent) !important;
+  background: rgba(116, 242, 208, 0.08) !important;
 }
 
 .activityGrid span[data-level="FIRST_QUARTILE"] {
-  background: color-mix(in srgb, var(--theme-overlay) 25%, transparent) !important;
+  background: rgba(116, 242, 208, 0.25) !important;
 }
 
 .activityGrid span[data-level="SECOND_QUARTILE"] {
-  background: color-mix(in srgb, var(--theme-overlay) 45%, transparent) !important;
+  background: rgba(116, 242, 208, 0.45) !important;
 }
 
 .activityGrid span[data-level="THIRD_QUARTILE"] {
-  background: color-mix(in srgb, var(--theme-overlay) 70%, transparent) !important;
+  background: rgba(116, 242, 208, 0.7) !important;
 }
 
 .activityGrid span[data-level="FOURTH_QUARTILE"] {
-  background: var(--accent-hover) !important;
-  box-shadow: 0 0 10px color-mix(in srgb, var(--theme-overlay) 22%, transparent);
+  background: #a8f4d9 !important;
+  box-shadow: 0 0 10px rgba(168, 244, 217, 0.22);
 }
 
 .repositoryList {
@@ -212,9 +212,9 @@
   align-items: center;
   gap: 16px;
   padding: 18px;
-  border: 1px solid color-mix(in srgb, var(--theme-overlay) 16%, transparent);
+  border: 1px solid rgba(148, 163, 184, 0.16);
   border-radius: 14px;
-  color: var(--accent);
+  color: #8ef2d4;
   text-decoration: none;
 }
 
@@ -223,20 +223,20 @@
   display: block;
 }
 .repositoryCard b {
-  color: var(--text-primary);
+  color: #edf8f5;
 }
 .repositoryCard small {
   margin-top: 7px;
-  color: color-mix(in srgb, var(--theme-overlay) 48%, transparent);
+  color: rgba(201, 222, 218, 0.48);
 }
 .updatedAt {
   display: block;
   margin-top: 18px;
-  color: color-mix(in srgb, var(--theme-overlay) 40%, transparent);
+  color: rgba(201, 222, 218, 0.4);
 }
 .errorMessage {
   margin: 90px 0;
-  color: color-mix(in srgb, var(--theme-overlay) 65%, transparent);
+  color: rgba(201, 222, 218, 0.65);
   line-height: 1.7;
 }
 
@@ -297,7 +297,3 @@
     grid-template-columns: 1fr;
   }
 }
-
-
-
-

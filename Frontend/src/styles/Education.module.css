@@ -3,10 +3,10 @@
   padding: 145px 0 150px;
   overflow: hidden;
   background:
-    radial-gradient(circle at 20% 20%, color-mix(in srgb, var(--theme-overlay) 26%, transparent), transparent 25%),
-    linear-gradient(90deg, color-mix(in srgb, var(--theme-overlay) 98%, transparent), color-mix(in srgb, var(--theme-overlay) 96%, transparent));
-  border-top: 1px solid var(--border);
-  color: var(--text-primary);
+    radial-gradient(circle at 20% 20%, rgba(51, 94, 88, 0.26), transparent 25%),
+    linear-gradient(90deg, rgba(2, 12, 15, 0.98), rgba(6, 25, 23, 0.96));
+  border-top: 1px solid rgba(148, 163, 184, 0.12);
+  color: #edf8f5;
 }
 
 .educationGrid {
@@ -23,7 +23,7 @@
   align-items: center;
   gap: 16px;
   margin-bottom: 108px;
-  color: var(--accent);
+  color: #92f7d9;
   font:
     0.78rem "SFMono-Regular",
     Consolas,
@@ -33,14 +33,14 @@
 
 .sectionLabel span:first-child {
   padding: 2px 3px;
-  background: var(--accent-hover);
-  color: var(--theme-on-accent);
+  background: #a8f4d9;
+  color: #12322c;
 }
 
 .labelLine {
   width: 40px;
   height: 1px;
-  background: color-mix(in srgb, var(--theme-overlay) 45%, transparent);
+  background: rgba(146, 247, 217, 0.45);
 }
 
 .heading {
@@ -53,7 +53,7 @@
 
 .heading span {
   display: block;
-  color: var(--text-muted);
+  color: rgba(227, 238, 235, 0.37);
 }
 
 .educationList {
@@ -67,28 +67,28 @@
   gap: 18px;
   min-height: 256px;
   padding: 40px 42px;
-  border: 1px solid var(--border-hover);
+  border: 1px solid rgba(148, 163, 184, 0.2);
   border-radius: 20px;
-  background: color-mix(in srgb, var(--theme-overlay) 72%, transparent);
-  box-shadow: inset 0 1px color-mix(in srgb, var(--theme-overlay) 2%, transparent);
+  background: rgba(9, 21, 22, 0.72);
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.025);
   transition:
     border-color 0.25s ease,
     transform 0.25s ease;
 }
 
 .educationCard:hover {
-  border-color: color-mix(in srgb, var(--theme-overlay) 40%, transparent);
+  border-color: rgba(146, 247, 217, 0.4);
   transform: translateY(-3px);
 }
 
 .educationIcon {
-  color: var(--accent);
+  color: #8ef2d4;
   font-size: 1.25rem;
   line-height: 1.2;
 }
 
 .period {
-  color: var(--accent);
+  color: #8ef2d4;
   font:
     0.9rem "SFMono-Regular",
     Consolas,
@@ -104,14 +104,14 @@
 
 .college {
   margin-top: 10px;
-  color: color-mix(in srgb, var(--theme-overlay) 55%, transparent);
+  color: rgba(201, 222, 218, 0.55);
   font-size: 1rem;
 }
 
 .description {
   max-width: 680px;
   margin-top: 28px;
-  color: var(--text-secondary);
+  color: rgba(201, 222, 218, 0.68);
   font-size: 1.05rem;
   line-height: 1.8;
 }
@@ -141,7 +141,3 @@
     padding: 28px 24px;
   }
 }
-
-
-
-

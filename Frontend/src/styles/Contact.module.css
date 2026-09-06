@@ -1,8 +1,8 @@
 .contactSection {
   min-height: 680px;
   padding: 120px 0 150px;
-  background: var(--bg-primary);
-  color: var(--text-primary);
+  background: #020c0f;
+  color: #edf8f5;
 }
 
 .contactGrid {
@@ -17,7 +17,7 @@
   display: flex;
   align-items: center;
   gap: 16px;
-  color: var(--accent);
+  color: #92f7d9;
   font:
     0.78rem "SFMono-Regular",
     Consolas,
@@ -28,7 +28,7 @@
 .labelLine {
   width: 40px;
   height: 1px;
-  background: color-mix(in srgb, var(--theme-overlay) 45%, transparent);
+  background: rgba(146, 247, 217, 0.45);
 }
 
 .heading {
@@ -40,13 +40,13 @@
 
 .heading span {
   display: block;
-  color: var(--text-muted);
+  color: rgba(227, 238, 235, 0.37);
 }
 
 .introCopy {
   max-width: 510px;
   margin-top: 48px;
-  color: var(--text-secondary);
+  color: rgba(201, 222, 218, 0.7);
   font-size: 1.06rem;
   line-height: 2;
 }
@@ -56,13 +56,13 @@
   align-items: center;
   gap: 14px;
   margin-top: 54px;
-  color: var(--accent);
+  color: #8ef2d4;
   font-size: 1rem;
   text-decoration: none;
 }
 
 .emailLink:hover {
-  color: var(--text-primary);
+  color: #dffef5;
 }
 
 .contactForm {
@@ -81,7 +81,7 @@
 .contactForm label {
   display: grid;
   gap: 22px;
-  color: var(--text-muted);
+  color: rgba(201, 222, 218, 0.6);
   font:
     0.75rem "SFMono-Regular",
     Consolas,
@@ -93,11 +93,11 @@
 .contactForm textarea {
   width: 100%;
   border: 0;
-  border-bottom: 1px solid var(--border-hover);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.25);
   outline: 0;
   resize: vertical;
   background: transparent;
-  color: var(--text-primary);
+  color: #edf8f5;
   font:
     1rem "Segoe UI",
     sans-serif;
@@ -116,12 +116,12 @@
 
 .contactForm input::placeholder,
 .contactForm textarea::placeholder {
-  color: color-mix(in srgb, var(--theme-overlay) 48%, transparent);
+  color: rgba(148, 163, 184, 0.48);
 }
 
 .contactForm input:focus,
 .contactForm textarea:focus {
-  border-color: var(--accent);
+  border-color: #74f2d0;
 }
 
 .formFooter {
@@ -129,7 +129,7 @@
   align-items: center;
   gap: 22px;
   padding-top: 10px;
-  border-top: 1px solid var(--border-hover);
+  border-top: 1px solid rgba(148, 163, 184, 0.2);
 }
 
 .formFooter button {
@@ -140,8 +140,8 @@
   padding: 0 30px;
   border: 0;
   border-radius: 999px;
-  background: var(--accent-hover);
-  color: var(--theme-on-accent);
+  background: #a8f4d9;
+  color: #061a18;
   cursor: pointer;
   font:
     700 1rem "Segoe UI",
@@ -149,20 +149,20 @@
 }
 
 .formFooter button:hover {
-  background: var(--text-primary);
+  background: #d3ffed;
   transform: translateY(-2px);
 }
 
 .successMessage {
-  color: var(--accent);
+  color: #8ef2d4;
   font-size: 0.85rem;
 }
 
 .loader {
   width: 17px;
   height: 17px;
-  border: 2px solid color-mix(in srgb, var(--theme-overlay) 25%, transparent);
-  border-top-color: var(--theme-on-accent);
+  border: 2px solid rgba(6, 26, 24, 0.25);
+  border-top-color: #061a18;
   border-radius: 50%;
   animation: contactSpin 0.7s linear infinite;
 }
@@ -209,7 +209,3 @@
     justify-content: center;
   }
 }
-
-
-
-

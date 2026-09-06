@@ -3,10 +3,10 @@
   padding: 100px 0 10px;
   overflow: hidden;
   background:
-    radial-gradient(circle at 20% 20%, color-mix(in srgb, var(--theme-overlay) 26%, transparent), transparent 25%),
-    linear-gradient(90deg, color-mix(in srgb, var(--theme-overlay) 98%, transparent), color-mix(in srgb, var(--theme-overlay) 96%, transparent));
-  border-top: 1px solid var(--border);
-  color: var(--text-primary);
+    radial-gradient(circle at 20% 20%, rgba(51, 94, 88, 0.26), transparent 25%),
+    linear-gradient(90deg, rgba(2, 12, 15, 0.98), rgba(6, 25, 23, 0.96));
+  border-top: 1px solid rgba(148, 163, 184, 0.12);
+  color: #edf8f5;
 }
 
 .experienceGrid {
@@ -22,7 +22,7 @@
   align-items: center;
   gap: 16px;
   margin-bottom: 16px;
-  color: var(--accent);
+  color: #92f7d9;
   font:
     0.78rem "SFMono-Regular",
     Consolas,
@@ -33,7 +33,7 @@
 .labelLine {
   width: 40px;
   height: 1px;
-  background: color-mix(in srgb, var(--theme-overlay) 45%, transparent);
+  background: rgba(146, 247, 217, 0.45);
 }
 
 .heading {
@@ -45,12 +45,12 @@
 
 .heading span {
   display: block;
-  color: var(--text-muted);
+  color: rgba(227, 238, 235, 0.37);
 }
 
 .introCopy {
   margin-top: 54px;
-  color: var(--text-secondary);
+  color: rgba(201, 222, 218, 0.7);
   font-size: 1.08rem;
   line-height: 2;
 }
@@ -60,7 +60,7 @@
   align-items: center;
   gap: 14px;
   margin-top: 58px;
-  color: var(--text-muted);
+  color: rgba(201, 222, 218, 0.62);
   font:
     0.9rem "SFMono-Regular",
     Consolas,
@@ -68,7 +68,7 @@
 }
 
 .briefcaseIcon {
-  color: var(--accent);
+  color: #8ef2d4;
   font-size: 1.2rem;
 }
 
@@ -83,14 +83,14 @@
   bottom: 0;
   left: 0;
   width: 1px;
-  background: color-mix(in srgb, var(--theme-overlay) 16%, transparent);
+  background: rgba(148, 163, 184, 0.16);
   content: "";
 }
 
 .experienceItem {
   position: relative;
   padding: 4px 0 58px;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.14);
 }
 
 .experienceItem + .experienceItem {
@@ -107,12 +107,12 @@
   left: -56px;
   width: 11px;
   height: 11px;
-  border: 2px solid var(--accent);
+  border: 2px solid #92f7d9;
   border-radius: 50%;
-  background: var(--accent);
+  background: #74f2d0;
   box-shadow:
-    0 0 0 7px color-mix(in srgb, var(--theme-overlay) 10%, transparent),
-    0 0 18px color-mix(in srgb, var(--theme-overlay) 80%, transparent);
+    0 0 0 7px rgba(116, 242, 208, 0.1),
+    0 0 18px rgba(116, 242, 208, 0.8);
 }
 
 .experienceItem + .experienceItem .timelineDot {
@@ -126,7 +126,7 @@
 }
 
 .period {
-  color: var(--accent);
+  color: #8ef2d4;
   font:
     0.9rem "SFMono-Regular",
     Consolas,
@@ -134,7 +134,7 @@
 }
 
 .location {
-  color: color-mix(in srgb, var(--theme-overlay) 48%, transparent);
+  color: rgba(201, 222, 218, 0.48);
   font-size: 0.85rem;
 }
 
@@ -146,14 +146,14 @@
 
 .company {
   margin-top: 8px;
-  color: color-mix(in srgb, var(--theme-overlay) 52%, transparent);
+  color: rgba(201, 222, 218, 0.52);
   font-size: 1.05rem;
 }
 
 .description {
   max-width: 760px;
   margin-top: 30px;
-  color: var(--text-secondary);
+  color: rgba(201, 222, 218, 0.68);
   font-size: 1.08rem;
   line-height: 2;
 }
@@ -168,8 +168,8 @@
 .skillTags span {
   padding: 7px 13px;
   border-radius: 999px;
-  background: color-mix(in srgb, var(--theme-overlay) 11%, transparent);
-  color: var(--text-secondary);
+  background: rgba(148, 163, 184, 0.11);
+  color: rgba(201, 222, 218, 0.7);
   font:
     0.75rem "SFMono-Regular",
     Consolas,
@@ -190,7 +190,7 @@
   margin-top: auto;
   padding-top: 28px;
 
-  border-top: 1px solid var(--border);
+  border-top: 1px solid rgba(148, 163, 184, 0.12);
 }
 
 .experienceGrid {
@@ -231,7 +231,3 @@
     font-size: 1rem;
   }
 }
-
-
-
-

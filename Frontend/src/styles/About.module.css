@@ -6,11 +6,11 @@
   background:
     radial-gradient(
       circle at 22% 45%,
-      color-mix(in srgb, var(--theme-overlay) 13%, transparent),
+      rgba(43, 117, 104, 0.13),
       transparent 27%
     ),
-    var(--bg-primary);
-  color: var(--text-primary);
+    #061110;
+  color: #eef8f4;
 }
 
 .aboutSection::before {
@@ -21,7 +21,7 @@
   height: 100%;
   background: linear-gradient(
     transparent,
-    color-mix(in srgb, var(--theme-overlay) 10%, transparent),
+    rgba(144, 237, 213, 0.1),
     transparent
   );
   content: "";
@@ -39,7 +39,7 @@
   display: flex;
   align-items: center;
   gap: 16px;
-  color: var(--accent);
+  color: #92f7d9;
   font-family: "SFMono-Regular", Consolas, monospace;
   font-size: 0.78rem;
   letter-spacing: 0.18em;
@@ -49,7 +49,7 @@
 .labelLine {
   width: 40px;
   height: 1px;
-  background: color-mix(in srgb, var(--theme-overlay) 45%, transparent);
+  background: rgba(146, 247, 217, 0.45);
 }
 
 .heading {
@@ -63,7 +63,7 @@
 
 .heading span {
   display: block;
-  color: var(--text-muted);
+  color: rgba(227, 238, 235, 0.37);
 }
 
 .profileTerminal {
@@ -74,16 +74,16 @@
   min-height: 350px;
   padding: 34px 32px 30px;
   overflow: hidden;
-  border: 1px solid color-mix(in srgb, var(--theme-overlay) 13%, transparent);
+  border: 1px solid rgba(144, 237, 213, 0.13);
   border-radius: 28px;
   background:
     radial-gradient(
       circle at 75% 17%,
-      color-mix(in srgb, var(--theme-overlay) 28%, transparent),
+      rgba(100, 189, 164, 0.28),
       transparent 33%
     ),
-    linear-gradient(145deg, color-mix(in srgb, var(--theme-overlay) 80%, transparent), color-mix(in srgb, var(--theme-overlay) 90%, transparent));
-  box-shadow: inset 0 1px color-mix(in srgb, var(--theme-overlay) 7%, transparent);
+    linear-gradient(145deg, rgba(22, 65, 59, 0.8), rgba(28, 28, 25, 0.9));
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.07);
 }
 
 .profileTerminal::before {
@@ -92,8 +92,8 @@
   z-index: 1;
   background: linear-gradient(
     180deg,
-    color-mix(in srgb, var(--theme-overlay) 20%, transparent),
-    color-mix(in srgb, var(--theme-overlay) 82%, transparent)
+    rgba(4, 18, 16, 0.2),
+    rgba(4, 18, 16, 0.82)
   );
   content: "";
 }
@@ -115,7 +115,7 @@
   width: 68%;
   height: 62%;
   border-radius: 50%;
-  background: color-mix(in srgb, var(--theme-overlay) 30%, transparent);
+  background: rgba(12, 19, 18, 0.3);
   filter: blur(35px);
   content: "";
 }
@@ -128,7 +128,7 @@
 }
 
 .terminalPath {
-  color: var(--accent);
+  color: #96f6d6;
   font-size: 0.92rem;
   font-weight: 700;
 }
@@ -141,17 +141,17 @@
   width: 70px;
   height: 70px;
   place-items: center;
-  border: 2px solid color-mix(in srgb, var(--theme-overlay) 58%, transparent);
+  border: 2px solid rgba(146, 247, 217, 0.58);
   border-radius: 50%;
-  color: var(--accent);
+  color: #96f6d6;
   font-size: 1.8rem;
   font-weight: 700;
-  box-shadow: 0 0 0 8px color-mix(in srgb, var(--theme-overlay) 6%, transparent);
+  box-shadow: 0 0 0 8px rgba(146, 247, 217, 0.06);
 }
 
 .profileTerminal p {
   margin: 0;
-  color: color-mix(in srgb, var(--theme-overlay) 86%, transparent);
+  color: rgba(222, 238, 232, 0.86);
   font-size: 0.9rem;
   line-height: 1.5;
 }
@@ -162,14 +162,14 @@
 
 .leadCopy {
   max-width: 780px;
-  color: var(--text-primary);
+  color: #eff7f5;
   font-size: clamp(1.8rem, 2.7vw, 3.1rem);
   line-height: 1.28;
   letter-spacing: -0.045em;
 }
 
 .leadCopy span {
-  color: var(--accent);
+  color: #8ef2d4;
 }
 
 .copyGrid {
@@ -180,7 +180,7 @@
 }
 
 .copyGrid p {
-  color: color-mix(in srgb, var(--theme-overlay) 72%, transparent);
+  color: rgba(196, 216, 211, 0.72);
   font-size: 1.05rem;
   line-height: 1.75;
 }
@@ -190,18 +190,18 @@
   align-items: center;
   gap: 16px;
   margin-top: 52px;
-  color: color-mix(in srgb, var(--theme-overlay) 85%, transparent);
+  color: rgba(232, 241, 237, 0.85);
   font-size: 1.02rem;
 }
 
 .learningNote span:first-child {
-  color: var(--accent);
+  color: #8ef2d4;
   font-size: 1.8rem;
 }
 
 .Points {
   display: block;
-  color: var(--accent);
+  color: #8ef2d4;
   font-weight: 700;
 }
 
@@ -252,7 +252,3 @@
     font-size: 0.94rem;
   }
 }
-
-
-
-
