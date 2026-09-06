@@ -4,399 +4,483 @@
       "id": "original",
       "name": "Original",
       "description": "The original portfolio visual system",
-      "colors": ["#020c0f", "#061917", "#74f2d0"],
+      "colors": [
+        "#020c0f",
+        "#0a2421",
+        "#74f2d0"
+      ],
       "variables": {
         "--bg-primary": "#020c0f",
         "--bg-secondary": "#061917",
         "--bg-card": "#0a2421",
         "--bg-hover": "#0d2b27",
-        "--text-primary": "#edf8f5",
-        "--text-secondary": "#8fa9a4",
-        "--text-muted": "#607a75",
+        "--text-primary": "#f2faf8",
+        "--text-secondary": "#a6beb8",
+        "--text-muted": "#708b85",
         "--accent": "#74f2d0",
         "--accent-hover": "#a8f4d9",
-        "--border": "rgba(148, 163, 184, 0.2)",
-        "--border-hover": "rgba(116, 242, 208, 0.45)"
+        "--border": "color-mix(in srgb, #74f2d0 18%, transparent)",
+        "--border-hover": "color-mix(in srgb, #74f2d0 42%, transparent)"
       }
     },
     {
       "id": "mint",
       "name": "Mint Studio",
       "description": "The current calm portfolio look",
-      "colors": ["#061917", "#0a2421", "#92f7d9"],
+      "colors": [
+        "#071614",
+        "#123b35",
+        "#7cf5d1"
+      ],
       "variables": {
-        "--bg-primary": "#061917",
-        "--bg-secondary": "#081f1c",
-        "--bg-card": "#0a2421",
-        "--bg-hover": "#0d2b27",
-        "--text-primary": "#edf8f5",
-        "--text-secondary": "#8fa9a4",
-        "--text-muted": "#607a75",
-        "--accent": "#92f7d9",
-        "--accent-hover": "#6fe8c5",
-        "--border": "rgba(146, 247, 217, 0.15)",
-        "--border-hover": "rgba(146, 247, 217, 0.3)"
+        "--bg-primary": "#071614",
+        "--bg-secondary": "#0d2b27",
+        "--bg-card": "#123b35",
+        "--bg-hover": "#185047",
+        "--text-primary": "#f2faf8",
+        "--text-secondary": "#a6beb8",
+        "--text-muted": "#708b85",
+        "--accent": "#7cf5d1",
+        "--accent-hover": "#b4ffe5",
+        "--border": "color-mix(in srgb, #7cf5d1 18%, transparent)",
+        "--border-hover": "color-mix(in srgb, #7cf5d1 42%, transparent)"
       }
     },
     {
       "id": "ocean",
       "name": "Ocean Desk",
       "description": "Focused blue-green contrast",
-      "colors": ["#071827", "#0b2635", "#7dd3fc"],
+      "colors": [
+        "#071522",
+        "#14445a",
+        "#67d9f5"
+      ],
       "variables": {
-        "--bg-primary": "#071827",
-        "--bg-secondary": "#091f2d",
-        "--bg-card": "#0b2635",
-        "--bg-hover": "#10364a",
-        "--text-primary": "#effaff",
-        "--text-secondary": "#94b8c9",
-        "--text-muted": "#658899",
-        "--accent": "#7dd3fc",
-        "--accent-hover": "#38bdf8",
-        "--border": "rgba(125,211,252,.15)",
-        "--border-hover": "rgba(125,211,252,.3)"
+        "--bg-primary": "#071522",
+        "--bg-secondary": "#0d2d3d",
+        "--bg-card": "#14445a",
+        "--bg-hover": "#1d5f78",
+        "--text-primary": "#f2faf8",
+        "--text-secondary": "#a6beb8",
+        "--text-muted": "#708b85",
+        "--accent": "#67d9f5",
+        "--accent-hover": "#a8efff",
+        "--border": "color-mix(in srgb, #67d9f5 18%, transparent)",
+        "--border-hover": "color-mix(in srgb, #67d9f5 42%, transparent)"
       }
     },
     {
       "id": "amber",
       "name": "Amber Room",
       "description": "Warm energy for busy work",
-      "colors": ["#21180b", "#30200b", "#fbbf24"],
+      "colors": [
+        "#1d160e",
+        "#513817",
+        "#ffc857"
+      ],
       "variables": {
-        "--bg-primary": "#21180b",
-        "--bg-secondary": "#271b09",
-        "--bg-card": "#30200b",
-        "--bg-hover": "#442d0d",
-        "--text-primary": "#fff9eb",
-        "--text-secondary": "#c9b38b",
-        "--text-muted": "#927b50",
-        "--accent": "#fbbf24",
-        "--accent-hover": "#f59e0b",
-        "--border": "rgba(251,191,36,.15)",
-        "--border-hover": "rgba(251,191,36,.3)"
+        "--bg-primary": "#1d160e",
+        "--bg-secondary": "#3a2912",
+        "--bg-card": "#513817",
+        "--bg-hover": "#6b4a1e",
+        "--text-primary": "#f2faf8",
+        "--text-secondary": "#a6beb8",
+        "--text-muted": "#708b85",
+        "--accent": "#ffc857",
+        "--accent-hover": "#ffe09a",
+        "--border": "color-mix(in srgb, #ffc857 18%, transparent)",
+        "--border-hover": "color-mix(in srgb, #ffc857 42%, transparent)"
       }
     },
     {
       "id": "rose",
       "name": "Rose Signal",
       "description": "Soft red accents with depth",
-      "colors": ["#210e16", "#32121f", "#fb7185"],
+      "colors": [
+        "#1f1019",
+        "#51233a",
+        "#ff8fa3"
+      ],
       "variables": {
-        "--bg-primary": "#210e16",
-        "--bg-secondary": "#29101a",
-        "--bg-card": "#32121f",
-        "--bg-hover": "#471827",
-        "--text-primary": "#fff1f3",
-        "--text-secondary": "#c99ba5",
-        "--text-muted": "#946874",
-        "--accent": "#fb7185",
-        "--accent-hover": "#f43f5e",
-        "--border": "rgba(251,113,133,.15)",
-        "--border-hover": "rgba(251,113,133,.3)"
+        "--bg-primary": "#1f1019",
+        "--bg-secondary": "#3a1829",
+        "--bg-card": "#51233a",
+        "--bg-hover": "#71314d",
+        "--text-primary": "#f2faf8",
+        "--text-secondary": "#a6beb8",
+        "--text-muted": "#708b85",
+        "--accent": "#ff8fa3",
+        "--accent-hover": "#ffc0ca",
+        "--border": "color-mix(in srgb, #ff8fa3 18%, transparent)",
+        "--border-hover": "color-mix(in srgb, #ff8fa3 42%, transparent)"
       }
     },
     {
       "id": "violet",
       "name": "Violet Night",
       "description": "A polished creative workspace",
-      "colors": ["#171226", "#211937", "#c4b5fd"],
+      "colors": [
+        "#151329",
+        "#382a68",
+        "#cdbbff"
+      ],
       "variables": {
-        "--bg-primary": "#171226",
-        "--bg-secondary": "#1c1630",
-        "--bg-card": "#211937",
-        "--bg-hover": "#30234d",
-        "--text-primary": "#f7f3ff",
-        "--text-secondary": "#b5a9ca",
-        "--text-muted": "#7e7295",
-        "--accent": "#c4b5fd",
-        "--accent-hover": "#a78bfa",
-        "--border": "rgba(196,181,253,.15)",
-        "--border-hover": "rgba(196,181,253,.3)"
+        "--bg-primary": "#151329",
+        "--bg-secondary": "#2a2050",
+        "--bg-card": "#382a68",
+        "--bg-hover": "#4e3a83",
+        "--text-primary": "#f2faf8",
+        "--text-secondary": "#a6beb8",
+        "--text-muted": "#708b85",
+        "--accent": "#cdbbff",
+        "--accent-hover": "#e5dcff",
+        "--border": "color-mix(in srgb, #cdbbff 18%, transparent)",
+        "--border-hover": "color-mix(in srgb, #cdbbff 42%, transparent)"
       }
     },
     {
       "id": "forest",
       "name": "Forest Workbench",
       "description": "Grounded greens for long sessions",
-      "colors": ["#0b1c14", "#10291c", "#86efac"],
+      "colors": [
+        "#0b1914",
+        "#1e4b30",
+        "#8ef0ac"
+      ],
       "variables": {
-        "--bg-primary": "#0b1c14",
-        "--bg-secondary": "#0d2318",
-        "--bg-card": "#10291c",
-        "--bg-hover": "#173b25",
-        "--text-primary": "#effff3",
-        "--text-secondary": "#9cbea5",
-        "--text-muted": "#668c70",
-        "--accent": "#86efac",
-        "--accent-hover": "#4ade80",
-        "--border": "rgba(134,239,172,.15)",
-        "--border-hover": "rgba(134,239,172,.3)"
+        "--bg-primary": "#0b1914",
+        "--bg-secondary": "#163824",
+        "--bg-card": "#1e4b30",
+        "--bg-hover": "#286641",
+        "--text-primary": "#f2faf8",
+        "--text-secondary": "#a6beb8",
+        "--text-muted": "#708b85",
+        "--accent": "#8ef0ac",
+        "--accent-hover": "#c4ffd7",
+        "--border": "color-mix(in srgb, #8ef0ac 18%, transparent)",
+        "--border-hover": "color-mix(in srgb, #8ef0ac 42%, transparent)"
       }
     },
     {
       "id": "copper",
       "name": "Copper Grid",
       "description": "Editorial warmth and clear type",
-      "colors": ["#21130d", "#321c12", "#fb923c"],
+      "colors": [
+        "#1d130f",
+        "#533422",
+        "#ffad70"
+      ],
       "variables": {
-        "--bg-primary": "#21130d",
-        "--bg-secondary": "#28170f",
-        "--bg-card": "#321c12",
-        "--bg-hover": "#472717",
-        "--text-primary": "#fff6ef",
-        "--text-secondary": "#c6a28a",
-        "--text-muted": "#916b53",
-        "--accent": "#fb923c",
-        "--accent-hover": "#f97316",
-        "--border": "rgba(251,146,60,.15)",
-        "--border-hover": "rgba(251,146,60,.3)"
+        "--bg-primary": "#1d130f",
+        "--bg-secondary": "#3b2419",
+        "--bg-card": "#533422",
+        "--bg-hover": "#70482d",
+        "--text-primary": "#f2faf8",
+        "--text-secondary": "#a6beb8",
+        "--text-muted": "#708b85",
+        "--accent": "#ffad70",
+        "--accent-hover": "#ffd0a8",
+        "--border": "color-mix(in srgb, #ffad70 18%, transparent)",
+        "--border-hover": "color-mix(in srgb, #ffad70 42%, transparent)"
       }
     },
     {
       "id": "sky",
       "name": "Skyline",
       "description": "Bright, airy blue focus",
-      "colors": ["#0c1a29", "#11283b", "#60a5fa"],
+      "colors": [
+        "#0a1726",
+        "#214c73",
+        "#80b7ff"
+      ],
       "variables": {
-        "--bg-primary": "#0c1a29",
-        "--bg-secondary": "#0e2133",
-        "--bg-card": "#11283b",
-        "--bg-hover": "#183b58",
-        "--text-primary": "#f2f8ff",
-        "--text-secondary": "#9eb4ca",
-        "--text-muted": "#6d879f",
-        "--accent": "#60a5fa",
-        "--accent-hover": "#3b82f6",
-        "--border": "rgba(96,165,250,.15)",
-        "--border-hover": "rgba(96,165,250,.3)"
+        "--bg-primary": "#0a1726",
+        "--bg-secondary": "#173653",
+        "--bg-card": "#214c73",
+        "--bg-hover": "#2d6693",
+        "--text-primary": "#f2faf8",
+        "--text-secondary": "#a6beb8",
+        "--text-muted": "#708b85",
+        "--accent": "#80b7ff",
+        "--accent-hover": "#bfdbff",
+        "--border": "color-mix(in srgb, #80b7ff 18%, transparent)",
+        "--border-hover": "color-mix(in srgb, #80b7ff 42%, transparent)"
       }
     },
     {
       "id": "lemon",
       "name": "Lemon Lab",
       "description": "Sharp yellow accents for momentum",
-      "colors": ["#17190b", "#282b0b", "#d9f99d"],
+      "colors": [
+        "#171a0b",
+        "#474f15",
+        "#e4ff9a"
+      ],
       "variables": {
-        "--bg-primary": "#17190b",
-        "--bg-secondary": "#202209",
-        "--bg-card": "#282b0b",
-        "--bg-hover": "#3b400e",
-        "--text-primary": "#fbffe9",
-        "--text-secondary": "#b9c18b",
-        "--text-muted": "#81894f",
-        "--accent": "#d9f99d",
-        "--accent-hover": "#bef264",
-        "--border": "rgba(217,249,157,.15)",
-        "--border-hover": "rgba(217,249,157,.3)"
+        "--bg-primary": "#171a0b",
+        "--bg-secondary": "#343b10",
+        "--bg-card": "#474f15",
+        "--bg-hover": "#606b1b",
+        "--text-primary": "#f2faf8",
+        "--text-secondary": "#a6beb8",
+        "--text-muted": "#708b85",
+        "--accent": "#e4ff9a",
+        "--accent-hover": "#f1ffc7",
+        "--border": "color-mix(in srgb, #e4ff9a 18%, transparent)",
+        "--border-hover": "color-mix(in srgb, #e4ff9a 42%, transparent)"
       }
     },
     {
       "id": "mono",
       "name": "Mono Focus",
       "description": "Minimal contrast, maximum clarity",
-      "colors": ["#121212", "#202020", "#f5f5f5"],
+      "colors": [
+        "#121212",
+        "#303030",
+        "#f5f5f5"
+      ],
       "variables": {
         "--bg-primary": "#121212",
-        "--bg-secondary": "#181818",
-        "--bg-card": "#202020",
-        "--bg-hover": "#2c2c2c",
-        "--text-primary": "#f5f5f5",
-        "--text-secondary": "#b4b4b4",
-        "--text-muted": "#777777",
+        "--bg-secondary": "#242424",
+        "--bg-card": "#303030",
+        "--bg-hover": "#414141",
+        "--text-primary": "#f2faf8",
+        "--text-secondary": "#a6beb8",
+        "--text-muted": "#708b85",
         "--accent": "#f5f5f5",
-        "--accent-hover": "#d4d4d4",
-        "--border": "rgba(245,245,245,.15)",
-        "--border-hover": "rgba(245,245,245,.3)"
+        "--accent-hover": "#ffffff",
+        "--border": "color-mix(in srgb, #f5f5f5 18%, transparent)",
+        "--border-hover": "color-mix(in srgb, #f5f5f5 42%, transparent)"
       }
     },
     {
       "id": "graphite",
       "name": "Graphite Core",
       "description": "Neutral dark with electric lime detail",
-      "colors": ["#151817", "#242927", "#bef264"],
+      "colors": [
+        "#121817",
+        "#384542",
+        "#c9f56e"
+      ],
       "variables": {
-        "--bg-primary": "#151817",
-        "--bg-secondary": "#1c211f",
-        "--bg-card": "#242927",
-        "--bg-hover": "#303734",
-        "--text-primary": "#f4f8f5",
-        "--text-secondary": "#a9b5ae",
-        "--text-muted": "#737f78",
-        "--accent": "#bef264",
-        "--accent-hover": "#a3e635",
-        "--border": "rgba(190,242,100,.15)",
-        "--border-hover": "rgba(190,242,100,.3)"
+        "--bg-primary": "#121817",
+        "--bg-secondary": "#293331",
+        "--bg-card": "#384542",
+        "--bg-hover": "#4d5f5a",
+        "--text-primary": "#f2faf8",
+        "--text-secondary": "#a6beb8",
+        "--text-muted": "#708b85",
+        "--accent": "#c9f56e",
+        "--accent-hover": "#e5ff9d",
+        "--border": "color-mix(in srgb, #c9f56e 18%, transparent)",
+        "--border-hover": "color-mix(in srgb, #c9f56e 42%, transparent)"
       }
     },
     {
       "id": "teal",
       "name": "Teal Current",
       "description": "Clean cyan energy for daily work",
-      "colors": ["#071c1e", "#0c2c2e", "#5eead4"],
+      "colors": [
+        "#061a1c",
+        "#165b5e",
+        "#72f5df"
+      ],
       "variables": {
-        "--bg-primary": "#071c1e",
-        "--bg-secondary": "#092427",
-        "--bg-card": "#0c2c2e",
-        "--bg-hover": "#124044",
-        "--text-primary": "#edfffd",
-        "--text-secondary": "#94bbb7",
-        "--text-muted": "#628c88",
-        "--accent": "#5eead4",
-        "--accent-hover": "#2dd4bf",
-        "--border": "rgba(94,234,212,.15)",
-        "--border-hover": "rgba(94,234,212,.3)"
+        "--bg-primary": "#061a1c",
+        "--bg-secondary": "#103b3e",
+        "--bg-card": "#165b5e",
+        "--bg-hover": "#207b7b",
+        "--text-primary": "#f2faf8",
+        "--text-secondary": "#a6beb8",
+        "--text-muted": "#708b85",
+        "--accent": "#72f5df",
+        "--accent-hover": "#b7fff2",
+        "--border": "color-mix(in srgb, #72f5df 18%, transparent)",
+        "--border-hover": "color-mix(in srgb, #72f5df 42%, transparent)"
       }
     },
     {
       "id": "berry",
       "name": "Berry Desk",
       "description": "Rich berry contrast with soft highlights",
-      "colors": ["#210f1b", "#35152a", "#f0abfc"],
+      "colors": [
+        "#21101e",
+        "#5a2750",
+        "#f3b5ff"
+      ],
       "variables": {
-        "--bg-primary": "#210f1b",
-        "--bg-secondary": "#2b1222",
-        "--bg-card": "#35152a",
-        "--bg-hover": "#4b1d3b",
-        "--text-primary": "#fff3ff",
-        "--text-secondary": "#c7a3c2",
-        "--text-muted": "#926c8e",
-        "--accent": "#f0abfc",
-        "--accent-hover": "#e879f9",
-        "--border": "rgba(240,171,252,.15)",
-        "--border-hover": "rgba(240,171,252,.3)"
+        "--bg-primary": "#21101e",
+        "--bg-secondary": "#411b38",
+        "--bg-card": "#5a2750",
+        "--bg-hover": "#79356b",
+        "--text-primary": "#f2faf8",
+        "--text-secondary": "#a6beb8",
+        "--text-muted": "#708b85",
+        "--accent": "#f3b5ff",
+        "--accent-hover": "#ffdcff",
+        "--border": "color-mix(in srgb, #f3b5ff 18%, transparent)",
+        "--border-hover": "color-mix(in srgb, #f3b5ff 42%, transparent)"
       }
     },
     {
       "id": "clay",
       "name": "Clay Workshop",
       "description": "Muted terracotta for a tactile workspace",
-      "colors": ["#211513", "#33201b", "#fdba74"],
+      "colors": [
+        "#211612",
+        "#5d3829",
+        "#ffc084"
+      ],
       "variables": {
-        "--bg-primary": "#211513",
-        "--bg-secondary": "#291a16",
-        "--bg-card": "#33201b",
-        "--bg-hover": "#482b23",
-        "--text-primary": "#fff7f0",
-        "--text-secondary": "#c9a99a",
-        "--text-muted": "#936f60",
-        "--accent": "#fdba74",
-        "--accent-hover": "#fb923c",
-        "--border": "rgba(253,186,116,.15)",
-        "--border-hover": "rgba(253,186,116,.3)"
+        "--bg-primary": "#211612",
+        "--bg-secondary": "#432820",
+        "--bg-card": "#5d3829",
+        "--bg-hover": "#79503a",
+        "--text-primary": "#f2faf8",
+        "--text-secondary": "#a6beb8",
+        "--text-muted": "#708b85",
+        "--accent": "#ffc084",
+        "--accent-hover": "#ffe0bd",
+        "--border": "color-mix(in srgb, #ffc084 18%, transparent)",
+        "--border-hover": "color-mix(in srgb, #ffc084 42%, transparent)"
       }
     },
     {
       "id": "aqua",
       "name": "Aqua Glass",
       "description": "Cool aqua highlights with deep navy panels",
-      "colors": ["#071725", "#0b2638", "#67e8f9"],
+      "colors": [
+        "#061724",
+        "#16556d",
+        "#76edf7"
+      ],
       "variables": {
-        "--bg-primary": "#071725",
-        "--bg-secondary": "#091f31",
-        "--bg-card": "#0b2638",
-        "--bg-hover": "#103b55",
-        "--text-primary": "#effeff",
-        "--text-secondary": "#9bbac5",
-        "--text-muted": "#678f9d",
-        "--accent": "#67e8f9",
-        "--accent-hover": "#22d3ee",
-        "--border": "rgba(103,232,249,.15)",
-        "--border-hover": "rgba(103,232,249,.3)"
+        "--bg-primary": "#061724",
+        "--bg-secondary": "#103b50",
+        "--bg-card": "#16556d",
+        "--bg-hover": "#1e708e",
+        "--text-primary": "#f2faf8",
+        "--text-secondary": "#a6beb8",
+        "--text-muted": "#708b85",
+        "--accent": "#76edf7",
+        "--accent-hover": "#b9f9ff",
+        "--border": "color-mix(in srgb, #76edf7 18%, transparent)",
+        "--border-hover": "color-mix(in srgb, #76edf7 42%, transparent)"
       }
     },
     {
       "id": "moss",
       "name": "Moss Field",
       "description": "Quiet olive tones for deep focus",
-      "colors": ["#15190e", "#252b16", "#bef264"],
+      "colors": [
+        "#15190e",
+        "#465922",
+        "#c9f56f"
+      ],
       "variables": {
         "--bg-primary": "#15190e",
-        "--bg-secondary": "#1d2211",
-        "--bg-card": "#252b16",
-        "--bg-hover": "#343d1d",
-        "--text-primary": "#f7fbe9",
-        "--text-secondary": "#b4bd91",
-        "--text-muted": "#7e895d",
-        "--accent": "#bef264",
-        "--accent-hover": "#a3e635",
-        "--border": "rgba(190,242,100,.15)",
-        "--border-hover": "rgba(190,242,100,.3)"
+        "--bg-secondary": "#34411c",
+        "--bg-card": "#465922",
+        "--bg-hover": "#5d752e",
+        "--text-primary": "#f2faf8",
+        "--text-secondary": "#a6beb8",
+        "--text-muted": "#708b85",
+        "--accent": "#c9f56f",
+        "--accent-hover": "#e7ffae",
+        "--border": "color-mix(in srgb, #c9f56f 18%, transparent)",
+        "--border-hover": "color-mix(in srgb, #c9f56f 42%, transparent)"
       }
     },
     {
       "id": "plum",
       "name": "Plum Signal",
       "description": "Elegant plum with rose-gold highlights",
-      "colors": ["#1c1221", "#2b1931", "#f9a8d4"],
+      "colors": [
+        "#1d1124",
+        "#562e5e",
+        "#ffb1d8"
+      ],
       "variables": {
-        "--bg-primary": "#1c1221",
-        "--bg-secondary": "#24152a",
-        "--bg-card": "#2b1931",
-        "--bg-hover": "#3d2445",
-        "--text-primary": "#fff4fb",
-        "--text-secondary": "#c5a9bc",
-        "--text-muted": "#8f7187",
-        "--accent": "#f9a8d4",
-        "--accent-hover": "#f472b6",
-        "--border": "rgba(249,168,212,.15)",
-        "--border-hover": "rgba(249,168,212,.3)"
+        "--bg-primary": "#1d1124",
+        "--bg-secondary": "#3d2144",
+        "--bg-card": "#562e5e",
+        "--bg-hover": "#744077",
+        "--text-primary": "#f2faf8",
+        "--text-secondary": "#a6beb8",
+        "--text-muted": "#708b85",
+        "--accent": "#ffb1d8",
+        "--accent-hover": "#ffd5e8",
+        "--border": "color-mix(in srgb, #ffb1d8 18%, transparent)",
+        "--border-hover": "color-mix(in srgb, #ffb1d8 42%, transparent)"
       }
     },
     {
       "id": "cobalt",
       "name": "Cobalt Room",
       "description": "Confident blue for clear decisions",
-      "colors": ["#0b1427", "#111f3d", "#93c5fd"],
+      "colors": [
+        "#0b142b",
+        "#284a86",
+        "#a7ceff"
+      ],
       "variables": {
-        "--bg-primary": "#0b1427",
-        "--bg-secondary": "#0e1931",
-        "--bg-card": "#111f3d",
-        "--bg-hover": "#192d53",
-        "--text-primary": "#f1f6ff",
-        "--text-secondary": "#9caecb",
-        "--text-muted": "#687e9e",
-        "--accent": "#93c5fd",
-        "--accent-hover": "#60a5fa",
-        "--border": "rgba(147,197,253,.15)",
-        "--border-hover": "rgba(147,197,253,.3)"
+        "--bg-primary": "#0b142b",
+        "--bg-secondary": "#1c3462",
+        "--bg-card": "#284a86",
+        "--bg-hover": "#3664aa",
+        "--text-primary": "#f2faf8",
+        "--text-secondary": "#a6beb8",
+        "--text-muted": "#708b85",
+        "--accent": "#a7ceff",
+        "--accent-hover": "#d5e6ff",
+        "--border": "color-mix(in srgb, #a7ceff 18%, transparent)",
+        "--border-hover": "color-mix(in srgb, #a7ceff 42%, transparent)"
       }
     },
     {
       "id": "sand",
       "name": "Sandstone",
       "description": "Soft stone neutrals with coral accents",
-      "colors": ["#1d1916", "#302721", "#fda4af"],
+      "colors": [
+        "#201a16",
+        "#55443a",
+        "#ffadb5"
+      ],
       "variables": {
-        "--bg-primary": "#1d1916",
-        "--bg-secondary": "#251f1b",
-        "--bg-card": "#302721",
-        "--bg-hover": "#40342c",
-        "--text-primary": "#fff8f2",
-        "--text-secondary": "#c3aea0",
-        "--text-muted": "#907a6c",
-        "--accent": "#fda4af",
-        "--accent-hover": "#fb7185",
-        "--border": "rgba(253,164,175,.15)",
-        "--border-hover": "rgba(253,164,175,.3)"
+        "--bg-primary": "#201a16",
+        "--bg-secondary": "#3d3029",
+        "--bg-card": "#55443a",
+        "--bg-hover": "#70594c",
+        "--text-primary": "#f2faf8",
+        "--text-secondary": "#a6beb8",
+        "--text-muted": "#708b85",
+        "--accent": "#ffadb5",
+        "--accent-hover": "#ffd1d6",
+        "--border": "color-mix(in srgb, #ffadb5 18%, transparent)",
+        "--border-hover": "color-mix(in srgb, #ffadb5 42%, transparent)"
       }
     },
     {
       "id": "carbon",
       "name": "Carbon Mint",
       "description": "High contrast charcoal with fresh mint",
-      "colors": ["#101516", "#1b2425", "#a7f3d0"],
+      "colors": [
+        "#101718",
+        "#384b4d",
+        "#b6f4d5"
+      ],
       "variables": {
-        "--bg-primary": "#101516",
-        "--bg-secondary": "#151d1e",
-        "--bg-card": "#1b2425",
-        "--bg-hover": "#293536",
-        "--text-primary": "#f1fbf8",
-        "--text-secondary": "#a4b9b5",
-        "--text-muted": "#718884",
-        "--accent": "#a7f3d0",
-        "--accent-hover": "#6ee7b7",
-        "--border": "rgba(167,243,208,.15)",
-        "--border-hover": "rgba(167,243,208,.3)"
+        "--bg-primary": "#101718",
+        "--bg-secondary": "#283637",
+        "--bg-card": "#384b4d",
+        "--bg-hover": "#4d6466",
+        "--text-primary": "#f2faf8",
+        "--text-secondary": "#a6beb8",
+        "--text-muted": "#708b85",
+        "--accent": "#b6f4d5",
+        "--accent-hover": "#ddffed",
+        "--border": "color-mix(in srgb, #b6f4d5 18%, transparent)",
+        "--border-hover": "color-mix(in srgb, #b6f4d5 42%, transparent)"
       }
     }
   ],
