@@ -11,8 +11,19 @@ const messageSlice = createSlice({
     },
     deleteMessage: (state, action) =>
       state.filter((message) => message.id !== action.payload),
+    deleteAllMessages: () => [],
+    markAllMessagesAsRead: (state) => {
+      state.forEach((message) => {
+        message.isRead = true;
+      });
+    },
   },
 });
 
-export const { markMessageAsRead, deleteMessage } = messageSlice.actions;
+export const {
+  markMessageAsRead,
+  deleteMessage,
+  deleteAllMessages,
+  markAllMessagesAsRead,
+} = messageSlice.actions;
 export default messageSlice.reducer;

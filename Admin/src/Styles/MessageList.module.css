@@ -14,6 +14,13 @@
   justify-content: space-between;
   gap: 1rem;
 }
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
 .eyebrow {
   color: var(--accent);
   font-size: 0.72rem;
@@ -39,6 +46,25 @@
   font-weight: 700;
   white-space: nowrap;
 }
+.actionButton {
+  padding: 0.48rem 0.7rem;
+  border: 1px solid var(--border-hover);
+  border-radius: 0.55rem;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 0.68rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.actionButton:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.deleteButton:hover {
+  border-color: #ff8d8d;
+  color: #ff8d8d;
+}
 .list {
   display: grid;
   gap: 0.65rem;
@@ -48,6 +74,36 @@
   padding-right: 0.3rem;
   scrollbar-color: var(--border-hover) transparent;
   scrollbar-width: thin;
+}
+.emptyState {
+  display: grid;
+  min-height: 15rem;
+  padding: 2rem 1rem;
+  place-items: center;
+  align-content: center;
+  border: 1px dashed var(--border-hover);
+  border-radius: 0.8rem;
+  text-align: center;
+}
+.emptyIcon {
+  display: grid;
+  width: 3.2rem;
+  height: 3.2rem;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(146, 247, 217, 0.1);
+  color: var(--accent);
+}
+.emptyState h3 {
+  margin-top: 1rem;
+  font-size: 0.98rem;
+}
+.emptyState p {
+  max-width: 18rem;
+  margin-top: 0.45rem;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  line-height: 1.5;
 }
 .message {
   display: flex;
@@ -132,6 +188,7 @@
   }
   .header {
     align-items: flex-start;
+    flex-direction: column;
   }
   .header h2 {
     font-size: 1.25rem;
@@ -142,6 +199,9 @@
   }
   .count {
     padding: 0.4rem 0.55rem;
+  }
+  .actions {
+    justify-content: flex-start;
   }
   .meta {
     display: grid;

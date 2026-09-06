@@ -19,7 +19,7 @@ exports.updateTheme = async (req, res) => {
       {},
       { themeId, name, variables, effects: effects || {} },
       {
-        new: true,
+        returnDocument: "after",
         upsert: true,
         runValidators: true,
         setDefaultsOnInsert: true,

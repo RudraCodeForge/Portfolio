@@ -1,10 +1,16 @@
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import DashboardIcon from "./DashboardIcon";
 import Styles from "../Styles/MessageList.module.css";
 import { formatMessageDate } from "../utils/formatMessageDate";
+import {
+  deleteAllMessages,
+  markAllMessagesAsRead,
+} from "../Store/messageSlice";
 
 const MessageList = ({ messages }) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   return (
     <section className={Styles.panel}>
@@ -16,33 +22,63 @@ const MessageList = ({ messages }) => {
             Messages from your portfolio visitors
           </p>
         </div>
-        <span className={Styles.count}>{messages.length} total</span>
+        <div className={Styles.actions}>
+          <span className={Styles.count}>{messages.length} total</span>
+          {messages.length > 0 && (
+            <>
+              <button
+                type="button"
+                className={Styles.actionButton}
+                onClick={() => dispatch(markAllMessagesAsRead())}
+              >
+                Mark all as read
+              </button>
+              <button
+                type="button"
+                className={`${Styles.actionButton} ${Styles.deleteButton}`}
+                onClick={() => dispatch(deleteAllMessages())}
+              >
+                Delete all
+              </button>
+            </>
+          )}
+        </div>
       </div>
       <div className={Styles.list}>
-        {messages.map((message) => (
-          <button
-            type="button"
-            className={`${Styles.message} ${message.isRead ? Styles.read : ""}`}
-            key={message.id}
-            onClick={() => navigate(`/meggage/${message.id}`)}
-          >
-            <div className={Styles.icon}>
+        {messages.length === 0 ? (
+          <div className={Styles.emptyState}>
+            <div className={Styles.emptyIcon}>
               <DashboardIcon name="mail" />
             </div>
-            <div className={Styles.copy}>
-              <div className={Styles.meta}>
-                <strong>{message.name}</strong>
-                <span>{message.email}</span>
+            <h3>Your inbox is clear</h3>
+            <p>New messages from portfolio visitors will appear here.</p>
+          </div>
+        ) : (
+          messages.map((message) => (
+            <button
+              type="button"
+              className={`${Styles.message} ${message.isRead ? Styles.read : ""}`}
+              key={message.id}
+              onClick={() => navigate(`/meggage/${message.id}`)}
+            >
+              <div className={Styles.icon}>
+                <DashboardIcon name="mail" />
               </div>
-              <h3>{message.subject}</h3>
-              <p>{message.message}</p>
-            </div>
-            <time dateTime={message.createdAt} className={Styles.date}>
-              {formatMessageDate(message.createdAt)}
-            </time>
-            <span className={Styles.chevron}>›</span>
-          </button>
-        ))}
+              <div className={Styles.copy}>
+                <div className={Styles.meta}>
+                  <strong>{message.name}</strong>
+                  <span>{message.email}</span>
+                </div>
+                <h3>{message.subject}</h3>
+                <p>{message.message}</p>
+              </div>
+              <time dateTime={message.createdAt} className={Styles.date}>
+                {formatMessageDate(message.createdAt)}
+              </time>
+              <span className={Styles.chevron}>›</span>
+            </button>
+          ))
+        )}
       </div>
     </section>
   );
