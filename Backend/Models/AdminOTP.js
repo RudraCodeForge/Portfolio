@@ -22,6 +22,8 @@ const AdminOTPSchema = new mongoose.Schema(
     attempts: {
       type: Number,
       default: 0,
+      min: 0,
+      max: 5,
     },
   },
   {
@@ -29,7 +31,6 @@ const AdminOTPSchema = new mongoose.Schema(
   },
 );
 
-// Automatically delete OTP after expiry
 AdminOTPSchema.index({ expiresAt: 1 }, { expireAfterSeconds: 0 });
 
 module.exports = mongoose.model("AdminOTP", AdminOTPSchema);

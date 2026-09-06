@@ -73,6 +73,26 @@
   overflow-wrap: anywhere;
 }
 
+.status {
+  margin-top: 1.25rem;
+  min-height: 2.75rem;
+}
+
+.attempts,
+.error {
+  margin: 0;
+  font-size: 0.82rem;
+}
+
+.attempts {
+  color: var(--text-muted);
+}
+
+.error {
+  margin-top: 0.45rem;
+  color: #ff9e9e;
+}
+
 .form {
   display: grid;
   gap: 0.7rem;
@@ -143,6 +163,28 @@
 
 .submitButton span {
   font-size: 1.2rem;
+}
+
+.resendButton {
+  display: block;
+  margin: 1rem auto 0;
+  border: 0;
+  background: transparent;
+  color: var(--accent);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.resendButton:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+}
+
+.resendButton:disabled {
+  cursor: wait;
+  opacity: 0.6;
 }
 .sessionNote {
   margin-top: 1.5rem;
