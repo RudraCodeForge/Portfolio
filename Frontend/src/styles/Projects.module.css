@@ -71,7 +71,7 @@
 .allProjectsHeading p {
   max-width: 560px;
   margin-top: 26px;
-  color: color-mix(in srgb, var(--theme-overlay) 68%, transparent);
+  color: color-mix(in srgb, var(--theme-text-overlay) 68%, transparent);
   font-size: 1.05rem;
 }
 
@@ -98,7 +98,7 @@
   width: fit-content;
   margin: 44px auto 0;
   padding: 14px 22px;
-  border: 1px solid color-mix(in srgb, var(--theme-overlay) 38%, transparent);
+  border: 1px solid color-mix(in srgb, var(--theme-accent-overlay) 38%, transparent);
   border-radius: 999px;
   background: color-mix(in srgb, var(--theme-overlay) 8%, transparent);
 }
@@ -156,7 +156,7 @@
   min-height: 360px;
   padding: 72px 24px;
   overflow: hidden;
-  border: 1px solid color-mix(in srgb, var(--theme-overlay) 18%, transparent);
+  border: 1px solid color-mix(in srgb, var(--theme-accent-overlay) 18%, transparent);
   border-radius: 20px;
   background:
     radial-gradient(
@@ -173,11 +173,11 @@
   width: 58px;
   height: 58px;
   place-items: center;
-  border: 1px solid color-mix(in srgb, var(--theme-overlay) 50%, transparent);
+  border: 1px solid color-mix(in srgb, var(--theme-accent-overlay) 50%, transparent);
   border-radius: 50%;
   color: var(--accent);
   font-size: 2rem;
-  box-shadow: 0 0 30px color-mix(in srgb, var(--theme-overlay) 12%, transparent);
+  box-shadow: 0 0 30px color-mix(in srgb, var(--theme-accent-overlay) 12%, transparent);
 }
 
 .emptyEyebrow {
@@ -204,7 +204,7 @@
 .emptyProjects button {
   margin-top: 28px;
   padding: 12px 18px;
-  border: 1px solid color-mix(in srgb, var(--theme-overlay) 40%, transparent);
+  border: 1px solid color-mix(in srgb, var(--theme-accent-overlay) 40%, transparent);
   border-radius: 999px;
   background: color-mix(in srgb, var(--theme-overlay) 10%, transparent);
   color: var(--accent);
@@ -229,7 +229,7 @@
 
 .projectCard:hover {
   transform: translateY(-5px);
-  border-color: color-mix(in srgb, var(--theme-overlay) 45%, transparent);
+  border-color: color-mix(in srgb, var(--theme-accent-overlay) 45%, transparent);
 }
 
 .projectVisual {
@@ -258,9 +258,9 @@
 .projectNumber {
   display: inline-block;
   padding: 8px 14px;
-  border: 1px solid color-mix(in srgb, var(--theme-overlay) 25%, transparent);
+  border: 1px solid color-mix(in srgb, var(--theme-accent-overlay) 25%, transparent);
   border-radius: 999px;
-  color: color-mix(in srgb, var(--theme-overlay) 88%, transparent);
+  color: color-mix(in srgb, var(--theme-text-overlay) 88%, transparent);
   font:
     0.76rem "SFMono-Regular",
     Consolas,
@@ -272,7 +272,7 @@
   position: absolute;
   top: 30px;
   right: 30px;
-  color: color-mix(in srgb, var(--theme-overlay) 78%, transparent);
+  color: color-mix(in srgb, var(--theme-text-overlay) 78%, transparent);
   font-size: 1.5rem;
   text-decoration: none;
 }

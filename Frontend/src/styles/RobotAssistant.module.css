@@ -44,7 +44,7 @@
 
   background: color-mix(in srgb, var(--theme-overlay) 96%, transparent);
 
-  border: 1px solid color-mix(in srgb, var(--theme-overlay) 20%, transparent);
+  border: 1px solid color-mix(in srgb, var(--theme-accent-overlay) 20%, transparent);
 
   border-radius: 22px;
 
@@ -93,7 +93,7 @@
 
   margin-top: 4px;
 
-  color: color-mix(in srgb, var(--theme-overlay) 55%, transparent);
+  color: color-mix(in srgb, var(--theme-text-overlay) 55%, transparent);
 
   font-size: 0.72rem;
 }
@@ -149,7 +149,7 @@
 
   background: color-mix(in srgb, var(--theme-overlay) 8%, transparent);
 
-  border: 1px solid color-mix(in srgb, var(--theme-overlay) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--theme-accent-overlay) 12%, transparent);
 
   color: var(--text-primary);
 
@@ -197,7 +197,7 @@
 }
 
 .chatInputArea input::placeholder {
-  color: color-mix(in srgb, var(--theme-overlay) 40%, transparent);
+  color: color-mix(in srgb, var(--theme-text-overlay) 40%, transparent);
 }
 
 .chatInputArea input:focus {
@@ -267,7 +267,7 @@
   margin-bottom: 18px;
   border-radius: 18px;
   background: color-mix(in srgb, var(--theme-overlay) 10%, transparent);
-  border: 1px solid color-mix(in srgb, var(--theme-overlay) 25%, transparent);
+  border: 1px solid color-mix(in srgb, var(--theme-accent-overlay) 25%, transparent);
   font-size: 28px;
 }
 
@@ -281,7 +281,7 @@
 .conversationChoice p {
   max-width: 300px;
   margin: 12px 0 26px;
-  color: color-mix(in srgb, var(--theme-overlay) 68%, transparent);
+  color: color-mix(in srgb, var(--theme-text-overlay) 68%, transparent);
   font-size: 0.9rem;
   line-height: 1.5;
 }
@@ -333,7 +333,7 @@
   border: 0;
   border-radius: 50%;
   background: color-mix(in srgb, var(--theme-overlay) 5%, transparent);
-  color: color-mix(in srgb, var(--theme-overlay) 70%, transparent);
+  color: color-mix(in srgb, var(--theme-text-overlay) 70%, transparent);
   cursor: pointer;
   font-size: 1.25rem;
   line-height: 1;
@@ -367,7 +367,7 @@
 
 .questionTitle {
   margin: 0 0 2px;
-  color: color-mix(in srgb, var(--theme-overlay) 58%, transparent);
+  color: color-mix(in srgb, var(--theme-text-overlay) 58%, transparent);
   font-size: 0.72rem;
   letter-spacing: 0.04em;
 }
@@ -384,7 +384,7 @@
   gap: 9px;
   min-width: 0;
   padding: 11px 12px;
-  border: 1px solid color-mix(in srgb, var(--theme-overlay) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--theme-accent-overlay) 12%, transparent);
   border-radius: 12px;
   background: color-mix(in srgb, var(--theme-overlay) 4%, transparent);
   color: var(--text-primary);
@@ -401,7 +401,7 @@
 
 .categoryButton:hover {
   background: color-mix(in srgb, var(--theme-overlay) 10%, transparent);
-  border-color: color-mix(in srgb, var(--theme-overlay) 35%, transparent);
+  border-color: color-mix(in srgb, var(--theme-accent-overlay) 35%, transparent);
   transform: translateY(-1px);
 }
 
@@ -424,7 +424,7 @@
   width: 30px;
   height: 30px;
   flex-shrink: 0;
-  border: 1px solid color-mix(in srgb, var(--theme-overlay) 15%, transparent);
+  border: 1px solid color-mix(in srgb, var(--theme-accent-overlay) 15%, transparent);
   border-radius: 9px;
   background: color-mix(in srgb, var(--theme-overlay) 5%, transparent);
   color: var(--accent);
@@ -437,7 +437,7 @@
 
 .backButton:hover {
   background: color-mix(in srgb, var(--theme-overlay) 12%, transparent);
-  border-color: color-mix(in srgb, var(--theme-overlay) 35%, transparent);
+  border-color: color-mix(in srgb, var(--theme-accent-overlay) 35%, transparent);
 }
 
 .questionList {
@@ -449,10 +449,10 @@
 .questionButton {
   width: 100%;
   padding: 10px 12px;
-  border: 1px solid color-mix(in srgb, var(--theme-overlay) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--theme-accent-overlay) 10%, transparent);
   border-radius: 11px;
   background: color-mix(in srgb, var(--theme-overlay) 2%, transparent);
-  color: color-mix(in srgb, var(--theme-overlay) 82%, transparent);
+  color: color-mix(in srgb, var(--theme-text-overlay) 82%, transparent);
   cursor: pointer;
   text-align: left;
   font: inherit;
@@ -467,7 +467,7 @@
 
 .questionButton:hover {
   background: color-mix(in srgb, var(--theme-overlay) 8%, transparent);
-  border-color: color-mix(in srgb, var(--theme-overlay) 28%, transparent);
+  border-color: color-mix(in srgb, var(--theme-accent-overlay) 28%, transparent);
   color: var(--text-primary);
   transform: translateX(2px);
 }

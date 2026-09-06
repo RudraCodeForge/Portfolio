@@ -116,7 +116,7 @@
 
 .contactForm input::placeholder,
 .contactForm textarea::placeholder {
-  color: color-mix(in srgb, var(--theme-overlay) 48%, transparent);
+  color: color-mix(in srgb, var(--theme-text-overlay) 48%, transparent);
 }
 
 .contactForm input:focus,
@@ -161,7 +161,7 @@
 .loader {
   width: 17px;
   height: 17px;
-  border: 2px solid color-mix(in srgb, var(--theme-overlay) 25%, transparent);
+  border: 2px solid color-mix(in srgb, var(--theme-accent-overlay) 25%, transparent);
   border-top-color: var(--theme-on-accent);
   border-radius: 50%;
   animation: contactSpin 0.7s linear infinite;

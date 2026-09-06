@@ -59,7 +59,7 @@
 .headerCopy {
   max-width: 370px;
   margin-bottom: 6px;
-  color: color-mix(in srgb, var(--theme-overlay) 68%, transparent);
+  color: color-mix(in srgb, var(--theme-text-overlay) 68%, transparent);
   font-size: 1.05rem;
   line-height: 1.65;
 }
@@ -84,7 +84,7 @@
 
 .skillCard:hover {
   transform: translateY(-4px);
-  border-color: color-mix(in srgb, var(--theme-overlay) 34%, transparent);
+  border-color: color-mix(in srgb, var(--theme-accent-overlay) 34%, transparent);
   background: color-mix(in srgb, var(--theme-overlay) 84%, transparent);
 }
 
@@ -139,7 +139,7 @@
 }
 
 .skillMeta span:last-child {
-  color: color-mix(in srgb, var(--theme-overlay) 45%, transparent);
+  color: color-mix(in srgb, var(--theme-text-overlay) 45%, transparent);
   font-size: 0.82rem;
 }
 

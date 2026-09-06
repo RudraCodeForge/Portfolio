@@ -142,10 +142,10 @@
   width: max-content;
   max-width: 180px;
   padding: 8px 10px;
-  border: 1px solid color-mix(in srgb, var(--theme-overlay) 35%, transparent);
+  border: 1px solid color-mix(in srgb, var(--theme-accent-overlay) 35%, transparent);
   border-radius: 7px;
   background: var(--bg-secondary);
-  box-shadow: 0 8px 20px color-mix(in srgb, var(--theme-overlay) 28%, transparent);
+  box-shadow: 0 8px 20px color-mix(in srgb, var(--theme-accent-overlay) 28%, transparent);
   color: var(--text-primary);
   content: attr(data-tooltip);
   font:
@@ -198,7 +198,7 @@
 
 .activityGrid span[data-level="FOURTH_QUARTILE"] {
   background: var(--accent-hover) !important;
-  box-shadow: 0 0 10px color-mix(in srgb, var(--theme-overlay) 22%, transparent);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--theme-accent-overlay) 22%, transparent);
 }
 
 .repositoryList {
@@ -212,7 +212,7 @@
   align-items: center;
   gap: 16px;
   padding: 18px;
-  border: 1px solid color-mix(in srgb, var(--theme-overlay) 16%, transparent);
+  border: 1px solid color-mix(in srgb, var(--theme-accent-overlay) 16%, transparent);
   border-radius: 14px;
   color: var(--accent);
   text-decoration: none;
@@ -227,16 +227,16 @@
 }
 .repositoryCard small {
   margin-top: 7px;
-  color: color-mix(in srgb, var(--theme-overlay) 48%, transparent);
+  color: color-mix(in srgb, var(--theme-text-overlay) 48%, transparent);
 }
 .updatedAt {
   display: block;
   margin-top: 18px;
-  color: color-mix(in srgb, var(--theme-overlay) 40%, transparent);
+  color: color-mix(in srgb, var(--theme-text-overlay) 40%, transparent);
 }
 .errorMessage {
   margin: 90px 0;
-  color: color-mix(in srgb, var(--theme-overlay) 65%, transparent);
+  color: color-mix(in srgb, var(--theme-text-overlay) 65%, transparent);
   line-height: 1.7;
 }
 

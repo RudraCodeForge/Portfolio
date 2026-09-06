@@ -64,7 +64,7 @@
 
 .goodAtCard:hover {
   transform: translateY(-5px);
-  border-color: color-mix(in srgb, var(--theme-overlay) 42%, transparent);
+  border-color: color-mix(in srgb, var(--theme-accent-overlay) 42%, transparent);
 }
 
 .cardIcon {
@@ -81,7 +81,7 @@
 .goodAtCard p {
   max-width: 270px;
   margin-top: 22px;
-  color: color-mix(in srgb, var(--theme-overlay) 66%, transparent);
+  color: color-mix(in srgb, var(--theme-text-overlay) 66%, transparent);
   font-size: 1rem;
   line-height: 1.8;
 }
@@ -90,7 +90,7 @@
   position: absolute;
   bottom: 28px;
   left: 30px;
-  color: color-mix(in srgb, var(--theme-overlay) 48%, transparent);
+  color: color-mix(in srgb, var(--theme-text-overlay) 48%, transparent);
   font-size: 1.2rem;
 }
 

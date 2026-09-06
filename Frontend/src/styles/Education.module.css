@@ -70,14 +70,14 @@
   border: 1px solid var(--border-hover);
   border-radius: 20px;
   background: color-mix(in srgb, var(--theme-overlay) 72%, transparent);
-  box-shadow: inset 0 1px color-mix(in srgb, var(--theme-overlay) 2%, transparent);
+  box-shadow: inset 0 1px color-mix(in srgb, var(--theme-accent-overlay) 2%, transparent);
   transition:
     border-color 0.25s ease,
     transform 0.25s ease;
 }
 
 .educationCard:hover {
-  border-color: color-mix(in srgb, var(--theme-overlay) 40%, transparent);
+  border-color: color-mix(in srgb, var(--theme-accent-overlay) 40%, transparent);
   transform: translateY(-3px);
 }
 
@@ -104,7 +104,7 @@
 
 .college {
   margin-top: 10px;
-  color: color-mix(in srgb, var(--theme-overlay) 55%, transparent);
+  color: color-mix(in srgb, var(--theme-text-overlay) 55%, transparent);
   font-size: 1rem;
 }
 

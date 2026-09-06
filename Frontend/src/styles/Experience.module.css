@@ -134,7 +134,7 @@
 }
 
 .location {
-  color: color-mix(in srgb, var(--theme-overlay) 48%, transparent);
+  color: color-mix(in srgb, var(--theme-text-overlay) 48%, transparent);
   font-size: 0.85rem;
 }
 
@@ -146,7 +146,7 @@
 
 .company {
   margin-top: 8px;
-  color: color-mix(in srgb, var(--theme-overlay) 52%, transparent);
+  color: color-mix(in srgb, var(--theme-text-overlay) 52%, transparent);
   font-size: 1.05rem;
 }
 
