@@ -41,7 +41,8 @@ textarea {
   --surface-blur: 0px;
   --surface-shadow: none;
   --surface-radius: 16px;
-  --theme-overlay: var(--accent);
+  --theme-overlay: var(--bg-primary);
+  --theme-accent-overlay: var(--accent);
   --theme-on-accent: var(--bg-primary);
   --theme-terminal-red: #ff5f57;
   --theme-terminal-yellow: #ffbd2e;
