@@ -30,6 +30,15 @@ import { getPortfolio } from "./Services/BasicApi.service";
 const App = () => {
   const dispatch = useDispatch();
 
+  const applyRemoteTheme = (theme) => {
+    if (!theme?.variables) return;
+
+    Object.entries(theme.variables).forEach(([property, value]) => {
+      document.documentElement.style.setProperty(property, value);
+    });
+    document.documentElement.dataset.theme = theme.themeId;
+  };
+
   useEffect(() => {
     const loadPortfolioData = async () => {
       try {
@@ -41,6 +50,7 @@ const App = () => {
         dispatch(setSkillData(response.Skills));
         dispatch(setProjectData(response.Projects));
         dispatch(setExperienceData(response.Experience));
+        applyRemoteTheme(response.theme);
       } catch (error) {
         console.error("❌ Portfolio API Error:", error);
       }

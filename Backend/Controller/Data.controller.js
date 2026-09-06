@@ -5,6 +5,7 @@ const Skill = require("../Models/Skills");
 const Project = require("../Models/Project");
 const Experience = require("../Models/Experience");
 const Education = require("../Models/Education");
+const Theme = require("../Models/Theme");
 
 const calculateStats = ({ projects, skills, experience, github }) => {
   const projectCount = projects.length;
@@ -84,6 +85,7 @@ exports.GET_DATA = async (req, res) => {
     const ProjectData = await Project.find();
     const ExperienceData = await Experience.find();
     const EducationData = await Education.find();
+    const themeData = await Theme.findOne().lean();
 
     if (!headerData) {
       return res.status(404).json({
@@ -120,6 +122,13 @@ exports.GET_DATA = async (req, res) => {
       Experience: ExperienceData,
       Education: EducationData,
       stats,
+      theme: themeData
+        ? {
+            themeId: themeData.themeId,
+            name: themeData.name,
+            variables: themeData.variables,
+          }
+        : null,
     });
   } catch (error) {
     console.error("GET_DATA ERROR:", error);

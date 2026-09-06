@@ -1,0 +1,185 @@
+.page {
+  min-height: 100vh;
+  padding: clamp(1.25rem, 5vw, 4rem);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 52rem;
+  margin: 0 auto 1.5rem;
+}
+.backButton {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  border: 0;
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  font: inherit;
+}
+.backButton:hover {
+  color: var(--accent);
+}
+.unread,
+.read {
+  padding: 0.45rem 0.7rem;
+  border-radius: 1rem;
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+.unread {
+  background: rgba(248, 113, 113, 0.14);
+  color: #fca5a5;
+}
+.read {
+  background: rgba(74, 222, 128, 0.14);
+  color: var(--success);
+}
+.card {
+  max-width: 52rem;
+  margin: 0 auto;
+  padding: clamp(1.4rem, 5vw, 3rem);
+  border: 1px solid var(--border-hover);
+  border-radius: 1.15rem;
+  background: var(--bg-card);
+}
+.icon {
+  display: grid;
+  width: 3rem;
+  height: 3rem;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(146, 247, 217, 0.1);
+  color: var(--accent);
+}
+.eyebrow {
+  margin-top: 1.5rem;
+  color: var(--accent);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.card h1 {
+  margin-top: 0.65rem;
+  font-size: clamp(1.6rem, 4vw, 2.3rem);
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+}
+.sender {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1.8rem;
+}
+.avatar {
+  display: grid;
+  width: 2.7rem;
+  height: 2.7rem;
+  place-items: center;
+  border-radius: 50%;
+  background: #0e4a40;
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+.sender div:last-child {
+  display: grid;
+  gap: 0.25rem;
+}
+.sender span {
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  overflow-wrap: anywhere;
+}
+.body {
+  margin-top: 2rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+.date {
+  display: block;
+  margin-top: 1.25rem;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+.readButton,
+.deleteButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-height: 2.7rem;
+  padding: 0 0.9rem;
+  border: 1px solid var(--border-hover);
+  border-radius: 0.55rem;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+.readButton {
+  background: var(--accent);
+  color: #06201b;
+}
+.readButton:disabled {
+  cursor: default;
+  opacity: 0.55;
+}
+.deleteButton {
+  background: transparent;
+  color: #fca5a5;
+}
+@media (max-width: 560px) {
+  .page {
+    padding: 1rem;
+  }
+  .header {
+    margin-bottom: 1rem;
+  }
+  .backButton {
+    font-size: 0.82rem;
+  }
+  .card {
+    padding: 1.25rem;
+  }
+  .sender {
+    align-items: flex-start;
+  }
+  .sender div:last-child {
+    min-width: 0;
+  }
+  .actions {
+    display: grid;
+  }
+  .readButton,
+  .deleteButton {
+    justify-content: center;
+    width: 100%;
+    min-height: 3rem;
+  }
+}
+.empty {
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  gap: 1rem;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+.empty button {
+  padding: 0.7rem 1rem;
+  border: 0;
+  border-radius: 0.5rem;
+  background: var(--accent);
+  cursor: pointer;
+}

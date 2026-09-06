@@ -1,0 +1,125 @@
+.panel {
+  min-width: 0;
+  padding: 1.65rem;
+  border: 1px solid var(--border-hover);
+  border-radius: 1.15rem;
+  background: var(--bg-card);
+}
+.panelHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.panelHeader h2 {
+  font-size: 1.08rem;
+}
+.panelHeader p {
+  margin-top: 0.65rem;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+}
+.panelHeader button {
+  padding: 0.7rem 0.9rem;
+  border: 1px solid var(--border-hover);
+  border-radius: 0.6rem;
+  background: transparent;
+  color: var(--text-primary);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.78rem;
+}
+.panelHeader button span {
+  margin-left: 0.7rem;
+  font-size: 1.2rem;
+  vertical-align: -0.1rem;
+}
+.list {
+  margin-top: 1.8rem;
+  max-height: 14.5rem;
+  overflow-y: auto;
+  padding-right: 0.35rem;
+  scrollbar-color: var(--border-hover) transparent;
+  scrollbar-width: thin;
+}
+.list::-webkit-scrollbar {
+  width: 0.35rem;
+}
+.list::-webkit-scrollbar-thumb {
+  border-radius: 1rem;
+  background: var(--border-hover);
+}
+.activity {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  min-width: 0;
+  padding: 0.85rem 0.6rem;
+}
+.activityIcon {
+  display: grid;
+  width: 2.55rem;
+  height: 2.55rem;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 50%;
+}
+.mint {
+  background: rgba(86, 209, 178, 0.13);
+  color: var(--accent);
+}
+.blue {
+  background: rgba(54, 151, 206, 0.14);
+  color: #62b5e9;
+}
+.yellow {
+  background: rgba(203, 180, 37, 0.14);
+  color: #e4c631;
+}
+.activityCopy {
+  display: grid;
+  gap: 0.35rem;
+  min-width: 0;
+}
+.activityCopy strong {
+  overflow: hidden;
+  font-size: 0.8rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.activityCopy span {
+  overflow: hidden;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.activityTime {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-left: auto;
+  color: var(--text-muted);
+  font-size: 0.7rem;
+  white-space: nowrap;
+}
+.activityTime i {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: var(--success);
+}
+@media (max-width: 500px) {
+  .panel {
+    padding: 1.2rem;
+  }
+  .activityTime {
+    display: none;
+  }
+  .panelHeader button {
+    padding: 0.55rem;
+  }
+  .panelHeader button span {
+    display: none;
+  }
+}

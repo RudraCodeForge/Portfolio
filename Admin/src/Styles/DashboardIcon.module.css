@@ -1,0 +1,15 @@
+.icon {
+  display: inline-grid;
+  width: 1.3rem;
+  place-items: center;
+  flex: 0 0 1.3rem;
+  color: currentColor;
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.icon svg {
+  width: 1em;
+  height: 1em;
+}

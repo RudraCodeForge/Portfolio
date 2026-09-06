@@ -14,6 +14,7 @@ const PORT = process.env.PORT || 5000;
 const DataRouter = require("./Routes/DataRoute.route");
 const ContactRouter = require("./Routes/Contact.route");
 const AuthRouter = require("./Routes/Auth.route");
+const ThemeRouter = require("./Routes/Theme.route");
 
 app.set("trust proxy", 1);
 
@@ -96,6 +97,8 @@ app.use("/PortfolioData", apiLimiter, DataRouter);
 app.use("/Contact", contactLimiter, ContactRouter);
 
 app.use("/auth", apiLimiter, AuthRouter);
+
+app.use("/theme", apiLimiter, ThemeRouter);
 
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server is running on port ${PORT}`);

@@ -26,10 +26,22 @@ textarea {
 :root {
   --cursor-x: 50vw;
   --cursor-y: 25vh;
+  --bg-primary: #020c0f;
+  --bg-secondary: #061917;
+  --bg-card: #0a2421;
+  --bg-hover: #0d2b27;
+  --text-primary: #edf8f5;
+  --text-secondary: #8fa9a4;
+  --text-muted: #607a75;
+  --accent: #92f7d9;
+  --accent-hover: #6fe8c5;
+  --border: rgba(146, 247, 217, 0.15);
+  --border-hover: rgba(146, 247, 217, 0.3);
 }
 
 body {
-  background: #020c0f;
+  background: var(--bg-primary);
+  color: var(--text-primary);
 }
 
 .cursorGlow {
