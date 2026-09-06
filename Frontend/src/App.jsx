@@ -53,13 +53,22 @@ const App = () => {
       "--surface-radius",
       effects.radius || "16px",
     );
-    document.documentElement.dataset.theme = theme.themeId;
+    document.documentElement.dataset.theme = theme.themeId || theme.id;
   };
 
   useEffect(() => {
     const loadPortfolioData = async () => {
       try {
-        const response = await getPortfolio();
+        const [response, themeCatalogResponse] = await Promise.all([
+          getPortfolio(),
+          fetch("/themeData.json"),
+        ]);
+
+        if (!themeCatalogResponse.ok) {
+          throw new Error("Theme catalog could not be loaded");
+        }
+
+        const themeCatalog = await themeCatalogResponse.json();
         dispatch(setEducationData(response.Education));
         dispatch(setHeaderData(response.Header));
         dispatch(setGithubData(response.Github));
@@ -67,7 +76,25 @@ const App = () => {
         dispatch(setSkillData(response.Skills));
         dispatch(setProjectData(response.Projects));
         dispatch(setExperienceData(response.Experience));
-        applyRemoteTheme(response.theme);
+
+        const savedTheme = response.theme;
+        const localTheme = themeCatalog.themes.find(
+          (theme) => theme.id === savedTheme?.themeId,
+        );
+
+        if (localTheme) {
+          applyRemoteTheme({
+            ...localTheme,
+            themeId: savedTheme.themeId,
+            effects: {
+              ...themeCatalog.defaultEffects,
+              ...(themeCatalog.effectPresets[localTheme.id] || {}),
+              ...(savedTheme.effects || {}),
+            },
+          });
+        } else {
+          applyRemoteTheme(savedTheme);
+        }
       } catch (error) {
         console.error("❌ Portfolio API Error:", error);
       }
