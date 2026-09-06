@@ -167,11 +167,17 @@ exports.verifyOtp = async (req, res) => {
       _id: adminOtp._id,
     });
 
+    res.cookie("refreshToken", refreshToken, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+      maxAge: 7 * 24 * 60 * 60 * 1000,
+    });
+
     return res.status(200).json({
       success: true,
       message: "OTP verified successfully",
       accessToken,
-      refreshToken,
     });
   } catch (error) {
     console.error("OTP verification error:", error);
@@ -233,4 +239,62 @@ exports.resendOtp = async (req, res) => {
       message: "Failed to resend OTP",
     });
   }
+};
+
+exports.refreshAccessToken = async (req, res) => {
+  try {
+    const { refreshToken } = req.cookies;
+
+    if (!refreshToken) {
+      return res.status(401).json({
+        success: false,
+        message: "Refresh token is missing",
+      });
+    }
+
+    const decoded = jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET);
+    const admin = await Admin.findById(decoded.adminId).select("_id");
+
+    if (!admin) {
+      return res.status(401).json({
+        success: false,
+        message: "Admin account was not found",
+      });
+    }
+
+    const accessToken = jwt.sign(
+      { adminId: admin._id },
+      process.env.ACCESS_TOKEN_SECRET,
+      { expiresIn: "1h" },
+    );
+
+    return res.status(200).json({
+      success: true,
+      accessToken,
+    });
+  } catch (error) {
+    res.clearCookie("refreshToken", {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+    });
+
+    return res.status(401).json({
+      success: false,
+      message: "Refresh token expired. Please log in again.",
+    });
+  }
+};
+
+exports.logout = (req, res) => {
+  res.clearCookie("refreshToken", {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+  });
+
+  return res.status(200).json({
+    success: true,
+    message: "Logged out successfully",
+  });
 };

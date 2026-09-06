@@ -2,7 +2,10 @@ import Styles from "../Styles/OtpModel.module.css";
 import { resendOtp, verifyOtp } from "../Services/Login.service";
 import toast from "react-hot-toast";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { setVerified } from "../Store/authSlice";
 const OtpModel = ({ email, otpSessionId, onClose }) => {
+  const dispatch = useDispatch();
   const [isVerifying, setIsVerifying] = useState(false);
   const [isResending, setIsResending] = useState(false);
   const [currentSessionId, setCurrentSessionId] = useState(otpSessionId);
@@ -23,6 +26,9 @@ const OtpModel = ({ email, otpSessionId, onClose }) => {
     try {
       const response = await verifyOtp(otpData);
       if (response.success) {
+        localStorage.setItem("accessToken", response.accessToken);
+        localStorage.setItem("isVerified", "true");
+        dispatch(setVerified({ accessToken: response.accessToken }));
         toast.success("OTP verified successfully!");
         onClose();
       } else {

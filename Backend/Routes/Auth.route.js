@@ -10,4 +10,8 @@ AuthRouter.post("/verify-otp", AuthController.verifyOtp);
 
 AuthRouter.post("/resend-otp", AuthController.resendOtp);
 
+AuthRouter.post("/refresh", AuthController.refreshAccessToken);
+
+AuthRouter.post("/logout", AuthController.logout);
+
 module.exports = AuthRouter;
