@@ -4,6 +4,16 @@ import Topbar from "../Components/Topbar";
 import Sidebar from "../Components/Sidebar";
 import Styles from "../Styles/PortfolioForm.module.css";
 import { sectionViews } from "../data/dashboardData";
+import { createProject, updateProject } from "../Services/Project.service";
+import {
+  createEducation,
+  updateEducation,
+} from "../Services/education.service";
+import {
+  createExperience as createExperienceResource,
+  updateExperience as updateExperienceResource,
+} from "../Services/experience.service";
+import { createSkill, updateSkill } from "../Services/skills.service";
 
 const formFields = {
   projects: [
@@ -65,6 +75,8 @@ const PortfolioForm = () => {
   const item = location.state?.item;
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [formData, setFormData] = useState({});
+  const [submitError, setSubmitError] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     const initialData = {};
@@ -83,8 +95,40 @@ const PortfolioForm = () => {
     setFormData((current) => ({ ...current, [name]: value }));
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+
+    const resourceActions = {
+      projects: { create: createProject, update: updateProject },
+      education: { create: createEducation, update: updateEducation },
+      experience: {
+        create: createExperienceResource,
+        update: updateExperienceResource,
+      },
+      skills: { create: createSkill, update: updateSkill },
+    }[section];
+
+    if (resourceActions) {
+      try {
+        setSubmitError("");
+        setIsSubmitting(true);
+        if (isEdit) {
+          await resourceActions.update(id, formData);
+        } else {
+          await resourceActions.create(formData);
+        }
+        navigate("/dashboard");
+      } catch (error) {
+        setSubmitError(
+          error.message ||
+            `Unable to ${isEdit ? "update" : "create"} ${sectionName.toLowerCase()}.`,
+        );
+      } finally {
+        setIsSubmitting(false);
+      }
+      return;
+    }
+
     console.log("Portfolio form submitted:", {
       mode: isEdit ? "edit" : "create",
       section: sectionName,
@@ -158,8 +202,15 @@ const PortfolioForm = () => {
                   )}
                 </label>
               ))}
+              {submitError && <p className={Styles.error}>{submitError}</p>}
               <button type="submit" className={Styles.submitButton}>
-                {isEdit ? "Submit changes" : `Create ${sectionName}`}
+                {isSubmitting
+                  ? isEdit
+                    ? `Updating ${sectionName.toLowerCase()}...`
+                    : `Creating ${sectionName.toLowerCase()}...`
+                  : isEdit
+                    ? "Submit changes"
+                    : `Create ${sectionName}`}
               </button>
             </form>
           </section>

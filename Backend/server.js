@@ -16,6 +16,10 @@ const ContactRouter = require("./Routes/Contact.route");
 const AuthRouter = require("./Routes/Auth.route");
 const ThemeRouter = require("./Routes/Theme.route");
 const AdminMessageRouter = require("./Routes/admin/message.route");
+const AdminProjectRouter = require("./Routes/admin/project.route");
+const AdminEducationRouter = require("./Routes/admin/education.route");
+const AdminExperienceRouter = require("./Routes/admin/experience.route");
+const AdminSkillsRouter = require("./Routes/admin/skills.route");
 
 app.set("trust proxy", 1);
 
@@ -103,6 +107,14 @@ app.use("/auth", apiLimiter, AuthRouter);
 app.use("/theme", apiLimiter, ThemeRouter);
 
 app.use("/admin", apiLimiter, AdminMessageRouter);
+
+app.use("/admin", apiLimiter, AdminProjectRouter);
+
+app.use("/admin", apiLimiter, AdminEducationRouter);
+
+app.use("/admin", apiLimiter, AdminExperienceRouter);
+
+app.use("/admin", apiLimiter, AdminSkillsRouter);
 
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server is running on port ${PORT}`);

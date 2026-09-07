@@ -13,6 +13,10 @@ import { useSelector } from "react-redux";
 import { sectionViews } from "../data/dashboardData";
 import { applyTheme, themes } from "../data/themeData";
 import { getPortfolio } from "../Services/Dashboard.service";
+import { deleteProject } from "../Services/Project.service";
+import { deleteEducation } from "../Services/education.service";
+import { deleteExperience } from "../Services/experience.service";
+import { deleteSkill } from "../Services/skills.service";
 const Dashboard = () => {
   const navigate = useNavigate();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -74,8 +78,27 @@ const Dashboard = () => {
     });
   };
 
-  const handleDelete = (section, item) => {
-    console.log("Delete portfolio item:", { section, item });
+  const handleDelete = async (section, item) => {
+    if (!item._id) return;
+
+    const deleteActions = {
+      Projects: deleteProject,
+      Experience: deleteExperience,
+      Education: deleteEducation,
+      Skills: deleteSkill,
+    };
+    const deleteAction = deleteActions[section];
+    if (!deleteAction) return;
+
+    try {
+      await deleteAction(item._id);
+      setPortfolioData((current) => ({
+        ...current,
+        [section]: current[section].filter((entry) => entry._id !== item._id),
+      }));
+    } catch (error) {
+      setPortfolioError(error.message || "Unable to delete project.");
+    }
   };
 
   const handleAdd = () => {

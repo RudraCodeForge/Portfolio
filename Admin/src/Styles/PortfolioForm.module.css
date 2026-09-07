@@ -103,6 +103,12 @@
   background: var(--accent);
   color: #06201b;
 }
+.error {
+  grid-column: 1 / -1;
+  margin: 0;
+  color: #ef6b73;
+  font-size: 0.85rem;
+}
 .backdrop {
   display: none;
 }
