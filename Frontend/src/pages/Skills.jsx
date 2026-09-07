@@ -38,12 +38,11 @@ const Skills = () => {
               A stack built for
               <span>real-world impact.</span>
             </h2>
+            <p className={Styles.headerCopy}>
+              Tools are just tools. It&apos;s how they&apos;re combined that
+              makes the difference.
+            </p>
           </div>
-
-          <p className={Styles.headerCopy}>
-            Tools are just tools. It&apos;s how they&apos;re combined that makes
-            the difference.
-          </p>
         </div>
 
         <div className={Styles.skillsGrid}>

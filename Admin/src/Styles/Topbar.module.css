@@ -1,9 +1,15 @@
 .topbar {
+  position: fixed;
+  z-index: 15;
+  top: 0;
+  right: 0;
+  left: 19.4rem;
   display: flex;
   align-items: center;
-  min-height: 5.8rem;
+  min-height: 6.2rem;
   padding: 0 clamp(1.5rem, 3.4vw, 3.5rem);
   border-bottom: 1px solid var(--border);
+  background: var(--bg-primary);
 }
 .heading {
   display: grid;
@@ -122,8 +128,14 @@
 .menuButton {
   display: none;
 }
+@media (max-width: 1050px) and (min-width: 701px) {
+  .topbar {
+    left: 16.5rem;
+  }
+}
 @media (max-width: 700px) {
   .topbar {
+    left: 0;
     min-height: 4.8rem;
     gap: 0.65rem;
     padding: 0 0.75rem;

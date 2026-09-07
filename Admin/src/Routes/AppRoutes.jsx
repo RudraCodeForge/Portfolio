@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import Login from "../Pages/Login";
 import Dashboard from "../Pages/Dashboard";
 import MessageDetail from "../Pages/MessageDetail";
+import PortfolioForm from "../Pages/PortfolioForm";
 export const ProtectedRoute = ({ children }) => {
   const { accessToken, isVerified } = useSelector((state) => state.auth);
 
@@ -43,6 +44,22 @@ const AppRoutes = () => {
         element={
           <ProtectedRoute>
             <MessageDetail />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/dashboard/:section/new"
+        element={
+          <ProtectedRoute>
+            <PortfolioForm />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/dashboard/:section/edit/:id"
+        element={
+          <ProtectedRoute>
+            <PortfolioForm />
           </ProtectedRoute>
         }
       />

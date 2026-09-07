@@ -201,6 +201,14 @@
   .sidebar.open {
     transform: translateX(0);
   }
+  .brandRow {
+    border-bottom: 1px solid var(--border);
+  }
+  .navigation {
+    display: block;
+  }
+  .navItem {
+  }
   .bottomArea {
     padding-bottom: calc(2.2rem + env(safe-area-inset-bottom));
   }

@@ -1,0 +1,137 @@
+.page {
+  min-height: 100vh;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+.main {
+  min-width: 0;
+  margin-left: 19.4rem;
+  margin-top: 5.8rem;
+}
+.content {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 3.25rem clamp(1rem, 3.4vw, 3.5rem) 4rem;
+}
+.panel {
+  padding: 1.6rem;
+  border: 1px solid var(--border-hover);
+  border-radius: var(--surface-radius);
+  background: var(--surface-bg);
+  box-shadow: var(--surface-shadow);
+  backdrop-filter: blur(var(--surface-blur));
+}
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.eyebrow {
+  color: var(--accent);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.header h1 {
+  margin-top: 0.45rem;
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+}
+.id {
+  margin-top: 0.45rem;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  overflow-wrap: anywhere;
+}
+.cancelButton,
+.submitButton {
+  border: 1px solid var(--border-hover);
+  border-radius: 0.55rem;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+}
+.cancelButton {
+  padding: 0.65rem 0.9rem;
+  background: transparent;
+  color: var(--text-muted);
+}
+.cancelButton:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.field {
+  display: grid;
+  gap: 0.45rem;
+}
+.field span {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+.field input,
+.field textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 0.55rem;
+  outline: none;
+  background: transparent;
+  color: var(--text-primary);
+  font: inherit;
+  font-size: 0.85rem;
+}
+.field input:focus,
+.field textarea:focus {
+  border-color: var(--accent);
+}
+.field textarea {
+  resize: vertical;
+}
+.submitButton {
+  grid-column: 1 / -1;
+  justify-self: start;
+  padding: 0.75rem 1.1rem;
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #06201b;
+}
+.backdrop {
+  display: none;
+}
+@media (max-width: 1050px) {
+  .main {
+    margin-left: 16.5rem;
+    margin-top: 5.4rem;
+  }
+}
+@media (max-width: 700px) {
+  .main {
+    margin-left: 0;
+    margin-top: 4.8rem;
+  }
+  .content {
+    padding: 2rem 1rem 3rem;
+  }
+  .form {
+    grid-template-columns: 1fr;
+  }
+  .submitButton {
+    width: 100%;
+  }
+  .backdrop {
+    position: fixed;
+    z-index: 10;
+    inset: 0;
+    display: block;
+    border: 0;
+    background: rgba(0, 0, 0, 0.55);
+  }
+}
