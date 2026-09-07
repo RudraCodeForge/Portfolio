@@ -20,9 +20,6 @@ const ActivityFeed = ({ activities }) => (
         <h2>Recent Activity</h2>
         <p>A live feed of changes across your portfolio</p>
       </div>
-      <button>
-        View all <span>›</span>
-      </button>
     </div>
     <div className={Styles.list}>
       {activities.length === 0 ? (
