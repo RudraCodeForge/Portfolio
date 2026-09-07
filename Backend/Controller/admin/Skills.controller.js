@@ -1,4 +1,5 @@
 const Skill = require("../../Models/Skills");
+const Activity = require("../../Models/Activity");
 
 const parseSkills = (value) => {
   if (Array.isArray(value)) return value;
@@ -34,6 +35,12 @@ exports.createSkill = async (req, res) => {
 
   try {
     const skill = await Skill.create(getPayload(req.body));
+    await Activity.create({
+      title: "New skill added",
+      description: `${skill.Name} was added to your profile`,
+      icon: "code",
+      tone: "blue",
+    });
     return res.status(201).json({
       success: true,
       message: "Skill created successfully",
@@ -69,6 +76,13 @@ exports.updateSkill = async (req, res) => {
         .json({ success: false, message: "Skill not found" });
     }
 
+    await Activity.create({
+      title: "Skill category updated",
+      description: `${skill.Name} was updated`,
+      icon: "code",
+      tone: "blue",
+    });
+
     return res.status(200).json({
       success: true,
       message: "Skill updated successfully",
@@ -92,6 +106,13 @@ exports.deleteSkill = async (req, res) => {
         .status(404)
         .json({ success: false, message: "Skill not found" });
     }
+
+    await Activity.create({
+      title: "Skill category deleted",
+      description: "A skill category was removed",
+      icon: "code",
+      tone: "warning",
+    });
 
     return res.status(200).json({
       success: true,

@@ -61,6 +61,7 @@
   color: var(--accent);
 }
 .searchBox {
+  position: relative;
   display: flex;
   align-items: center;
 }
@@ -90,6 +91,54 @@
 .searchInput::placeholder {
   color: var(--text-muted);
 }
+.searchResults {
+  position: absolute;
+  z-index: 20;
+  top: calc(100% + 0.55rem);
+  right: 0;
+  width: min(22rem, 70vw);
+  overflow: hidden;
+  border: 1px solid var(--border-hover);
+  border-radius: 0.6rem;
+  background: var(--bg-card);
+  box-shadow: var(--surface-shadow);
+}
+.searchResult {
+  display: grid;
+  width: 100%;
+  gap: 0.25rem;
+  padding: 0.75rem 0.85rem;
+  border: 0;
+  border-bottom: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-primary);
+  cursor: pointer;
+  text-align: left;
+}
+.searchResult:last-child {
+  border-bottom: 0;
+}
+.searchResult:hover {
+  background: rgba(146, 247, 217, 0.07);
+}
+.searchResult strong {
+  overflow: hidden;
+  font-size: 0.78rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.searchResult span,
+.noResults {
+  overflow: hidden;
+  color: var(--text-muted);
+  font-size: 0.7rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.noResults {
+  margin: 0;
+  padding: 0.85rem;
+}
 .iconButton i {
   position: absolute;
   top: -0.05rem;
@@ -107,8 +156,16 @@
 .userMenu {
   display: flex;
   align-items: center;
+  border: 0;
   gap: 0.7rem;
+  padding: 0;
+  background: transparent;
+  color: var(--text-primary);
+  cursor: pointer;
   font-size: 0.83rem;
+}
+.userMenu:hover {
+  color: var(--accent);
 }
 .userMenu > span {
   margin-left: 0.35rem;

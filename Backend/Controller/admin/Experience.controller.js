@@ -1,4 +1,5 @@
 const Experience = require("../../Models/Experience");
+const Activity = require("../../Models/Activity");
 
 const parseSkills = (value) =>
   Array.isArray(value)
@@ -32,6 +33,12 @@ exports.createExperience = async (req, res) => {
 
   try {
     const experience = await Experience.create(getPayload(req.body));
+    await Activity.create({
+      title: "Experience added",
+      description: `${experience.Role} at ${experience.Company} was added`,
+      icon: "briefcase",
+      tone: "yellow",
+    });
     return res.status(201).json({
       success: true,
       message: "Experience created successfully",
@@ -67,6 +74,13 @@ exports.updateExperience = async (req, res) => {
         .json({ success: false, message: "Experience not found" });
     }
 
+    await Activity.create({
+      title: "Experience updated",
+      description: `${experience.Role} at ${experience.Company} was updated`,
+      icon: "briefcase",
+      tone: "yellow",
+    });
+
     return res.status(200).json({
       success: true,
       message: "Experience updated successfully",
@@ -90,6 +104,13 @@ exports.deleteExperience = async (req, res) => {
         .status(404)
         .json({ success: false, message: "Experience not found" });
     }
+
+    await Activity.create({
+      title: "Experience deleted",
+      description: "Experience details were removed",
+      icon: "briefcase",
+      tone: "warning",
+    });
 
     return res.status(200).json({
       success: true,

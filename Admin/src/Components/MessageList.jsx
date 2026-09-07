@@ -6,12 +6,9 @@ import { formatMessageDate } from "../utils/formatMessageDate";
 import {
   deleteAllMessages,
   markAllMessagesAsRead,
-  setMessages,
 } from "../Store/messageSlice";
-import { useEffect } from "react";
 import {
   DeleteAllMessages,
-  GetAdminMessages,
   MarkAllMessagesAsRead,
 } from "../Services/message.service";
 const MessageList = ({ messages }) => {
@@ -35,18 +32,6 @@ const MessageList = ({ messages }) => {
       console.error("Delete all messages failed:", error);
     }
   };
-  useEffect(() => {
-    const fetchMessages = async () => {
-      try {
-        const data = await GetAdminMessages();
-        dispatch(setMessages(data.messages || []));
-      } catch (error) {
-        console.error("Error fetching messages:", error);
-      }
-    };
-    fetchMessages();
-  }, [dispatch]);
-
   return (
     <section className={Styles.panel}>
       <div className={Styles.header}>

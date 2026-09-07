@@ -4,6 +4,7 @@ import Login from "../Pages/Login";
 import Dashboard from "../Pages/Dashboard";
 import MessageDetail from "../Pages/MessageDetail";
 import PortfolioForm from "../Pages/PortfolioForm";
+import Profile from "../Pages/Profile";
 export const ProtectedRoute = ({ children }) => {
   const { accessToken, isVerified } = useSelector((state) => state.auth);
 
@@ -44,6 +45,14 @@ const AppRoutes = () => {
         element={
           <ProtectedRoute>
             <MessageDetail />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/profile"
+        element={
+          <ProtectedRoute>
+            <Profile />
           </ProtectedRoute>
         }
       />

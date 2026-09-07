@@ -20,6 +20,9 @@ const AdminProjectRouter = require("./Routes/admin/project.route");
 const AdminEducationRouter = require("./Routes/admin/education.route");
 const AdminExperienceRouter = require("./Routes/admin/experience.route");
 const AdminSkillsRouter = require("./Routes/admin/skills.route");
+const AdminProfileRouter = require("./Routes/admin/profile.route");
+const AdminHeaderRouter = require("./Routes/admin/header.route");
+const AdminActivityRouter = require("./Routes/admin/activity.route");
 
 app.set("trust proxy", 1);
 
@@ -59,11 +62,23 @@ app.use("/storage", express.static(path.join(__dirname, "storage")));
 const apiLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 100,
+  skip: () => process.env.NODE_ENV !== "production",
   standardHeaders: true,
   legacyHeaders: false,
   message: {
     success: false,
     message: "Too many requests from this IP. Please try again later.",
+  },
+});
+
+const adminLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 500,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: {
+    success: false,
+    message: "Too many admin requests. Please try again later.",
   },
 });
 
@@ -106,15 +121,23 @@ app.use("/auth", apiLimiter, AuthRouter);
 
 app.use("/theme", apiLimiter, ThemeRouter);
 
-app.use("/admin", apiLimiter, AdminMessageRouter);
+app.use("/admin", adminLimiter);
 
-app.use("/admin", apiLimiter, AdminProjectRouter);
+app.use("/admin", AdminMessageRouter);
 
-app.use("/admin", apiLimiter, AdminEducationRouter);
+app.use("/admin", AdminProjectRouter);
 
-app.use("/admin", apiLimiter, AdminExperienceRouter);
+app.use("/admin", AdminEducationRouter);
 
-app.use("/admin", apiLimiter, AdminSkillsRouter);
+app.use("/admin", AdminExperienceRouter);
+
+app.use("/admin", AdminSkillsRouter);
+
+app.use("/admin", AdminProfileRouter);
+
+app.use("/admin", AdminHeaderRouter);
+
+app.use("/admin", AdminActivityRouter);
 
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server is running on port ${PORT}`);

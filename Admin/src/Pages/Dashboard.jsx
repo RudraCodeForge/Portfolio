@@ -1,6 +1,7 @@
 import Styles from "../Styles/Dashboard.module.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import Sidebar from "../Components/Sidebar";
 import Topbar from "../Components/Topbar";
 import StatCard from "../Components/StatCard";
@@ -17,12 +18,15 @@ import { deleteProject } from "../Services/Project.service";
 import { deleteEducation } from "../Services/education.service";
 import { deleteExperience } from "../Services/experience.service";
 import { deleteSkill } from "../Services/skills.service";
+import { getRecentActivities } from "../Services/activity.service";
 const Dashboard = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [portfolioData, setPortfolioData] = useState(null);
   const [isPortfolioLoading, setIsPortfolioLoading] = useState(true);
   const [portfolioError, setPortfolioError] = useState("");
+  const [activities, setActivities] = useState([]);
   const [activeSection, setActiveSection] = useState(() => {
     const savedSection = localStorage.getItem("activeDashboardSection");
     return sectionViews[savedSection] ? savedSection : "Dashboard";
@@ -49,6 +53,41 @@ const Dashboard = () => {
     );
     applyTheme(savedTheme || themes[0]);
   }, []);
+
+  useEffect(() => {
+    const loadActivities = async () => {
+      try {
+        const response = await getRecentActivities();
+        setActivities(response.activities || []);
+      } catch (error) {
+        console.error("Error fetching recent activities:", error);
+      }
+    };
+
+    loadActivities();
+
+    const refreshOnFocus = () => {
+      if (document.visibilityState === "visible") loadActivities();
+    };
+    const refreshInterval = window.setInterval(loadActivities, 10000);
+
+    document.addEventListener("visibilitychange", refreshOnFocus);
+
+    return () => {
+      window.clearInterval(refreshInterval);
+      document.removeEventListener("visibilitychange", refreshOnFocus);
+    };
+  }, []);
+
+  useEffect(() => {
+    const requestedSection = new URLSearchParams(location.search).get(
+      "section",
+    );
+    if (requestedSection && sectionViews[requestedSection]) {
+      setActiveSection(requestedSection);
+      localStorage.setItem("activeDashboardSection", requestedSection);
+    }
+  }, [location.search]);
 
   useEffect(() => {
     const loadPortfolioData = async () => {
@@ -105,6 +144,17 @@ const Dashboard = () => {
     navigate(`/dashboard/${activeSection.toLowerCase()}/new`);
   };
 
+  const handleQuickAction = (action) => {
+    const sectionByLabel = {
+      "Add Project": "projects",
+      "Add Experience": "experience",
+      "Add Education": "education",
+      "Add Skill": "skills",
+    };
+    const section = sectionByLabel[action.label];
+    if (section) navigate(`/dashboard/${section}/new`);
+  };
+
   const liveStats = portfolioData?.stats?.map((stat, index) => ({
     ...stat,
     trend: index === 3 ? "Live from backend" : "Live from portfolio",
@@ -131,6 +181,7 @@ const Dashboard = () => {
         <Topbar
           onMenuClick={() => setIsSidebarOpen(true)}
           sectionTitle={activeSection}
+          portfolioData={portfolioData}
         />
         <main className={Styles.content}>
           {isDashboard ? (
@@ -143,7 +194,11 @@ const Dashboard = () => {
                   </h2>
                   <p>{activeView.subtitle}</p>
                 </div>
-                <button type="button" className={Styles.addButton}>
+                <button
+                  type="button"
+                  className={Styles.addButton}
+                  onClick={() => navigate("/dashboard/projects/new")}
+                >
                   <span aria-hidden="true">+</span> Add new project
                 </button>
               </section>
@@ -155,8 +210,11 @@ const Dashboard = () => {
               </section>
 
               <section className={Styles.lowerGrid}>
-                <ActivityFeed activities={activeView.activities} />
-                <QuickActions actions={activeView.actions} />
+                <ActivityFeed activities={activities} />
+                <QuickActions
+                  actions={activeView.actions}
+                  onAction={handleQuickAction}
+                />
               </section>
             </>
           ) : activeSection === "Messages" ? (

@@ -2,11 +2,16 @@ const { Resend } = require("resend");
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-const sendAdminOtpEmail = async (email, otp) => {
+const sendAdminOtpEmail = async (
+  email,
+  otp,
+  subject = "Your Admin Login OTP",
+  purpose = "complete your admin login",
+) => {
   const { data, error } = await resend.emails.send({
     from: "Portfolio <onboarding@resend.dev>",
     to: email,
-    subject: "Your Admin Login OTP",
+    subject,
 
     html: `
       <!DOCTYPE html>
@@ -51,8 +56,7 @@ const sendAdminOtpEmail = async (email, otp) => {
               font-size: 14px;
               line-height: 1.6;
             ">
-              Use the verification code below to complete
-              your admin login.
+              Use the verification code below to ${purpose}.
             </p>
 
             <div style="
@@ -103,6 +107,14 @@ const sendAdminOtpEmail = async (email, otp) => {
 
   return data;
 };
+
+const sendPasswordResetOtpEmail = (email, otp) =>
+  sendAdminOtpEmail(
+    email,
+    otp,
+    "Reset your admin password",
+    "reset your admin password",
+  );
 
 const sendContactEmail = async ({ name, email, subject, message }) => {
   const { data, error } = await resend.emails.send({
@@ -337,5 +349,6 @@ const sendContactEmail = async ({ name, email, subject, message }) => {
 
 module.exports = {
   sendAdminOtpEmail,
+  sendPasswordResetOtpEmail,
   sendContactEmail,
 };

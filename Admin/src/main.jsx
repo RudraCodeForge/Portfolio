@@ -13,7 +13,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <Provider store={store}>
         <App />
         <Toaster
-          position="top-right"
+          position="bottom-right"
           toastOptions={{
             duration: 3500,
           }}

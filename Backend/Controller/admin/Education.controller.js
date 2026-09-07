@@ -1,4 +1,5 @@
 const Education = require("../../Models/Education");
+const Activity = require("../../Models/Activity");
 
 const getPayload = (body) => ({
   Period: body.Period?.trim() || "",
@@ -22,6 +23,12 @@ exports.createEducation = async (req, res) => {
 
   try {
     const education = await Education.create(getPayload(req.body));
+    await Activity.create({
+      title: "Education added",
+      description: `${education.Course} was added to your profile`,
+      icon: "education",
+      tone: "mint",
+    });
     return res.status(201).json({
       success: true,
       message: "Education created successfully",
@@ -57,6 +64,13 @@ exports.updateEducation = async (req, res) => {
         .json({ success: false, message: "Education not found" });
     }
 
+    await Activity.create({
+      title: "Education updated",
+      description: `${education.Course} was updated`,
+      icon: "education",
+      tone: "mint",
+    });
+
     return res.status(200).json({
       success: true,
       message: "Education updated successfully",
@@ -80,6 +94,13 @@ exports.deleteEducation = async (req, res) => {
         .status(404)
         .json({ success: false, message: "Education not found" });
     }
+
+    await Activity.create({
+      title: "Education deleted",
+      description: "Education details were removed",
+      icon: "education",
+      tone: "warning",
+    });
 
     return res.status(200).json({
       success: true,

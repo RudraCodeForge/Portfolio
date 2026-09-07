@@ -1,4 +1,5 @@
 const Theme = require("../Models/Theme");
+const Activity = require("../Models/Activity");
 
 exports.getTheme = async (req, res) => {
   const theme = await Theme.findOne().lean();
@@ -25,6 +26,12 @@ exports.updateTheme = async (req, res) => {
         setDefaultsOnInsert: true,
       },
     ).lean();
+    await Activity.create({
+      title: "Portfolio settings updated",
+      description: "The portfolio theme was updated",
+      icon: "settings",
+      tone: "yellow",
+    });
 
     return res.status(200).json({ success: true, theme });
   } catch (error) {

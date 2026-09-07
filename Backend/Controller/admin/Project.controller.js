@@ -1,4 +1,5 @@
 const Project = require("../../Models/Project");
+const Activity = require("../../Models/Activity");
 
 const getProjectPayload = (body) => ({
   ProjectImage: body.ProjectImage?.trim() || "",
@@ -32,6 +33,12 @@ exports.createProject = async (req, res) => {
     }
 
     const project = await Project.create(getProjectPayload(req.body));
+    await Activity.create({
+      title: "New project added",
+      description: `${project.Title} was added to your portfolio`,
+      icon: "briefcase",
+      tone: "blue",
+    });
 
     return res.status(201).json({
       success: true,
@@ -71,6 +78,13 @@ exports.updateProject = async (req, res) => {
       });
     }
 
+    await Activity.create({
+      title: "Project updated",
+      description: `${project.Title} was updated`,
+      icon: "code",
+      tone: "blue",
+    });
+
     return res.status(200).json({
       success: true,
       message: "Project updated successfully",
@@ -95,6 +109,13 @@ exports.deleteProject = async (req, res) => {
         message: "Project not found",
       });
     }
+
+    await Activity.create({
+      title: "Project deleted",
+      description: "A project was removed from your portfolio",
+      icon: "briefcase",
+      tone: "warning",
+    });
 
     return res.status(200).json({
       success: true,

@@ -44,6 +44,11 @@
   scrollbar-color: var(--border-hover) transparent;
   scrollbar-width: thin;
 }
+.emptyState {
+  padding: 1.5rem 0;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+}
 .list::-webkit-scrollbar {
   width: 0.35rem;
 }
@@ -77,6 +82,10 @@
 .yellow {
   background: rgba(203, 180, 37, 0.14);
   color: #e4c631;
+}
+.warning {
+  background: rgba(248, 113, 113, 0.14);
+  color: #fca5a5;
 }
 .activityCopy {
   display: grid;

@@ -1,8 +1,8 @@
 const jwt = require("jsonwebtoken");
 const Admin = require("../Models/Admin");
 
-const createAccessToken = (adminId) =>
-  jwt.sign({ adminId }, process.env.ACCESS_TOKEN_SECRET, {
+const createAccessToken = (adminId, tokenVersion = 0) =>
+  jwt.sign({ adminId, tokenVersion }, process.env.ACCESS_TOKEN_SECRET, {
     expiresIn: "1h",
   });
 
@@ -14,7 +14,19 @@ const requireAuth = async (req, res, next) => {
 
   try {
     if (token) {
-      req.admin = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+      const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+      const admin = await Admin.findById(decoded.adminId).select(
+        "_id tokenVersion",
+      );
+
+      if (!admin || decoded.tokenVersion !== admin.tokenVersion) {
+        return res.status(401).json({
+          success: false,
+          message: "Session expired. Please log in again.",
+        });
+      }
+
+      req.admin = decoded;
       return next();
     }
   } catch (error) {
@@ -32,17 +44,22 @@ const requireAuth = async (req, res, next) => {
     }
 
     const decoded = jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET);
-    const admin = await Admin.findById(decoded.adminId).select("_id");
+    const admin = await Admin.findById(decoded.adminId).select(
+      "_id tokenVersion",
+    );
 
-    if (!admin) {
+    if (!admin || decoded.tokenVersion !== admin.tokenVersion) {
       return res.status(401).json({
         success: false,
         message: "Admin account was not found",
       });
     }
 
-    const accessToken = createAccessToken(admin._id);
-    req.admin = { adminId: admin._id.toString() };
+    const accessToken = createAccessToken(admin._id, admin.tokenVersion);
+    req.admin = {
+      adminId: admin._id.toString(),
+      tokenVersion: admin.tokenVersion,
+    };
     res.setHeader("X-Access-Token", accessToken);
     return next();
   } catch {

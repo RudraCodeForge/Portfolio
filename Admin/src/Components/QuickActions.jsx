@@ -1,7 +1,7 @@
 import DashboardIcon from "./DashboardIcon";
 import Styles from "../Styles/QuickActions.module.css";
 
-const QuickActions = ({ actions }) => (
+const QuickActions = ({ actions, onAction }) => (
   <section className={Styles.panel}>
     <div className={Styles.panelHeader}>
       <div>
@@ -12,8 +12,10 @@ const QuickActions = ({ actions }) => (
     <div className={Styles.actions}>
       {actions.map((action) => (
         <button
+          type="button"
           className={`${Styles.action} ${action.featured ? Styles.featured : ""}`}
           key={action.label}
+          onClick={() => onAction(action)}
         >
           <DashboardIcon name={action.icon} />
           <span>{action.label}</span>
