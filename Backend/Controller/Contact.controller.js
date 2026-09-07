@@ -4,7 +4,6 @@ const Activity = require("../Models/Activity");
 
 exports.ContactMe = async (req, res) => {
   try {
-    console.log("Contact request received:", req.body);
     const { name, email, subject, message } = req.body;
 
     const savedMessage = await Message.create({
@@ -14,16 +13,12 @@ exports.ContactMe = async (req, res) => {
       message,
     });
 
-    console.log("EMAIL SUCCESS:", data?.id);
-
     const response = await Activity.create({
       title: "New contact message received",
       description: `${name} sent you a message`,
       icon: "mail",
       tone: "mint",
     });
-
-    console.log("🔥 ACTIVITY CREATED:", response._id);
 
     const data = await sendContactEmail({
       name,
